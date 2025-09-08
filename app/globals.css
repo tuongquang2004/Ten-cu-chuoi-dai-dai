@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+:root { --sidebar-w: 200px; }
+body { @apply text-slate-800 bg-white; }
