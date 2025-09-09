@@ -11,7 +11,9 @@ export default function Page() {
   return (
     <Layout>
       <div className="px-6">
+        <div className='px-6 mb-6'>
         <PageHeader title="Manage Lists" subtitle="Create or Edit Job Numbers" />
+        </div>
         <section className="flex flex-wrap gap-0">
           {manageTiles.map((t) => (<Tile key={t.label} {...t} onClick={() => {
             if (t.href) {

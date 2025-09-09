@@ -7,7 +7,7 @@ export type TileItemData = { label: string; icon: IconKey; href?: string }
 export const manageTiles: TileItemData[] = [
   { label: 'Referral Sources', icon: 'Referral', href: '/referral_sources' },
   { label: 'Shipping Methods', icon: 'Truck', href: '/' },
-  { label: 'Payment Methods', icon: 'Bag' },
+  { label: 'Payment Methods', icon: 'Bag', href: '/' },
   { label: 'Job Numbers', icon: 'Briefcase', href: '/' },
   { label: 'Exchange Rates', icon: 'Exchange', href: '/' },
   { label: 'Comments', icon: 'Note', href: '/' },
