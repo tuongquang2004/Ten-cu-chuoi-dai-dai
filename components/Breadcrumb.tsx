@@ -1,3 +1,4 @@
+"use client"
 import { Icon } from "./Icon"
 
 type Crumb = {
@@ -11,11 +12,23 @@ type BreadcrumbProps = {
 
 export default function Breadcrumb({ crumbs }: BreadcrumbProps) {
     return (
-        <div className="flex">
-            {crumbs.map((c, index) => (
-                <div key={index} className="flex">{c.label}</div>
+        <div className="flex gap-2">
+            {crumbs.map((c, index) => index !== crumbs.length - 1 ? (
+                <div
+                    key={index+1}
+                    className="flex items-center gap-2 text-[#667085] font-semibold font-[Inter]"
+                >
+                    {c.label}
+                    <Icon.RightArrow />
+                </div>
+            ) : (
+                <div
+                    key={index+1}
+                    className="flex items-center gap-2 text-[#1D2939] font-semibold font-[Inter]"
+                >
+                    {c.label}
+                </div>
             ))}
-            {/* <Icon.RightArrow/> */}
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import {twMerge} from "tailwind-merge";
 
-const base = 'inline-flex items-center justify-center rounded-md font-medium transition px-[18px] py-[6px]';
+const base = 'cursor-pointer inline-flex items-center justify-center rounded-md font-medium transition px-[18px] py-[6px]';
 
 const variants = {
     default: '',
@@ -8,7 +8,7 @@ const variants = {
     danger: '',
     warning: '',
     circle: 'rounded-full bg-[#2F3680] p-1',
-    square: '',
+    square: 'rounded bg-[#2F3680] p-1',
     outline: 'border border-[#D0D5DD] rounded-full'
 }
 

@@ -1,9 +1,9 @@
 'use client'
-import Link from 'next/link'
 import { Icon } from './Icon'
 import NavBar from './NavBar';
 import CommonButton from './CommonButton';
 import { useRouter } from 'next/navigation';
+import SearchBar from './SearchBar';
 
 type NavItem = { label: string; route: string }
 
@@ -33,35 +33,23 @@ export default function TopNav() {
 
   return (
     <header className="sticky top-0 z-40 flex h-12 items-center justify-between border-b border-[#D0D5DD] bg-white px-[38px] py-8">
-      <div className='flex justify-between gap-[64px] items-center'>
+      <div className='flex justify-between gap-[44px] items-center'>
         {/* Logo */}
         <button className='cursor-pointer' onClick={() => router.push('/')}><Icon.Logo /></button>
 
         {/* Tabs */}
         <div className='flex items-center'>
-          <NavBar config={tabs1} />
+          <NavBar items={tabs1} />
           <div className="h-7 w-px bg-[#E4E7EC]"></div>
-          <NavBar config={tabs2} />
+          <NavBar items={tabs2} />
         </div>
       </div>
 
       {/* Actions (right) */}
       <div className="ml-auto flex items-center gap-2">
-        <button
-          className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-600 text-white"
-          aria-label="New"
-        >
-          <Icon.Plus />
-        </button>
-        <CommonButton variant='circle'><Icon.Plus2 /></CommonButton>
+        <CommonButton variant='circle' onClick={addItem}><Icon.Plus2 /></CommonButton>
 
-        <div className="relative">
-          <Icon.Search className="absolute left-2 top-1.5 h-4 w-4 text-slate-400" />
-          <input
-            className="h-8 w-52 rounded border pl-7 pr-2 text-sm outline-none focus:ring-2 focus:ring-brand-600/40"
-            placeholder="Search"
-          />
-        </div>
+        <SearchBar placeholder='Search' variant='secondary' icon_align='right' className='min-w-[250px]'/>
 
         <button className="p-1 text-slate-500 hover:text-slate-900" aria-label="Settings">
           <Icon.Gear />
