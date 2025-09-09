@@ -3,47 +3,39 @@ import Link from 'next/link'
 import { Icon } from './Icon'
 import NavBar from './NavBar';
 import CommonButton from './CommonButton';
+import { useRouter } from 'next/navigation';
 
-type NavItem = { label: string; route: string, color: string, hover: any }
-
-const baseColor = '#252C88';
-const hover = 'hover:underline hover:underline-offset-1';
+type NavItem = { label: string; route: string }
 
 const tabs: NavItem[] = [
-  { label: 'Dashboard', route: '/', color: baseColor, hover: hover },
-  { label: 'Purchases', route: '/', color: baseColor, hover: hover },
-  { label: 'Receiving', route: '/', color: baseColor, hover: hover },
-  { label: 'Assemblies', route: '/', color: baseColor, hover: hover },
-  { label: 'Transfers', route: '/', color: baseColor, hover: hover },
-  { label: 'Sales', route: '/', color: baseColor, hover: hover },
-  { label: 'Despatch', route: '/', color: baseColor, hover: hover },
-  { label: 'Inventory', route: '/', color: baseColor, hover: hover },
-  { label: 'Contacts', route: '/', color: baseColor, hover: hover },
-  { label: 'Reports', route: '/', color: baseColor, hover: hover },
+  { label: 'Dashboard', route: '/' },
+  { label: 'Purchases', route: '/' },
+  { label: 'Receiving', route: '/' },
+  { label: 'Assemblies', route: '/' },
+  { label: 'Transfers', route: '/' },
+  { label: 'Sales', route: '/' },
+  { label: 'Despatch', route: '/' },
+  { label: 'Inventory', route: '/' },
+  { label: 'Contacts', route: '/' },
+  { label: 'Reports', route: '/' },
 ]
 
-const addItem=()=>{
+const addItem = () => {
   alert('You clicked a button :D');
 }
-
-const plusButton = {
-  text: '+',
-  color: 'text-white',
-  background: 'bg-[#2F3680]',
-  border:{radius:'rounded-full w-10 h-10'},
-  onClick: addItem,
-  size:'text-[1.5rem]'
-};
 
 const tabs1 = tabs.slice(0, 7);
 const tabs2 = tabs.slice(7);
 
+
 export default function TopNav() {
+  const router = useRouter();
+
   return (
     <header className="sticky top-0 z-40 flex h-12 items-center justify-between border-b border-[#D0D5DD] bg-white px-[38px] py-8">
       <div className='flex justify-between gap-[64px] items-center'>
         {/* Logo */}
-        <button className='cursor-pointer'><Icon.Logo /></button>
+        <button className='cursor-pointer' onClick={() => router.push('/')}><Icon.Logo /></button>
 
         {/* Tabs */}
         <div className='flex items-center'>
@@ -61,7 +53,7 @@ export default function TopNav() {
         >
           <Icon.Plus />
         </button>
-        <CommonButton config={plusButton}/>
+        <CommonButton variant='circle'><Icon.Plus2 /></CommonButton>
 
         <div className="relative">
           <Icon.Search className="absolute left-2 top-1.5 h-4 w-4 text-slate-400" />
