@@ -5,66 +5,12 @@ import CommonButton from "@/components/CommonButton";
 import CommonInput from "@/components/CommonInput";
 import { Icon } from "@/components/Icon";
 import PageHeader from "@/components/PageHeader";
-import axios, { AxiosError } from "axios";
+import { useLoginForm } from "../(hooks)/useLoginForm";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 export default function Login() {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    type input = {
-        value: string,
-        error: string
-    }
-
-    const [email, setEmail] = useState<input>({ value: '', error: '' });
-    const [password, setPassword] = useState<input>({ value: '', error: '' });
-
     const router = useRouter();
-
-    const handleSubmit = () => {
-        const trimmedEmail = email.value.trim();
-        const trimmedPassword = password.value.trim();
-        let submit = true;
-
-        if (trimmedEmail.length === 0) {
-            setEmail({ value: trimmedEmail, error: 'Please enter your email' })
-            submit = false;
-        } else if (!emailRegex.test(trimmedEmail)) {
-            setEmail({ value: trimmedEmail, error: 'Please enter a valid email' })
-            submit = false;
-        }
-
-        if (trimmedPassword.length === 0) {
-            setPassword({ value: trimmedPassword, error: 'Please enter your password' })
-            submit = false;
-        }
-
-        if (submit) {
-            setEmail({ value: trimmedEmail, error: '' })
-            setPassword({ value: trimmedPassword, error: '' })
-            handleLogin(trimmedEmail, trimmedPassword);
-        }
-    }
-
-    const handleLogin = async (email: string, password: string) => {
-        try {
-            await axios.post('/api/auth/login', { email: email, password: password });
-            alert('Login Succesfully')
-            router.push('/');
-        } catch (err) {
-            const error = err as AxiosError<{ error: string }>;
-            if (error.response?.status === 400) {
-                alert('Please fill all required fields')
-            }
-            else if (error.response?.status === 401) {
-                alert('Incorrect email or password')
-            }
-            else {
-                alert('Unknown error occured')
-            }
-        }
-    }
+    const { email, password, setEmail, setPassword, handleSubmit } = useLoginForm();
 
     return (
         <div>

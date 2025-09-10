@@ -5,120 +5,16 @@ import CommonButton from "@/components/CommonButton";
 import CommonInput from "@/components/CommonInput";
 import { Icon } from "@/components/Icon";
 import PageHeader from "@/components/PageHeader";
-import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useRegisterForm } from "../(hooks)/useRegisterForm";
+import PasswordChecks from "@/components/PasswordChecks";
 
 export default function Register() {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const uppercaseRegex = /[A-Z]/;
-    const numberRegex = /\d/;
-    const specialCharRegex = /[!@#$%]/;
-
-    type input = {
-        value: string,
-        error: string
-    }
-
-    type checks = {
-        length: boolean,
-        upper: boolean,
-        digit: boolean,
-        special: boolean
-    }
-
-    const [email, setEmail] = useState<input>({ value: '', error: '' });
-    const [name, setName] = useState<input>({ value: '', error: '' });
-    const [password, setPassword] = useState<input>({ value: '', error: '' });
-    const [confirmPassword, setConfirmPassword] = useState<input>({ value: '', error: '' });
-    const [passwordChecks, setPasswordChecks] = useState<checks>({ length: false, upper: false, digit: false, special: false });
     const router = useRouter();
-
-    const handleSubmit = () => {
-        let submit = true;
-        const trimmedEmail = email.value.trim();
-        const trimmedName = name.value.trim();
-        const trimmedPassword = password.value.trim();
-        const trimmedConfirmPassword = confirmPassword.value.trim();
-
-        if (trimmedEmail.length === 0) {
-            setEmail({ value: trimmedEmail, error: 'Please enter your email' })
-        } else if (!emailRegex.test(trimmedEmail)) {
-            setEmail({ value: trimmedEmail, error: 'The email is not valid' })
-            submit = false;
-        } else {
-            setEmail({ value: trimmedEmail, error: '' });
-        }
-
-        if (trimmedName.length === 0) {
-            setName({ value: trimmedName, error: 'Please enter your name' })
-        } else {
-            setName({ value: trimmedName, error: '' })
-        }
-
-        if (trimmedPassword.length === 0) {
-            setPassword({ value: trimmedPassword, error: 'Please enter a password' })
-        } else {
-            setPassword({ value: trimmedPassword, error: '' })
-        }
-
-        submit = checkPassword(trimmedPassword);
-
-        if (submit) {
-            if (password.value !== confirmPassword.value) {
-                setConfirmPassword({ value: trimmedConfirmPassword, error: 'This password does not match the one you entered above' });
-                submit = false
-            }
-            if (submit) {
-                setConfirmPassword({ value: trimmedConfirmPassword, error: '' });
-                handleRegister(trimmedEmail, trimmedName, trimmedPassword);
-            }
-        }
-    }
-
-    const checkPassword = (password: string) => {
-        const passwordError = 'Please meet all password requirements';
-        const checks = {
-            length: password.length >= 8,
-            upper: uppercaseRegex.test(password),
-            digit: numberRegex.test(password),
-            special: specialCharRegex.test(password)
-        }
-        setPasswordChecks({ ...checks });
-        const hasFalse = Object.values(checks).some(v => !v);
-        if (hasFalse) {
-            setConfirmPassword({ value: password, error: passwordError });
-            return false;
-        }
-        return true;
-    }
-
-    const handleRegister = async (email: string, name: string, password: string) => {
-        try {
-            await axios.post('/api/auth/register', {
-                email: email,
-                name: name,
-                password: password
-            })
-            alert('Registered Successfully');
-            router.push('/system/login');
-            alert('Please login with your account');
-        } catch (err) {
-            const error = err as AxiosError<{ error: string }>;
-            if (error.response?.status === 400) {
-                alert('Please enter all required fields');
-            }
-            else if (error.response?.status === 409) {
-                alert('This email already exists')
-            }
-            else {
-                alert('Unknown error occured')
-            }
-        }
-    }
+    const { email, name, password, confirmPassword, passwordChecks, setEmail, setName, setPassword, setConfirmPassword, handleSubmit } = useRegisterForm();
 
     useEffect(() => {
-
         setPassword(prev => {
             const trimmedValue = prev.value.replace(/\s/g, "");
             return trimmedValue !== prev.value ? { ...prev, value: trimmedValue } : prev;
@@ -128,7 +24,7 @@ export default function Register() {
             const trimmedValue = prev.value.replace(/\s/g, "");
             return trimmedValue !== prev.value ? { ...prev, value: trimmedValue } : prev;
         });
-    }, [password.value, confirmPassword.value]);
+    }, [password.value, confirmPassword.value, setPassword, setConfirmPassword]);
 
     return (
         <div>
@@ -147,6 +43,7 @@ export default function Register() {
                     <div className="w-full flex flex-col gap-2">
                         <div>Already have an account? <button onClick={() => router.push('/system/login')} className="cursor-pointer text-blue-500">Login</button></div>
                         <CommonButton variant="primary" onClick={handleSubmit} className="rounded-full text-[12px] h-[40px]">Register</CommonButton>
+                        <PasswordChecks checks={passwordChecks} />
                     </div>
                 </div>
             </AuthLayout>

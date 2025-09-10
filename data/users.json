@@ -19,5 +19,26 @@
     "password": "Tiendung2005!",
     "name": "Dung",
     "role": "user"
+  },
+  {
+    "id": "u_1757490052116",
+    "email": "testaccount@gmail.com",
+    "password": "Tiendung2005!",
+    "name": "test",
+    "role": "user"
+  },
+  {
+    "id": "u_1757492024727",
+    "email": "textacc@gmail.com",
+    "password": "Tiendung!1",
+    "name": "test",
+    "role": "user"
+  },
+  {
+    "id": "u_1757492574210",
+    "email": "testacc3@gmail.com",
+    "password": "Tiendung2005!",
+    "name": "test",
+    "role": "user"
   }
 ]
