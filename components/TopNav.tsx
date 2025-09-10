@@ -57,7 +57,7 @@ export default function TopNav() {
         <button className="p-1 text-slate-500 hover:text-slate-900" aria-label="Notifications">
           <Icon.Question />
         </button>
-        <div className="h-7 w-7 overflow-hidden rounded-full bg-slate-200 ring-1 ring-slate-300" />
+        <button onClick={()=>router.push('/system/register')} className="h-7 cursor-pointer w-7 overflow-hidden rounded-full bg-slate-200 ring-1 ring-slate-300" />
       </div>
     </header>
   )
