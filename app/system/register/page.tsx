@@ -100,13 +100,13 @@ export default function Register() {
                 name: name,
                 password: password
             })
-            localStorage.setItem('userAccount', JSON.stringify({ email: email, name: name }))
             alert('Registered Successfully');
-            router.push('/')
+            router.push('/system/login');
+            alert('Please login with your account');
         } catch (err) {
             const error = err as AxiosError<{ error: string }>;
             if (error.response?.status === 400) {
-                alert('Please enter all required fields')
+                alert('Please enter all required fields');
             }
             else if (error.response?.status === 409) {
                 alert('This email already exists')
@@ -128,7 +128,7 @@ export default function Register() {
             const trimmedValue = prev.value.replace(/\s/g, "");
             return trimmedValue !== prev.value ? { ...prev, value: trimmedValue } : prev;
         });
-    }, [email.value, password.value, confirmPassword.value]);
+    }, [password.value, confirmPassword.value]);
 
     return (
         <div>
