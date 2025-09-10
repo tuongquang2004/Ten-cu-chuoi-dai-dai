@@ -24,10 +24,16 @@ export default function JobNumbers() {
                     <Breadcrumb crumbs={[...breadcrumbs]}></Breadcrumb>
                 </div>
                 <PageHeader title="Manage Job Numbers" subtitle="Create or Edit Job Numbers" />
-                <div className="px-6 ml-auto flex items-center gap-3">
-                <SearchBar placeholder='Search Job Numbers' variant='third' icon_align='left' size = 'xl' className='min-w-[250px]'/>
-                <CommonButton variant='square' size = 'xl' onClick={addItem}><Icon.Search2 /></CommonButton>
-                <CommonButton variant="outline">Import</CommonButton>
+                <div className="px-6 ml-auto flex items-center w-full">
+                    <div className="flex items-center gap-3 flex-1">
+                        <SearchBar placeholder='Search Job Numbers' variant='third' icon_align='left' size = 'xl' className='min-w-[250px]'/>
+                        <CommonButton variant='square' size = 'xl' onClick={addItem}><Icon.Search2 /></CommonButton>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <CommonButton variant="outline" size = 'button' >Import</CommonButton>
+                        <CommonButton variant="outline" size = 'button' >Export</CommonButton>
+                        <CommonButton variant="yellow" size = 'button' >Add Job Number</CommonButton>
+                    </div>
                 </div>
             </div>
         </Layout>
