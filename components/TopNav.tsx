@@ -47,7 +47,7 @@ export default function TopNav() {
 
       {/* Actions (right) */}
       <div className="ml-auto flex items-center gap-2">
-        <CommonButton variant='circle' onClick={addItem}><Icon.Plus2 /></CommonButton>
+        <CommonButton size='sm' variant='circle' onClick={addItem}><Icon.Plus2 /></CommonButton>
 
         <SearchBar placeholder='Search' variant='secondary' icon_align='right' className='min-w-[250px]'/>
 

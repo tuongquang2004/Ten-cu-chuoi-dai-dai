@@ -1,4 +1,6 @@
 // lib/data.ts
+import { Inter } from "next/font/google";
+
 export type IconKey =
   | 'Referral' | 'Truck' | 'Bag' | 'Briefcase' | 'Exchange' | 'Note' | 'Tag'
 
@@ -25,3 +27,7 @@ export type check = {
   status: boolean
 }
 
+export const inter = Inter({
+    subsets: ["latin"],
+    weight: ["400", "500", "700"],
+});

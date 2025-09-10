@@ -1,13 +1,7 @@
 import { twMerge } from "tailwind-merge"
-import { Inter } from "next/font/google";
 import { Icon } from "./Icon";
 import CommonButton from "./CommonButton";
-
-const inter = Inter({
-    subsets: ["latin"],
-    weight: ["400", "500", "700"],
-});
-
+import { inter } from "@/lib/data";
 
 type SearchBarProp = {
     readonly placeholder?: string,
@@ -19,7 +13,7 @@ type SearchBarProp = {
 }
 
 const variants = {
-    default: '',
+    default: 'placeholder:text-[#475467] placeholder:text-[12px] py-[10px]',
     secondary: `placeholder:text-[#475467] text-[12px] bg-[#F2F4F7] focus:outline-none ${inter.className}`
 }
 
@@ -31,7 +25,7 @@ const sizes = {
 }
 
 export default function SearchBar({ placeholder, variant = 'default', icon_align, button_align, size = 'default', className }: SearchBarProp) {
-    const base = `rounded ${(icon_align && icon_align === 'left') ? 'px-7' : 'px-1'}`
+    const base = `rounded ${(icon_align && icon_align === 'left') ? 'pl-8 pr-2' : 'pl-2 pr-8'}`
     return (
         <div className="flex justify-center gap-2">
             {button_align && button_align === 'left' && (
@@ -40,7 +34,7 @@ export default function SearchBar({ placeholder, variant = 'default', icon_align
             <div className="relative">
                 <input placeholder={placeholder} className={twMerge(base, variants[variant], sizes[size], className)} />
                 {icon_align && (
-                    <div className={`absolute top-1/2 -translate-y-1/2 ${icon_align === 'left' ? 'left-1' : 'right-1'}`}><Icon.Search /></div>
+                    <div className={`absolute top-1/2 -translate-y-1/2 ${icon_align === 'left' ? 'left-2' : 'right-2'}`}><Icon.Search /></div>
                 )}
             </div>
             {button_align && button_align === 'right' && (

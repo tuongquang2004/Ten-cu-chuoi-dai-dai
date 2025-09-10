@@ -7,14 +7,14 @@ const variants = {
     primary: 'bg-[#252C88] text-white',
     danger: '',
     warning: '',
-    circle: 'rounded-full bg-[#2F3680] p-1',
-    square: 'rounded bg-[#2F3680] p-1',
+    circle: 'rounded-full bg-[#2F3680] p-1 aspect-square',
+    square: 'rounded bg-[#2F3680] p-1 aspect-square',
     outline: 'border border-[#D0D5DD] rounded-full'
 }
 
 const sizes = {
-    default: '',
-    sm: '',
+    default: 'h-[40px]',
+    sm: 'h-[30px]',
     lg: '',
     xl: ''
 }
