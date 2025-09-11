@@ -1,8 +1,6 @@
 import { check } from "@/lib/data";
-import { Icon } from "./Icon";
 import { twMerge } from "tailwind-merge";
-import Check from '@/public/assets/icons/check.svg';
-import Cross from '@/public/assets/icons/cross.svg';
+import {Check, Cross} from '@/public/assets/icons';
 
 type PasswordChecksProps = {
     checks: Array<check>,
@@ -14,7 +12,7 @@ export default function PasswordChecks({ checks, className }: Readonly<PasswordC
         <div>
             {checks.map(c => (
                 <div className={twMerge('flex items-center gap-1', className)} key={c.key}>
-                    {c.status ? (<Check />) : (<Cross />)}
+                    {c.status ? (<div className="text-[#0E864B]"><Check /></div>) : (<div className="text-[#98A2B3]"><Cross /></div>)}
                     {c.label}
                 </div>
             ))}

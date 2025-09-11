@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import OpenEye from '@/public/assets/icons/open_eye.svg';
-import ClosedEye from '@/public/assets/icons/closed_eye.svg';
+import { OpenEye, ClosedEye } from '@/public/assets/icons';
 
 type InputProps = {
     label: string,
@@ -26,11 +25,11 @@ export default function CommonInput({ label, placeholder, value = '', type = 'te
                     <div className="absolute top-1 right-2">
                         {inputType === 'password' ? (
                             <button onClick={() => setInputType('text')}>
-                                <OpenEye/>
+                                <OpenEye />
                             </button>
                         ) : (
                             <button onClick={() => setInputType('password')}>
-                                <ClosedEye/>
+                                <ClosedEye />
                             </button>
                         )}
                     </div>

@@ -5,10 +5,8 @@ import CommonButton from './CommonButton';
 import { useRouter } from 'next/navigation';
 import SearchBar from './SearchBar';
 import { ROUTES } from '@/constants/routes';
-import Plus2 from '@/public/assets/icons/plus2.svg';
-import Gear from '@/public/assets/icons/gear.svg';
-import Question from '@/public/assets/icons/question.svg';
-import Logo from '@/public/assets/logos/logo.svg';
+import {Plus, Gear, Question} from '@/public/assets/icons';
+import {Logo} from '@/public/assets/logos';
 
 type NavItem = { label: string; route: string }
 
@@ -52,7 +50,7 @@ export default function TopNav() {
 
       {/* Actions (right) */}
       <div className="ml-auto flex items-center gap-2">
-        <CommonButton variant='circle' onClick={addItem}><Plus2 /></CommonButton>
+        <CommonButton variant='circle' size='sm' onClick={addItem}><Plus /></CommonButton>
 
         <SearchBar placeholder='Search' variant='secondary' icon_align='right' className='min-w-[250px]'/>
 

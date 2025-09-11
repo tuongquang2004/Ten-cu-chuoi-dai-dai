@@ -45,7 +45,7 @@ export default function Filter({ label, items, showCount = false, showReset = fa
                     <Icon.Reset />
                 </button> */}
 
-                <button className="flex items-center gap-1 font-[700]" onClick={() => setIsShow(prev => !prev)}>
+                <button className="flex items-center gap-1 font-[700] cursor-pointer" onClick={() => setIsShow(prev => !prev)}>
                     {showCount && (
                         <p>{`(${selected.length})`}</p>
                     )}
@@ -53,7 +53,7 @@ export default function Filter({ label, items, showCount = false, showReset = fa
                     <Icon.DownArrow />
                 </button>
                 {showReset && (
-                    <button onClick={() => handleReset()}>
+                    <button className="cursor-pointer" onClick={() => handleReset()}>
                         <Icon.Reset />
                     </button>
                 )}
@@ -61,9 +61,9 @@ export default function Filter({ label, items, showCount = false, showReset = fa
             {isShow && (
                 <div className="border absolute top-7 border-[#D0D5DD] rounded-lg p-[4px] w-fit min-w-[112px] shadow-[2px_10px_25px_rgba(0,0,0,0.1)]">
                     {items.map(i => (
-                        <div key={i.key} className="flex items-center gap-[6px] px-[6px]">
-                            <input checked={selected.includes(i.key)} type="checkbox" id={i.key} value={i.value} onChange={() => handleSelect(i.key)} />
-                            <label className="select-none" htmlFor={i.key}>{i.label}</label>
+                        <div key={i.key} className="flex items-center gap-[6px] px-[6px] hover:bg-neutral-200">
+                            <input className="cursor-pointer" checked={selected.includes(i.key)} type="checkbox" id={i.key} value={i.value} onChange={() => handleSelect(i.key)} />
+                            <label className="select-none cursor-pointer w-full" htmlFor={i.key}>{i.label}</label>
                         </div>
                     ))}
                 </div>
