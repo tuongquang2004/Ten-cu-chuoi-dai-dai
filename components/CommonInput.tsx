@@ -35,8 +35,7 @@ export default function CommonInput({ label, placeholder, value = '', type = 'te
                     </div>
                 )}
             </div>
-            <div className="text-[#F04438] text-[14px]">{error}</div>
-
+            {error && (<div className="text-[#F04438] text-[14px]">{error}</div>)}
         </div>
     )
 }

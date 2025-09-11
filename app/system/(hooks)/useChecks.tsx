@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { check } from "@/lib/data";
-import { regex } from "@/constants/regex";
+import { REGEX } from "@/constants/regex";
 
 const initialChecks: check[] = [
     {
@@ -36,11 +36,11 @@ export function useChecks() {
                 case "length":
                     return { ...check, status: password.length >= 8 };
                 case "upper":
-                    return { ...check, status: regex.uppercaseRegex.test(password) };
+                    return { ...check, status: REGEX.UPPER.test(password) };
                 case "digit":
-                    return { ...check, status: regex.numberRegex.test(password) };
+                    return { ...check, status: REGEX.NUMBER.test(password) };
                 case "special":
-                    return { ...check, status: regex.specialCharRegex.test(password) };
+                    return { ...check, status: REGEX.SPECIAL.test(password) };
                 default:
                     return check;
             }

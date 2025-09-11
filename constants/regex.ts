@@ -1,6 +1,6 @@
-export const regex = {
-    emailRegex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    uppercaseRegex: /[A-Z]/,
-    numberRegex: /\d/,
-    specialCharRegex: /[!@#$%]/
+export const REGEX = {
+    EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    UPPER: /[A-Z]/,
+    NUMBER: /\d/,
+    SPECIAL: /[!@#$%]/
 }

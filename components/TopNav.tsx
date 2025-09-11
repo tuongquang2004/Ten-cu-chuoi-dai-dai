@@ -4,6 +4,7 @@ import NavBar from './NavBar';
 import CommonButton from './CommonButton';
 import { useRouter } from 'next/navigation';
 import SearchBar from './SearchBar';
+import { ROUTES } from '@/constants/routes';
 
 type NavItem = { label: string; route: string }
 
@@ -35,7 +36,7 @@ export default function TopNav() {
     <header className="sticky top-0 z-40 flex h-12 items-center justify-between border-b border-[#D0D5DD] bg-white px-[38px] py-8">
       <div className='flex justify-between gap-[44px] items-center'>
         {/* Logo */}
-        <button className='cursor-pointer' onClick={() => router.push('/')}><Icon.Logo /></button>
+        <button className='cursor-pointer' onClick={() => router.push(ROUTES.ROOT)}><Icon.Logo /></button>
 
         {/* Tabs */}
         <div className='flex items-center'>
@@ -57,7 +58,7 @@ export default function TopNav() {
         <button className="p-1 text-slate-500 hover:text-slate-900" aria-label="Notifications">
           <Icon.Question />
         </button>
-        <button onClick={()=>router.push('/system/register')} className="h-7 cursor-pointer w-7 overflow-hidden rounded-full bg-slate-200 ring-1 ring-slate-300" />
+        <button onClick={()=>router.push(ROUTES.REGISTER)} className="h-7 cursor-pointer w-7 overflow-hidden rounded-full bg-slate-200 ring-1 ring-slate-300" />
       </div>
     </header>
   )
