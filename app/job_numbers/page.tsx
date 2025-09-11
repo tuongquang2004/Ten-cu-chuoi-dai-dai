@@ -12,16 +12,11 @@ const addItem = () => {
   }
 
 export default function JobNumbers() {
-    const breadcrumbs = [
-        { label: 'Settings', href: '/' },
-        { label: 'Manage Lists', href: '/' },
-        { label: 'Job Numbers', href: '/' }
-    ]
     return (
         <Layout>
             <div className="px-6">
                 <div className="px-6">
-                    <Breadcrumb crumbs={[...breadcrumbs]}></Breadcrumb>
+                    <Breadcrumb current="Job Numbers"/>
                 </div>
                 <PageHeader title="Manage Job Numbers" subtitle="Create or Edit Job Numbers" />
                 <div className="px-6 ml-auto flex items-center w-full">
