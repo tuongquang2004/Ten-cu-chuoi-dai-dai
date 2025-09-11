@@ -2,34 +2,34 @@
 import Link from "next/link"
 import RightArrow from '@/public/assets/icons/right_arrow.svg';
 
-type Crumb = {
-    label: string,
-    href: string
-}
+type Crumb = { label: string; href: string };
 
 type BreadcrumbProps = {
-    readonly crumbs: Array<Crumb>
-}
+  current: string;
+  base?: Crumb[];
+};
 
-export default function Breadcrumb({ crumbs }: BreadcrumbProps) {
-    return (
-        <div className="flex gap-2">
-            {crumbs.map((c, index) => index !== crumbs.length - 1 ? (
-                <div
-                    key={index + 1}
-                    className="flex items-center gap-2 text-[#667085] font-semibold font-[Inter]"
-                >
-                    <Link className="" href={c.href}>{c.label}</Link>
-                    <RightArrow />
-                </div>
-            ) : (
-                <div
-                    key={index + 1}
-                    className="flex items-center gap-2 text-[#1D2939] font-semibold font-[Inter]"
-                >
-                    <Link className="" href={'/'}>{c.label}</Link>
-                </div>
-            ))}
+export default function Breadcrumb({
+  current,
+  base = [
+    { label: "Settings", href: "" },
+    { label: "Manage Lists", href: "/" },
+  ],
+}: BreadcrumbProps) {
+  return (
+    <nav aria-label="Breadcrumb" className="flex gap-2">
+      {base.map((c, idx) => (
+        <div
+          key={c.href + idx}
+          className="flex items-center gap-2 text-[#667085] font-semibold font-[Inter]"
+        >
+          <Link href={c.href}>{c.label}</Link>
+          <RightArrow />
         </div>
-    )
+      ))}
+      <div className="flex items-center gap-2 text-[#1D2939] font-semibold font-[Inter]">
+        {current}
+      </div>
+    </nav>
+  );
 }
