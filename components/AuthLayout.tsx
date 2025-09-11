@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Icon } from "./Icon";
+import DatapelSystems from '@/public/assets/logos/datapel_systems.svg';
 
 export default function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
@@ -11,7 +12,7 @@ export default function AuthLayout({ children }: Readonly<{ children: React.Reac
                 alt={"Datapel Systems"}
                 className="object-cover"></Image>
                 <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
-                <Icon.DatapelSystems/>
+                <DatapelSystems/>
                 </div>
             </div>
             <div className="flex-1 flex justify-center items-center p-35">

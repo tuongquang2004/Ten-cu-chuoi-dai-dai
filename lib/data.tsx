@@ -16,11 +16,6 @@ export const manageTiles: TileItemData[] = [
   { label: 'Special Pricing Schedule', icon: 'Tag', href: '/' },
 ]
 
-export type input = {
-  value: string,
-  error: string
-}
-
 export type check = {
   key: string,
   label: string,

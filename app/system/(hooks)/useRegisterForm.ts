@@ -1,63 +1,62 @@
 "use client";
 
-import { input } from "@/lib/data";
 import { useState } from "react";
-import { regex } from "@/constants/regex";
+import { REGEX } from "@/constants/regex";
 import { useRegister } from "./useRegister";
 import { useChecks } from "./useChecks";
+import { VALIDATION_ERROR } from "@/constants/errorMessages";
 
 export function useRegisterForm() {
-    const [email, setEmail] = useState<input>({ value: "", error: "" });
-    const [name, setName] = useState<input>({ value: "", error: "" });
-    const [password, setPassword] = useState<input>({ value: "", error: "" });
-    const [confirmPassword, setConfirmPassword] = useState<input>({
-        value: "",
-        error: "",
-    });
+    const [email, setEmail] = useState<string>('');
+    const [emailError, setEmailError] = useState<string>('');
+    const [name, setName] = useState<string>('');
+    const [nameError, setNameError] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [passwordError, setPasswordError] = useState<string>('');
+    const [confirmPassword, setConfirmPassword] = useState<string>('');
+    const [confirmPasswordError, setConfirmPasswordError] = useState<string>('');
+
 
     const { passwordChecks, checkPassword } = useChecks();
     const { handleRegister } = useRegister();
 
     const handleSubmit = () => {
         let submit = true;
-        const trimmedEmail = email.value.trim();
-        const trimmedName = name.value.trim();
-        const trimmedPassword = password.value.trim();
-        const trimmedConfirmPassword = confirmPassword.value.trim();
+        const trimmedEmail = email.trim();
+        const trimmedName = name.trim();
+        const trimmedPassword = password.trim();
+        const trimmedConfirmPassword = confirmPassword.trim();
 
         if (trimmedEmail.length === 0) {
-            setEmail({ value: trimmedEmail, error: "Please enter your email" });
-        } else if (!regex.emailRegex.test(trimmedEmail)) {
-            setEmail({ value: trimmedEmail, error: "The email is not valid" });
+            setEmailError(VALIDATION_ERROR.MISSING_EMAIL)
+        } else if (!REGEX.EMAIL.test(trimmedEmail)) {
+            setEmailError(VALIDATION_ERROR.INVALID_EMAIL);
             submit = false;
         } else {
-            setEmail({ value: trimmedEmail, error: "" });
+            setEmailError('');
         }
 
         if (trimmedName.length === 0) {
-            setName({ value: trimmedName, error: "Please enter your name" });
+            setNameError(VALIDATION_ERROR.MISSING_NAME);
         } else {
-            setName({ value: trimmedName, error: "" });
+            setNameError('');
         }
 
         if (trimmedPassword.length === 0) {
-            setPassword({ value: trimmedPassword, error: "Please enter a password" });
+            setPasswordError(VALIDATION_ERROR.MISSING_PASSWORD);
         } else {
-            setPassword({ value: trimmedPassword, error: "" });
+            setPasswordError('');
         }
 
         submit = checkPassword(trimmedPassword);
 
         if (submit) {
-            if (password.value !== confirmPassword.value) {
-                setConfirmPassword({
-                    value: trimmedConfirmPassword,
-                    error: "This password does not match the one you entered above",
-                });
+            if (trimmedPassword !== trimmedConfirmPassword) {
+                setConfirmPasswordError(VALIDATION_ERROR.MISMATCH_PASSWORDS);
                 submit = false;
             }
             if (submit) {
-                setConfirmPassword({ value: trimmedConfirmPassword, error: "" });
+                setConfirmPasswordError('');
                 handleRegister(trimmedEmail, trimmedName, trimmedPassword);
             }
         }
@@ -68,11 +67,19 @@ export function useRegisterForm() {
         name,
         password,
         confirmPassword,
+        emailError,
+        nameError,
+        passwordError,
+        confirmPasswordError,
         passwordChecks,
         setEmail,
         setName,
         setPassword,
         setConfirmPassword,
+        setEmailError,
+        setPasswordError,
+        setNameError,
+        setConfirmPasswordError,
         handleSubmit,
     };
 }

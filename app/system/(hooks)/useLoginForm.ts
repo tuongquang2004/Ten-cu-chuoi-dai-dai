@@ -1,40 +1,46 @@
 "use client"
 
-import { regex } from "@/constants/regex";
-import { input } from "@/lib/data";
+import { REGEX } from "@/constants/regex";
 import { useState } from "react";
 import { useLogin } from "./useLogin";
+import { VALIDATION_ERROR } from "@/constants/errorMessages";
 
 export function useLoginForm() {
-    const emailRegex = regex.emailRegex;
+    const emailRegex = REGEX.EMAIL;
     const { handleLogin } = useLogin();
-    const [email, setEmail] = useState<input>({ value: '', error: '' });
-    const [password, setPassword] = useState<input>({ value: '', error: '' });
+    const [email, setEmail] = useState<string>('');
+    const [emailError, setEmailError] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [passwordError, setPasswordError] = useState<string>('');
 
     const handleSubmit = () => {
-        const trimmedEmail = email.value.trim();
-        const trimmedPassword = password.value.trim();
+        const trimmedEmail = email.trim();
+        const trimmedPassword = password.trim();
         let submit = true;
 
         if (trimmedEmail.length === 0) {
-            setEmail({ value: trimmedEmail, error: 'Please enter your email' });
+            setEmailError(VALIDATION_ERROR.MISSING_EMAIL);
             submit = false;
         } else if (!emailRegex.test(trimmedEmail)) {
-            setEmail({ value: trimmedEmail, error: 'Please enter a valid email' });
+            setEmailError(VALIDATION_ERROR.INVALID_EMAIL);
             submit = false;
         }
 
         if (trimmedPassword.length === 0) {
-            setPassword({ value: trimmedPassword, error: 'Please enter your password' });
+            setPasswordError(VALIDATION_ERROR.MISSING_PASSWORD);
             submit = false;
+        }
+        else {
+            setPasswordError('');
         }
 
         if (submit) {
-            setEmail({ value: trimmedEmail, error: '' });
-            setPassword({ value: trimmedPassword, error: '' });
+            setEmail(trimmedEmail);
+            setPassword(trimmedPassword);
+            setEmailError('');
             handleLogin(trimmedEmail, trimmedPassword);
         }
     };
 
-    return { email, password, setEmail, setPassword, handleSubmit }
+    return { email, password, emailError, passwordError, setEmail, setPassword, setEmailError, setPasswordError, handleSubmit }
 }

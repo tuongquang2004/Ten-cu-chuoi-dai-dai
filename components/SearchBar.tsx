@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge"
-import { Icon } from "./Icon";
 import CommonButton from "./CommonButton";
 import { inter } from "@/lib/data";
+import Search from '@/public/assets/icons/search.svg';
 
 type SearchBarProp = {
     readonly placeholder?: string,
@@ -29,16 +29,16 @@ export default function SearchBar({ placeholder, variant = 'default', icon_align
     return (
         <div className="flex justify-center gap-2">
             {button_align && button_align === 'left' && (
-                <CommonButton variant="square" className="text-white"><Icon.Search /></CommonButton>
+                <CommonButton variant="square" className="text-white"><Search /></CommonButton>
             )}
             <div className="relative">
                 <input placeholder={placeholder} className={twMerge(base, variants[variant], sizes[size], className)} />
                 {icon_align && (
-                    <div className={`absolute top-1/2 -translate-y-1/2 ${icon_align === 'left' ? 'left-2' : 'right-2'}`}><Icon.Search /></div>
+                    <div className={`absolute top-1/2 -translate-y-1/2 ${icon_align === 'left' ? 'left-1' : 'right-1'}`}><Search /></div>
                 )}
             </div>
             {button_align && button_align === 'right' && (
-                <CommonButton variant="square" className="text-white"><Icon.Search /></CommonButton>
+                <CommonButton variant="square" className="text-white"><Search /></CommonButton>
             )}
         </div>
     )

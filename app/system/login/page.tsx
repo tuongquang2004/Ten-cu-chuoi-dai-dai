@@ -7,10 +7,11 @@ import { Icon } from "@/components/Icon";
 import PageHeader from "@/components/PageHeader";
 import { useLoginForm } from "../(hooks)/useLoginForm";
 import { useRouter } from "next/navigation";
+import { ROUTES } from "@/constants/routes";
 
 export default function Login() {
     const router = useRouter();
-    const { email, password, setEmail, setPassword, handleSubmit } = useLoginForm();
+    const { email, password, emailError, passwordError, setEmail, setPassword, handleSubmit } = useLoginForm();
 
     return (
         <div>
@@ -21,11 +22,11 @@ export default function Login() {
                     </div>
                     <PageHeader title="Login" subtitle="Please login with yor email address and password" titleColor="#252C88" subtitleColor="#475467" size="xl" />
                     <div className="flex flex-col gap-4 w-full">
-                        <CommonInput label="Email Address" placeholder="Enter your email address" value={email.value} error={email.error} type="email" onChange={(val) => setEmail({ ...email, value: val })} />
-                        <CommonInput label="Password" placeholder="Enter your Password" value={password.value} error={password.error} type="password" onChange={(val) => setPassword({ ...password, value: val })} />
+                        <CommonInput label="Email Address" placeholder="Enter your email address" value={email} error={emailError} type="email" onChange={(val) => setEmail(val)} />
+                        <CommonInput label="Password" placeholder="Enter your Password" value={password} error={passwordError} type="password" onChange={(val) => setPassword(val)} />
                     </div>
                     <div className="w-full flex flex-col gap-2">
-                        <div>Do not have an account? <button onClick={() => router.push('/system/register')} className="cursor-pointer text-blue-500">Register</button></div>
+                        <div>Do not have an account? <button onClick={() => router.push(ROUTES.REGISTER)} className="cursor-pointer text-blue-500">Register</button></div>
                         <CommonButton variant="primary" onClick={handleSubmit} className="rounded-full text-[12px] h-[40px]">Login</CommonButton>
                     </div>
                 </div>
