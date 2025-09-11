@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import { Icon } from "./Icon"
+import RightArrow from '@/public/assets/icons/right_arrow.svg';
 
 type Crumb = {
     label: string,
@@ -20,7 +20,7 @@ export default function Breadcrumb({ crumbs }: BreadcrumbProps) {
                     className="flex items-center gap-2 text-[#667085] font-semibold font-[Inter]"
                 >
                     <Link className="" href={c.href}>{c.label}</Link>
-                    <Icon.RightArrow />
+                    <RightArrow />
                 </div>
             ) : (
                 <div
