@@ -1,5 +1,6 @@
 "use client"
-import { Icon } from "./Icon"
+import Link from "next/link"
+import RightArrow from '@/public/assets/icons/right_arrow.svg';
 
 type Crumb = {
     label: string,
@@ -15,18 +16,18 @@ export default function Breadcrumb({ crumbs }: BreadcrumbProps) {
         <div className="flex gap-2">
             {crumbs.map((c, index) => index !== crumbs.length - 1 ? (
                 <div
-                    key={index+1}
+                    key={index + 1}
                     className="flex items-center gap-2 text-[#667085] font-semibold font-[Inter]"
                 >
-                    {c.label}
-                    <Icon.RightArrow />
+                    <Link className="" href={c.href}>{c.label}</Link>
+                    <RightArrow />
                 </div>
             ) : (
                 <div
-                    key={index+1}
+                    key={index + 1}
                     className="flex items-center gap-2 text-[#1D2939] font-semibold font-[Inter]"
                 >
-                    {c.label}
+                    <Link className="" href={'/'}>{c.label}</Link>
                 </div>
             ))}
         </div>

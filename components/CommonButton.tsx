@@ -4,7 +4,7 @@ const base = 'cursor-pointer inline-flex items-center justify-center rounded-md 
 
 const variants = {
     default: '',
-    primary: '',
+    primary: 'bg-[#252C88] text-white',
     danger: '',
     warning: '',
     circle: 'rounded-full bg-[#2F3680] p-1',
