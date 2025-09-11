@@ -1,4 +1,4 @@
-// lib/data.ts
+
 export type IconKey =
   | 'Referral' | 'Truck' | 'Bag' | 'Briefcase' | 'Exchange' | 'Note' | 'Tag'
 
@@ -13,3 +13,9 @@ export const manageTiles: TileItemData[] = [
   { label: 'Comments', icon: 'Note', href: '/' },
   { label: 'Special Pricing Schedule', icon: 'Tag', href: '/' },
 ]
+
+export type check = {
+  key: string,
+  label: string,
+  status: boolean
+}

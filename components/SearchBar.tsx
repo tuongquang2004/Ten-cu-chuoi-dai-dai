@@ -2,8 +2,8 @@
 
 import { twMerge } from "tailwind-merge"
 import { Inter } from "next/font/google";
-import { Icon } from "./Icon";
 import CommonButton from "./CommonButton";
+import Search from '@/public/assets/icons/search.svg';
 
 const inter = Inter({
     subsets: ["latin"],
@@ -39,16 +39,16 @@ export default function SearchBar({ placeholder, variant = 'default', icon_align
     return (
         <div className="flex justify-center gap-2">
             {button_align && button_align === 'left' && (
-                <CommonButton variant="square" className="text-white"><Icon.Search /></CommonButton>
+                <CommonButton variant="square" className="text-white"><Search /></CommonButton>
             )}
             <div className="relative flex-1">
                 <input placeholder={placeholder} className={twMerge(base, variants[variant], sizes[size], className, icon_align === 'left' ? 'pl-9 pr-3' : 'pl-3 pr-9')} />
                 {icon_align && (
-                    <div className={`absolute top-1/2 -translate-y-1/2 ${icon_align === 'left' ? 'left-1' : 'right-1'}`}><Icon.Search /></div>
+                    <div className={`absolute top-1/2 -translate-y-1/2 ${icon_align === 'left' ? 'left-1' : 'right-1'}`}><Search /></div>
                 )}
             </div>
             {button_align && button_align === 'right' && (
-                <CommonButton variant="square" className="text-white"><Icon.Search /></CommonButton>
+                <CommonButton variant="square" className="text-white"><Search /></CommonButton>
             )}
         </div>
     )

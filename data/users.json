@@ -1,10 +1,44 @@
 [
-    {
-      "id": "u_1",
-      "email": "admin@datapel.local",
-      "name": "Admin",
-      "role": "admin",
-      "password": "admin123"
-    }
-  ]
-  
+  {
+    "id": "u_1",
+    "email": "admin@datapel.local",
+    "name": "Admin",
+    "role": "admin",
+    "password": "admin123"
+  },
+  {
+    "id": "u_1757475132979",
+    "email": "dungbloxx.2005@gmail.com",
+    "password": "Tiendung2005!",
+    "name": "Nguyễn Tiến Dũng",
+    "role": "user"
+  },
+  {
+    "id": "u_1757476195576",
+    "email": "tiendung021105@gmail.com",
+    "password": "Tiendung2005!",
+    "name": "Dung",
+    "role": "user"
+  },
+  {
+    "id": "u_1757490052116",
+    "email": "testaccount@gmail.com",
+    "password": "Tiendung2005!",
+    "name": "test",
+    "role": "user"
+  },
+  {
+    "id": "u_1757492024727",
+    "email": "textacc@gmail.com",
+    "password": "Tiendung!1",
+    "name": "test",
+    "role": "user"
+  },
+  {
+    "id": "u_1757492574210",
+    "email": "testacc3@gmail.com",
+    "password": "Tiendung2005!",
+    "name": "test",
+    "role": "user"
+  }
+]
