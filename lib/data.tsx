@@ -22,6 +22,11 @@ export type check = {
   status: boolean
 }
 
+export type RefSrc = {
+  source: string,
+  isActive: boolean
+}
+
 export const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
