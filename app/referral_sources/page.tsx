@@ -80,7 +80,7 @@ export default function ReferralSources() {
                             <div className="flex items-center">
                                 <SearchBar onChange={setPendingSearch} buttonFunction={handleSearch} placeholder="Search Referral Sources" iconAlign="left" buttonAlign="right" className="border border-[#98A2B3] h-full min-w-[417px] placeholder:text-[14px]" />
                             </div>
-                            <div className="flex justify-center xl:justify-end gap-3">
+                            <div className="flex justify-center xl:justify-end gap-3 w-fit justify-self-end">
                                 <CommonButton variant="outline">Import</CommonButton>
                                 <CommonButton variant="outline">Export</CommonButton>
                                 <CommonButton onClick={showAddForm} variant="outline" className="bg-[#E87200] text-white border-none">Add Referal Source</CommonButton>

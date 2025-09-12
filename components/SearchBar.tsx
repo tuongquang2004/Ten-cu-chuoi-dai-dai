@@ -35,7 +35,7 @@ export default function SearchBar({ placeholder, variant = 'default', iconAlign,
     return (
         <div className="flex justify-center gap-2">
             {buttonAlign && buttonAlign === 'left' && (
-                <CommonButton onClick={buttonFunction} variant="square" className="text-white"><Search /></CommonButton>
+                <CommonButton onClick={buttonFunction} variant="square" className="text-white cursor-pointer"><Search /></CommonButton>
             )}
             <div className="relative flex-1">
                 <input onKeyDown={(e) => {
@@ -49,7 +49,7 @@ export default function SearchBar({ placeholder, variant = 'default', iconAlign,
                 )}
             </div>
             {buttonAlign && buttonAlign === 'right' && (
-                <CommonButton onClick={buttonFunction} variant="square" className="text-white"><Search /></CommonButton>
+                <CommonButton onClick={buttonFunction} variant="square" className="text-white cursor-pointer"><Search /></CommonButton>
             )}
         </div>
     )
