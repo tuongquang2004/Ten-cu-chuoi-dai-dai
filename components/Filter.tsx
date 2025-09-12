@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { Icon } from "./Icon";
+import { useState } from "react"
 import { inter } from "@/lib/data";
 import { cn } from "@/app/cn";
+import { DownArrow, Reset } from "@/public/assets/icons";
 
 type FilterProps = {
     label: string,
@@ -49,11 +49,11 @@ export default function Filter({ label, items, showCount = false, showReset = fa
                         <p>{`(${selectedKeys.length})`}</p>
                     )}
                     {label}
-                    <Icon.DownArrow />
+                    <DownArrow />
                 </button>
                 {showReset && (
                     <button className="cursor-pointer" onClick={() => handleReset()}>
-                        <Icon.Reset />
+                        <Reset />
                     </button>
                 )}
             </div>

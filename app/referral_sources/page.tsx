@@ -22,8 +22,6 @@ export default function ReferralSources() {
     const [filter, setFilter] = useState<string[]>([]);
 
     const hasNewInput = () => {
-        console.log(`${selectedSource.source} - ${refName} - ${isChecked}`);
-
         if (form.action === 'add') {
             if (refName) {
                 setShowModal(true);
@@ -47,17 +45,13 @@ export default function ReferralSources() {
     }
 
     useEffect(() => {
-        console.log(filter);
-
         let data = [...sourcesBackUp];
         if (search.length !== 0) {
             data = data.filter(d => d.source.toLowerCase().trim().includes(search.toLowerCase().trim()))
         }
 
         if (filter.length === 1) {
-            filter.forEach(f => {
-                data = data.filter(d => d.isActive === (f === 'true'))
-            })
+            data = data.filter(d => d.isActive === (filter[0] === "true"))
         }
 
         setSources(data);

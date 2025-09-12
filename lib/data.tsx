@@ -1,20 +1,18 @@
 // lib/data.ts
+import { Exchange, Job, Payment, Referral, Shipping, Comment, Tag } from "@/public/assets/icons";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 
-export type IconKey =
-  | 'Referral' | 'Truck' | 'Bag' | 'Briefcase' | 'Exchange' | 'Note' | 'Tag'
-
-export type TileItemData = { label: string; icon: IconKey; href?: string }
+export type TileItemData = { label: string; icon: React.ReactNode; href?: string }
 
 export const manageTiles: TileItemData[] = [
-  { label: 'Referral Sources', icon: 'Referral', href: '/referral_sources' },
-  { label: 'Shipping Methods', icon: 'Truck', href: '/' },
-  { label: 'Payment Methods', icon: 'Bag', href: '/' },
-  { label: 'Job Numbers', icon: 'Briefcase', href: '/job_numbers' },
-  { label: 'Exchange Rates', icon: 'Exchange', href: '/' },
-  { label: 'Comments', icon: 'Note', href: '/' },
-  { label: 'Special Pricing Schedule', icon: 'Tag', href: '/' },
+  { label: 'Referral Sources', icon: <Referral />, href: '/referral_sources' },
+  { label: 'Shipping Methods', icon: <Shipping />, href: '/' },
+  { label: 'Payment Methods', icon: <Payment />, href: '/' },
+  { label: 'Job Numbers', icon: <Job />, href: '/job_numbers' },
+  { label: 'Exchange Rates', icon: <Exchange />, href: '/' },
+  { label: 'Comments', icon: <Comment />, href: '/' },
+  { label: 'Special Pricing Schedule', icon: <Tag />, href: '/' },
 ]
 
 export type check = {
@@ -38,6 +36,18 @@ export type FormProps = {
     onChange: (checked: boolean) => void;
   }
   action: '' | 'add' | 'edit'
+}
+
+export const defaultRefSrc = {
+  id: "",
+  isActive: true,
+  source: "",
+}
+
+export const defaultForm: FormProps = {
+  label: "Form",
+  buttonLabel: "Submit",
+  action: "" // or "add" | "edit"
 }
 
 export const inter = Inter({

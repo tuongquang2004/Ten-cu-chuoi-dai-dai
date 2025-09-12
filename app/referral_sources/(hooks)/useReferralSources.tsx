@@ -1,9 +1,10 @@
 "use client";
 
+import { cn } from "@/app/cn";
 import { createColumns } from "@/components/CommonTable";
 import { API } from "@/constants/apiEndpoints";
 import { VALIDATION_ERROR } from "@/constants/errorMessages";
-import { FormProps, inter, RefSrc } from "@/lib/data";
+import { defaultForm, defaultRefSrc, FormProps, inter, RefSrc } from "@/lib/data";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -13,16 +14,8 @@ export function useReferralSources() {
     const [refName, setRefName] = useState<string>("");
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const [isShow, setIsShow] = useState<boolean>(false);
-    const [selectedSource, setSelectedSource] = useState<RefSrc>({
-        id: "",
-        isActive: true,
-        source: "",
-    });
-    const [form, setForm] = useState<FormProps>({
-        label: "",
-        buttonLabel: "",
-        action: ''
-    });
+    const [selectedSource, setSelectedSource] = useState<RefSrc>(defaultRefSrc);
+    const [form, setForm] = useState<FormProps>(defaultForm);
 
     const fetchSources = async () => {
         const res = await axios.get(API.REF.ROOT);
@@ -52,9 +45,9 @@ export function useReferralSources() {
                 const text = isActive ? "Active" : "Inactive";
 
                 return (
-                    <div className="flex justify-center items-center w-full h-full">
+                    <div className={cn('flex justify-center items-center w-full h-full')}>
                         <div
-                            className={`shadow-[2px_3px_8px_rgba(0,0,0,0.15)] text-center font-medium rounded-full w-fit py-[3px] min-w-[77px] text-[15px] ${bgColor} ${textColor}`}
+                            className={cn(`shadow-[2px_3px_8px_rgba(0,0,0,0.15)] text-center font-medium rounded-full w-fit py-[3px] min-w-[77px] text-[15px] ${bgColor} ${textColor}`)}
                         >
                             {text}
                         </div>
