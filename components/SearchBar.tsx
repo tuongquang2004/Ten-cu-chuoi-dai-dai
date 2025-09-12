@@ -1,3 +1,5 @@
+'use client'
+
 import { twMerge } from "tailwind-merge"
 import CommonButton from "./CommonButton";
 import { inter } from "@/lib/data";
@@ -5,7 +7,7 @@ import { Search } from '@/public/assets/icons';
 
 type SearchBarProp = {
     readonly placeholder?: string,
-    readonly variant?: 'default' | 'secondary',
+    readonly variant?: 'default' | 'secondary' | 'third',
     readonly icon_align?: 'left' | 'right',
     readonly button_align?: 'left' | 'right',
     readonly size?: 'default' | 'sm' | 'lg' | 'xl'
@@ -14,7 +16,9 @@ type SearchBarProp = {
 
 const variants = {
     default: 'placeholder:text-[#475467] placeholder:text-[12px] py-[10px]',
-    secondary: `placeholder:text-[#475467] text-[12px] bg-[#F2F4F7] focus:outline-none ${inter.className}`
+    secondary: `placeholder:text-[#475467] text-[12px] bg-[#F2F4F7] focus:outline-none ${inter.className}`,
+    third: `placeholder:text-[#1D2939] text-[14px] bg-[#FFFFFF] border border-[#98A2B3] min-w-[500px] w-[450px] rounded-md focus:outline-none ${inter.className}`
+
 }
 
 const sizes = {
@@ -31,8 +35,8 @@ export default function SearchBar({ placeholder, variant = 'default', icon_align
             {button_align && button_align === 'left' && (
                 <CommonButton variant="square" className="text-white"><Search /></CommonButton>
             )}
-            <div className="relative">
-                <input placeholder={placeholder} className={twMerge(base, variants[variant], sizes[size], className)} />
+            <div className="relative flex-1">
+                <input placeholder={placeholder} className={twMerge(base, variants[variant], sizes[size], className, icon_align === 'left' ? 'pl-9 pr-3' : 'pl-3 pr-9')} />
                 {icon_align && (
                     <div className={`absolute top-1/2 -translate-y-1/2 ${icon_align === 'left' ? 'left-2' : 'right-2'}`}><Search /></div>
                 )}

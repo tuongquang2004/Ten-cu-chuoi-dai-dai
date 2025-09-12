@@ -10,7 +10,7 @@ export const manageTiles: TileItemData[] = [
   { label: 'Referral Sources', icon: 'Referral', href: '/referral_sources' },
   { label: 'Shipping Methods', icon: 'Truck', href: '/' },
   { label: 'Payment Methods', icon: 'Bag', href: '/' },
-  { label: 'Job Numbers', icon: 'Briefcase', href: '/' },
+  { label: 'Job Numbers', icon: 'Briefcase', href: '/job_numbers' },
   { label: 'Exchange Rates', icon: 'Exchange', href: '/' },
   { label: 'Comments', icon: 'Note', href: '/' },
   { label: 'Special Pricing Schedule', icon: 'Tag', href: '/' },

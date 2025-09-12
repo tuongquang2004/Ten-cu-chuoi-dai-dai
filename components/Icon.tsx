@@ -1,4 +1,3 @@
-// components/Icon.tsx
 'use client'
 import * as React from 'react'
 const base = 'w-5 h-5 fill-current';

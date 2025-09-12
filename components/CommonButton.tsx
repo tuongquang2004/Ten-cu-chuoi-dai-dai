@@ -9,20 +9,22 @@ const variants = {
     warning: '',
     circle: 'rounded-full bg-[#2F3680] p-1 aspect-square',
     square: 'rounded bg-[#2F3680] p-1 aspect-square',
-    outline: 'border border-[#D0D5DD] rounded-full'
+    outline: 'border border-[#D0D5DD] text-[#1D2939] rounded-full',
+    yellow: 'border border-[#D0D5DD] text-[#FFFFFF] rounded-full bg-[#E87200] '
 }
 
 const sizes = {
     default: 'h-[40px]',
     sm: 'h-[30px]',
     lg: '',
-    xl: ''
+    xl: 'h-11 w-11',
+    button: 'h-11'
 }
 
 type CommonButtonProps = {
     readonly children?: React.ReactNode;
-    readonly variant?: 'default' | 'primary' | 'danger' | 'warning' | 'outline' | 'circle' | 'square',
-    readonly size?: 'default' | 'sm' | 'lg' | 'xl'
+    readonly variant?: 'default' | 'primary' | 'danger' | 'warning' | 'outline' | 'circle' | 'square'| 'yellow',
+    readonly size?: 'default' | 'sm' | 'lg' | 'xl' | 'button',
     readonly onClick?: () => void,
     readonly className?: string
 }
