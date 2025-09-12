@@ -1,3 +1,4 @@
+import { Inter } from "next/font/google";
 
 export type IconKey =
   | 'Referral' | 'Truck' | 'Bag' | 'Briefcase' | 'Exchange' | 'Note' | 'Tag'
@@ -19,3 +20,22 @@ export type check = {
   label: string,
   status: boolean
 }
+
+export type RefSrc = {
+  source: string,
+  isActive: boolean
+}
+
+export type JobNumberRow = {
+  jobnumber: string;
+  level: number,
+  name: string;
+  startdate: string;
+  enddate: string;
+  isActive: boolean;
+};
+
+export const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
