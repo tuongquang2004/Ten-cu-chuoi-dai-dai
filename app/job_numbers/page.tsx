@@ -14,6 +14,7 @@ import { JobNumberRow } from "@/lib/data";
 // import RightBar from "@/components/RightBar";
 import { useState } from "react";
 import jobNumbers from '@/data/job_numbers.json';
+import { usePagination } from './hooks/usePagination';
 
 const addItem = () => {
     alert('You clicked a button :D');
@@ -54,11 +55,7 @@ export default function JobNumbers() {
             },
         ])
 
-        const [page, setPage] = useState(1);
-        const [perPage, setPerPage] = useState(25);
-        const pageCount = Math.max(1, Math.ceil(data.length / perPage));
-        const start = (page - 1) * perPage;
-        const pageRows = data.slice(start, start + perPage);
+        const { page, setPage, perPage, onPerPageChange, pageCount, pageRows } = usePagination<JobNumberRow>(data, 25)
 
     return (
         <Layout>
@@ -85,10 +82,7 @@ export default function JobNumbers() {
                         pageCount={pageCount}
                         perPage={perPage}
                         onPageChange={setPage}
-                        onPerPageChange={(n) => {
-                            setPerPage(n);
-                            setPage(1);
-                        }}
+                        onPerPageChange={onPerPageChange}
                         />
                 </div>
             </div>
