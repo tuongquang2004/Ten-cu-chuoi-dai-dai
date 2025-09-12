@@ -28,7 +28,7 @@ export default function Pagination({
   const pages = Array.from({ length: pageCount }, (_, i) => i + 1)
 
   return (
-    <div className={`flex items-center justify-between px-2 py-3 ${className}`}>
+    <div className={`flex items-center px-2 py-3 border-t border-[#E4E7EC] bg-white rounded-b-lg ${className}`}>
       {/* Prev + page numbers + Next */}
       <div className="flex items-center gap-2">
         <button
@@ -47,7 +47,7 @@ export default function Pagination({
               className={
                 n === page
                   ? "h-8 w-8 rounded-md border text-sm bg-[#2F3680] text-white border-[#E87200]"
-                  : "mx-3 text-sm text-slate-700 hover:text-[#2F3680]"
+                  : "mx-3 text-sm text-[#344054] hover:text-[#2F3680]"
               }
               aria-current={n === page ? "page" : undefined}
             >
@@ -66,12 +66,12 @@ export default function Pagination({
       </div>
 
       {/* Per Pages */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 border-l border-[#E4E7EC] pl-3">
         <div className="relative">
           <select
             value={perPage}
             onChange={(e) => onPerPageChange(Number(e.target.value))}
-            className="appearance-none rounded border border-slate-300 bg-white px-3 py-1.5 pr-7 text-sm text-slate-700
+            className="appearance-none rounded border border-slate-300 bg-[#E4E7EC] px-3 py-1.5 pr-7 text-sm text-[#344054]
                        hover:bg-slate-50"
           >
             {perPageOptions.map((n) => (
@@ -81,7 +81,7 @@ export default function Pagination({
             ))}
           </select>
           {/* caret */}
-          <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-slate-400">▾</span>
+          <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#344054]">▾</span>
         </div>
       </div>
     </div>

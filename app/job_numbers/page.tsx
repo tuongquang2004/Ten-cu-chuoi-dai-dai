@@ -109,17 +109,19 @@ export default function JobNumbers() {
                         <CommonButton variant="yellow" size = 'button' >Add Job Number</CommonButton>
                     </div>
                 </div>
-                <CommonTable data={pageRows} columns={testHeader} />
-                <Pagination
-                    page={page}
-                    pageCount={pageCount}
-                    perPage={perPage}
-                    onPageChange={setPage}
-                    onPerPageChange={(n) => {
-                        setPerPage(n);
-                        setPage(1); // reset về trang đầu khi đổi perPage
-                    }}
-                    />
+                <div className="border border-[#E4E7EC] rounded-lg overflow-hidden">
+                    <CommonTable data={pageRows} columns={testHeader} />
+                    <Pagination
+                        page={page}
+                        pageCount={pageCount}
+                        perPage={perPage}
+                        onPageChange={setPage}
+                        onPerPageChange={(n) => {
+                            setPerPage(n);
+                            setPage(1);
+                        }}
+                        />
+                </div>
             </div>
         </Layout>
     )

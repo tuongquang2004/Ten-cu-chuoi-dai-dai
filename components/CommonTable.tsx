@@ -21,7 +21,7 @@ const baseColumnHeader = 'text-start p-[12px]';
 export default function CommonTable<T extends object>({ columns, data, pagination = false }: Readonly<TableProps<T>>) {
     return (
         <div className="border border-[#E4E7EC] overflow-hidden rounded-lg">
-            <div className="max-h-[750px] overflow-y-auto">
+            <div className="max-h-[740px] overflow-y-auto">
             <table className={`${inter.className} rounded-lg w-full`}>
                 <thead>
                     <tr className='border border-[#E4E7EC] border-b border-b-[#98A2B3] text-[#667085] bg-[#E4E7EC]'>
