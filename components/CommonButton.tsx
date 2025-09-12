@@ -14,7 +14,7 @@ const variants = {
 }
 
 const sizes = {
-    default: 'h-[40px]',
+    default: 'min-h-[40px]',
     sm: 'h-[30px]',
     lg: '',
     xl: 'h-11 w-11',

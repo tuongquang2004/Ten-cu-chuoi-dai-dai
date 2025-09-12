@@ -8,5 +8,9 @@ export const API = {
     USERS: {
         ROOT: 'api/users',
         BY_ID: (id: string) => `/api/users/${id}`
+    },
+    REF: {
+        ROOT: 'http://localhost:9999/referral',
+        BY_ID: (id: string) => `http://localhost:9999/referral/${id}`
     }
 }

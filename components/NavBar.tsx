@@ -1,9 +1,5 @@
+import { Madani } from "@/lib/data";
 import { useRouter } from "next/navigation"
-import localFont from "next/font/local";
-
-const Madani = localFont({
-    src: "../public/fonts/MadaniArabic-Medium.ttf"
-});
 
 type NavBarProp = {
     items: Array<{

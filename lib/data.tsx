@@ -1,5 +1,6 @@
 // lib/data.ts
 import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 
 export type IconKey =
   | 'Referral' | 'Truck' | 'Bag' | 'Briefcase' | 'Exchange' | 'Note' | 'Tag'
@@ -23,11 +24,27 @@ export type check = {
 }
 
 export type RefSrc = {
+  id: string,
   source: string,
   isActive: boolean
+}
+
+export type FormProps = {
+  label: string,
+  buttonLabel: string,
+  statusCheckbox?: {
+    className?: string,
+    current: boolean,
+    onChange: (checked: boolean) => void;
+  }
+  action: '' | 'add' | 'edit'
 }
 
 export const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+});
+
+export const Madani = localFont({
+  src: "../public/fonts/MadaniArabic-Medium.ttf"
 });

@@ -6,79 +6,95 @@ import Filter from "@/components/Filter";
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import SearchBar from "@/components/SearchBar";
-import { useSource } from "./(hooks)/useSorce";
-import CommonTable, { createColumns } from "@/components/CommonTable";
-import { RefSrc } from "@/lib/data";
 import RightBar from "@/components/RightBar";
-import { useState } from "react";
+import DataForm from "@/components/DataForm";
+import CommonInput from "@/components/CommonInput";
+import CommonTable from "@/components/CommonTable";
+import { useEffect, useState } from "react";
+import { useReferralSources } from "./(hooks)/useReferralSources";
+import ConfirmationModal from "@/components/ConfirmationModel";
 
 export default function ReferralSources() {
-    const { source, setSource } = useSource();
-    const [isShow, setIsShow] = useState<boolean>(false);
+    const { sources, sourcesBackUp, header, form, refName, isShow, selectedSource, isChecked, setSources, setRefName, setIsShow, showAddForm, showEditForm, addSource, editSource } = useReferralSources();
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [search, setSearch] = useState<string>('');
+    const [filter, setFilter] = useState<string[]>([]);
 
-    const breadcrumbs = [
-        { label: 'Settings', href: '/' },
-        { label: 'Manage Lists', href: '/' },
-        { label: 'Referral Sources', href: '/' }
-    ]
+    const hasNewInput = () => {
+        console.log(`${selectedSource.source} - ${refName} - ${isChecked}`);
 
-    const testData: RefSrc[] = [
-        { source: 'a', isActive: true },
-        { source: 'b', isActive: false },
-        { source: 'c', isActive: true },
-        { source: 'd', isActive: false },
-    ]
-
-    const testHeader = createColumns<RefSrc>()([
-        { key: "source", label: "Source" },
-        {
-            key: "isActive",
-            label: "Status",
-            headerClassName: 'text-center',
-            render: (row) => {
-                const isActive = row.isActive
-                const bgColor = isActive ? "bg-[#D2FFD7]" : "bg-[#FFDFDD]"
-                const textColor = isActive ? "text-[#00770C]" : "text-[#E42C1B]"
-                const text = isActive ? "Active" : "Inactive"
-
-                return (
-                    <div className="flex justify-center">
-                        <div
-                            className={`shadow-[2px_3px_8px_rgba(0,0,0,0.15)] text-center font-medium rounded-full w-fit py-[3px] min-w-[77px] text-[15px] ${bgColor} ${textColor}`}
-                        >
-                            {text}
-                        </div>
-                    </div>
-                )
+        if (form.action === 'add') {
+            if (refName) {
+                setShowModal(true);
             }
-        },
-    ])
+            else {
+                setIsShow(false);
+            }
+        }
+        else if (form.action === 'edit') {
+            if (selectedSource.source !== refName || isChecked) {
+                setShowModal(true);
+            }
+            else {
+                setIsShow(false);
+            }
+        }
+    }
+
+    useEffect(() => {
+        console.log(filter);
+
+        let data = [...sourcesBackUp];
+        if (search.length !== 0) {
+            data = data.filter(d => d.source.toLowerCase().trim().includes(search.toLowerCase().trim()))
+        }
+
+        if (filter.length === 1) {
+            filter.forEach(f => {
+                data = data.filter(d => d.isActive === (f === 'true'))
+            })
+        }
+
+        setSources(data);
+    }, [search, filter, sourcesBackUp, setSources])
 
     return (
-        <Layout>
-            <div className="flex">
-                <div className="px-12 p-6 flex flex-col gap-3 w-full">
-                    <Breadcrumb crumbs={[...breadcrumbs]}></Breadcrumb>
-                    <PageHeader title="Manage Referral Sources" subtitle="Create or Edit Referral source entries" />
-                    <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
-                        <div className="flex items-center">
-                            <SearchBar placeholder="Search Referral Sources" icon_align="left" button_align="right" className="border border-[#98A2B3] h-full min-w-[417px] placeholder:text-[14px]" />
+        <div>
+            {showModal && (
+                <ConfirmationModal label="You have unsaved changes" content="Are you sure you want to cancel?" acceptLabel="Yes" onAccept={() => {
+                    setShowModal(false);
+                    setIsShow(false);
+                }} cancelLabel="No" onCancel={() => setShowModal(false)} />
+            )}
+            <Layout>
+                <div className="flex flex-1 h-full">
+                    <div className="px-12 p-6 flex flex-col gap-3 w-full">
+                        <Breadcrumb current="Referral Sources"></Breadcrumb>
+                        <PageHeader title="Manage Referral Sources" subtitle="Create or Edit Referral sources entries" />
+                        <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
+                            <div className="flex items-center">
+                                <SearchBar onChange={setSearch} placeholder="Search Referral Sources" icon_align="left" button_align="right" className="border border-[#98A2B3] h-full min-w-[417px] placeholder:text-[14px]" />
+                            </div>
+                            <div className="flex justify-center xl:justify-end gap-3">
+                                <CommonButton variant="outline">Import</CommonButton>
+                                <CommonButton variant="outline">Export</CommonButton>
+                                <CommonButton onClick={showAddForm} variant="outline" className="bg-[#E87200] text-white border-none">Add Referal Source</CommonButton>
+                            </div>
                         </div>
-                        <div className="flex justify-center xl:justify-end gap-3">
-                            <CommonButton variant="outline">Import</CommonButton>
-                            <CommonButton variant="outline">Export</CommonButton>
-                            <CommonButton variant="outline" className="bg-[#E87200] text-white border-none">Add Referal Source</CommonButton>
-                        </div>
+                        <Filter data={sourcesBackUp} onChange={setFilter} label="Status" showCount={true} showReset={true} items={[{ key: 'active', label: 'Active', value: 'true' }, { key: 'inactive', label: 'Inactive', value: 'false' }]} />
+                        <CommonTable data={sources} columns={header} pagination onRowClick={(row) => showEditForm(row.id)} />
                     </div>
-                    <Filter list={source} setList={setSource} label="Status" showCount={true} showReset={true} items={[{ key: 'active', label: 'Active', value: 'true' }, { key: 'inactive', label: 'Inactive', value: 'false' }]} />
-                    <CommonTable data={testData} columns={testHeader} pagination />
-                    <button onClick={() => setIsShow(true)}>Show</button>
-
+                    {isShow && (
+                        <RightBar onClose={setIsShow}>
+                            <DataForm label={form.label} buttonLabel={form.buttonLabel} statusCheckbox={form.statusCheckbox} onCancel={hasNewInput} onSubmit={form.action === 'add' ? addSource : () => editSource(selectedSource.id)}>
+                                <div>
+                                    <CommonInput className="border-b-0" label="Referral Source" placeholder="Enter Referral Source name" value={refName} onChange={setRefName} />
+                                </div>
+                            </DataForm>
+                        </RightBar>
+                    )}
                 </div>
-                {isShow && (
-                    <RightBar label="Test" onClose={setIsShow} />
-                )}
-            </div>
-        </Layout>
+            </Layout >
+        </div>
     )
 }

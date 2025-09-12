@@ -1,4 +1,6 @@
-import { ReactNode } from "react"
+"use client"
+
+import { ReactNode, useState } from "react"
 import { inter } from "@/lib/data";
 import { twMerge } from "tailwind-merge";
 import Pagination from "./Pagination";
@@ -13,12 +15,18 @@ type TableHeader<T> = {
 type TableProps<T> = {
     columns: TableHeader<T>[],
     data: T[],
-    pagination?: boolean
+    pagination?: boolean,
+    onRowClick?: (row: T) => void
 };
 
-const baseColumnHeader = 'text-start p-[12px]';
 
-export default function CommonTable<T extends object>({ columns, data, pagination = false }: Readonly<TableProps<T>>) {
+
+export default function CommonTable<T extends { id: string }>({ columns, data, pagination = false, onRowClick }: Readonly<TableProps<T>>) {
+    const [selectedRow, setSelectedRow] = useState<string>('');
+
+    const baseColumnHeader = 'text-start p-[12px]';
+    const baseRow = `border-b-1 border-[#E4E7EC] hover:bg-[#F2F4F7] ${onRowClick && 'cursor-pointer'}`
+
     return (
         <div className="border border-[#E4E7EC] overflow-hidden rounded-lg">
             <table className={`${inter.className} rounded-lg w-full`}>
@@ -31,10 +39,18 @@ export default function CommonTable<T extends object>({ columns, data, paginatio
                 </thead>
                 <tbody>
                     {data.map((d, index) => (
-                        <tr className={`border-b-1 border-[#E4E7EC] hover:bg-[#F2F4F7]`} key={index + 1}>
+                        <tr onClick={() => {
+                            onRowClick?.(d);
+                            setSelectedRow(d.id);
+                        }}
+                            className={`${baseRow} ${d.id === selectedRow && 'bg-[#F2F4F7]'}`} key={index + 1}>
                             {columns.map((c) => (
-                                <td className="p-[12px] text-[#1D2939]" key={String(c.key)}>
-                                    {c.render ? c.render(d) : d[c.key] as ReactNode}
+                                <td className="text-[#1D2939]" key={String(c.key)}>
+                                    {c.render ? c.render(d) : (
+                                        <div className={`p-[12px] ${d.id === selectedRow && 'font-[600] pl-[16px]'}`}>
+                                            {d[c.key] as ReactNode}
+                                        </div>
+                                    )}
                                 </td>
                             ))}
                         </tr>
@@ -42,7 +58,7 @@ export default function CommonTable<T extends object>({ columns, data, paginatio
                 </tbody>
             </table>
             {pagination && (
-                <Pagination/>
+                <Pagination />
             )}
         </div>
     )
