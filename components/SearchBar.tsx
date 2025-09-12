@@ -1,17 +1,18 @@
 'use client'
 
-import { twMerge } from "tailwind-merge"
 import CommonButton from "./CommonButton";
 import { inter } from "@/lib/data";
 import { Search } from '@/public/assets/icons';
+import { cn } from "@/app/cn";
 
 type SearchBarProp = {
     readonly placeholder?: string,
     readonly variant?: 'default' | 'secondary' | 'third',
-    readonly icon_align?: 'left' | 'right',
-    readonly button_align?: 'left' | 'right',
+    readonly iconAlign?: 'left' | 'right',
+    readonly buttonAlign?: 'left' | 'right',
     readonly size?: 'default' | 'sm' | 'lg' | 'xl',
     readonly onChange: (value: string) => void,
+    readonly buttonFunction?: () => void,
     readonly className?: string
 }
 
@@ -29,21 +30,26 @@ const sizes = {
     xl: 'h-11'
 }
 
-export default function SearchBar({ placeholder, variant = 'default', icon_align, button_align, size = 'default', className, onChange }: SearchBarProp) {
-    const base = `rounded ${(icon_align && icon_align === 'left') ? 'pl-8 pr-2' : 'pl-2 pr-8'}`
+export default function SearchBar({ placeholder, variant = 'default', iconAlign, buttonAlign, size = 'default', className, onChange, buttonFunction }: SearchBarProp) {
+    const base = `rounded ${(iconAlign && iconAlign === 'left') ? 'pl-8 pr-2' : 'pl-2 pr-8'}`
     return (
         <div className="flex justify-center gap-2">
-            {button_align && button_align === 'left' && (
-                <CommonButton variant="square" className="text-white"><Search /></CommonButton>
+            {buttonAlign && buttonAlign === 'left' && (
+                <CommonButton onClick={buttonFunction} variant="square" className="text-white"><Search /></CommonButton>
             )}
             <div className="relative flex-1">
-                <input onChange={e => onChange(e.target.value)} placeholder={placeholder} className={twMerge(base, variants[variant], sizes[size], className, icon_align === 'left' ? 'pl-9 pr-3' : 'pl-3 pr-9')} />
-                {icon_align && (
-                    <div className={`absolute top-1/2 -translate-y-1/2 ${icon_align === 'left' ? 'left-2' : 'right-2'}`}><Search /></div>
+                <input onKeyDown={(e) => {
+                    if (e.key === "Enter" && buttonFunction) {
+                        e.preventDefault();
+                        buttonFunction();
+                    }
+                }} onChange={e => onChange(e.target.value)} placeholder={placeholder} className={cn(base, variants[variant], sizes[size], className, iconAlign === 'left' ? 'pl-9 pr-3' : 'pl-3 pr-9')} />
+                {iconAlign && (
+                    <div className={`absolute top-1/2 -translate-y-1/2 ${iconAlign === 'left' ? 'left-2' : 'right-2'}`}><Search /></div>
                 )}
             </div>
-            {button_align && button_align === 'right' && (
-                <CommonButton variant="square" className="text-white"><Search /></CommonButton>
+            {buttonAlign && buttonAlign === 'right' && (
+                <CommonButton onClick={buttonFunction} variant="square" className="text-white"><Search /></CommonButton>
             )}
         </div>
     )

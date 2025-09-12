@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { OpenEye, ClosedEye } from '@/public/assets/icons';
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/app/cn";
 
 type InputProps = {
     label: string,
@@ -22,7 +22,7 @@ export default function CommonInput({ label, placeholder, value = '', type = 'te
         <div className="w-full text-[#344054]">
             <div className="font-semibold">{label}</div>
             <div className="relative">
-                <input className={twMerge('placeholder:text-[#98A2B3] border-b focus:outline-none w-full', error?.length > 0 && 'border-[#F04438]', type === 'password' && eye && 'pr-8', className)} value={value} placeholder={placeholder} type={inputType} onChange={(e) => onChange(e.target.value)}></input>
+                <input className={cn('placeholder:text-[#98A2B3] border-b focus:outline-none w-full', error?.length > 0 && 'border-[#F04438]', type === 'password' && eye && 'pr-8', className)} value={value} placeholder={placeholder} type={inputType} onChange={(e) => onChange(e.target.value)}></input>
                 {type === 'password' && eye && (
                     <div className="absolute top-1 right-2">
                         {inputType === 'password' ? (

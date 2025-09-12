@@ -2,8 +2,8 @@
 
 import { ReactNode, useState } from "react"
 import { inter } from "@/lib/data";
-import { twMerge } from "tailwind-merge";
 import Pagination from "./Pagination";
+import { cn } from "@/app/cn";
 
 type TableHeader<T> = {
     label: string,
@@ -16,10 +16,9 @@ type TableProps<T> = {
     columns: TableHeader<T>[],
     data: T[],
     pagination?: boolean,
+    deSelect?: () => void
     onRowClick?: (row: T) => void
 };
-
-
 
 export default function CommonTable<T extends { id: string }>({ columns, data, pagination = false, onRowClick }: Readonly<TableProps<T>>) {
     const [selectedRow, setSelectedRow] = useState<string>('');
@@ -33,7 +32,7 @@ export default function CommonTable<T extends { id: string }>({ columns, data, p
                 <thead>
                     <tr className='border border-[#E4E7EC] border-b border-b-[#98A2B3] text-[#667085] bg-[#E4E7EC]'>
                         {columns.map(c => (
-                            <th className={twMerge(baseColumnHeader, c.headerClassName)} key={String(c.key)}>{c.label}</th>
+                            <th className={cn(baseColumnHeader, c.headerClassName)} key={String(c.key)}>{c.label}</th>
                         ))}
                     </tr>
                 </thead>

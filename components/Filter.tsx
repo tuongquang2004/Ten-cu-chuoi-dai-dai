@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Icon } from "./Icon";
 import { inter } from "@/lib/data";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/app/cn";
 
 type FilterProps = {
     label: string,
@@ -60,7 +60,7 @@ export default function Filter({ label, items, showCount = false, showReset = fa
             {isShow && (
                 <div className="border bg-white absolute top-7 border-[#D0D5DD] rounded-lg p-[4px] w-fit min-w-[112px] shadow-[2px_10px_25px_rgba(0,0,0,0.1)]">
                     {items.map(i => (
-                        <div key={i.key} className={twMerge('flex items-center gap-[6px] px-[6px] hover:bg-neutral-200', className)}>
+                        <div key={i.key} className={cn('flex items-center gap-[6px] px-[6px] hover:bg-neutral-200', className)}>
                             <input className="cursor-pointer" checked={selectedKeys.includes(i.key)} type="checkbox" id={i.key} value={i.value} onChange={() => handleSelect(i.key)} />
                             <label className="select-none cursor-pointer w-full" htmlFor={i.key}>{i.label}</label>
                         </div>

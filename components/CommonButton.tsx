@@ -1,4 +1,4 @@
-import {twMerge} from "tailwind-merge";
+import { cn } from "@/app/cn";
 
 const base = 'cursor-pointer inline-flex items-center justify-center rounded-md font-medium transition px-[18px] py-[6px]';
 
@@ -31,7 +31,7 @@ type CommonButtonProps = {
 
 export default function CommonButton({ children, variant = 'default', size = 'default', onClick, className }: CommonButtonProps) {
     return (
-        <button className={twMerge(base, variants[variant], sizes[size], className)}
+        <button className={cn(base, variants[variant], sizes[size], className)}
             onClick={onClick}>
             {children}
         </button>

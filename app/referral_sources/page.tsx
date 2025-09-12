@@ -17,6 +17,7 @@ import ConfirmationModal from "@/components/ConfirmationModel";
 export default function ReferralSources() {
     const { sources, sourcesBackUp, header, form, refName, isShow, selectedSource, isChecked, setSources, setRefName, setIsShow, showAddForm, showEditForm, addSource, editSource } = useReferralSources();
     const [showModal, setShowModal] = useState<boolean>(false);
+    const [pendingSearch, setPendingSearch] = useState<string>('');
     const [search, setSearch] = useState<string>('');
     const [filter, setFilter] = useState<string[]>([]);
 
@@ -39,6 +40,10 @@ export default function ReferralSources() {
                 setIsShow(false);
             }
         }
+    }
+
+    const handleSearch = () => {
+        setSearch(pendingSearch);
     }
 
     useEffect(() => {
@@ -73,7 +78,7 @@ export default function ReferralSources() {
                         <PageHeader title="Manage Referral Sources" subtitle="Create or Edit Referral sources entries" />
                         <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
                             <div className="flex items-center">
-                                <SearchBar onChange={setSearch} placeholder="Search Referral Sources" icon_align="left" button_align="right" className="border border-[#98A2B3] h-full min-w-[417px] placeholder:text-[14px]" />
+                                <SearchBar onChange={setPendingSearch} buttonFunction={handleSearch} placeholder="Search Referral Sources" iconAlign="left" buttonAlign="right" className="border border-[#98A2B3] h-full min-w-[417px] placeholder:text-[14px]" />
                             </div>
                             <div className="flex justify-center xl:justify-end gap-3">
                                 <CommonButton variant="outline">Import</CommonButton>

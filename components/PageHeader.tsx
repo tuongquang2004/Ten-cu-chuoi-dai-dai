@@ -1,6 +1,6 @@
 'use client'
 
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/app/cn";
 
 type PageHeaderProps = {
   title: string;
@@ -27,7 +27,7 @@ export default function PageHeader({
   return (
     <div>
       <h1
-        className={twMerge(
+        className={cn(
           "font-semibold",
           sizes[size].title,
           `text-[${titleColor}]`
@@ -36,7 +36,7 @@ export default function PageHeader({
         {title}
       </h1>
       {subtitle && (
-        <p className={twMerge(sizes[size].subtitle, `text-[${subtitleColor}]`)}>
+        <p className={cn(sizes[size].subtitle, `text-[${subtitleColor}]`)}>
           {subtitle}
         </p>
       )}

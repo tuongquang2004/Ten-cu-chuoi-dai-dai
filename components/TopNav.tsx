@@ -52,7 +52,7 @@ export default function TopNav() {
       <div className="ml-auto flex items-center gap-2">
         <CommonButton variant='circle' size='sm' onClick={addItem}><Plus /></CommonButton>
 
-        <SearchBar placeholder='Search' variant='secondary' icon_align='right' className='min-w-[250px]'/>
+        <SearchBar placeholder='Search' variant='secondary' iconAlign='right' className='min-w-[250px]'/>
 
         <button className="p-1 text-slate-500 hover:text-slate-900" aria-label="Settings">
           <Gear />
