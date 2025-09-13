@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Icon } from "./Icon";
-import DatapelSystems from '@/public/assets/logos/datapel_systems.svg';
+import {DatapelSystems} from '@/public/assets/logos'
 
 export default function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (

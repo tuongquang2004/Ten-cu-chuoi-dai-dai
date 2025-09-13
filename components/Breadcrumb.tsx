@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import RightArrow from '@/public/assets/icons/right_arrow.svg';
+import {RightArrow} from '@/public/assets/icons';
 
 type Crumb = { label: string; href: string };
 

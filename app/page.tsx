@@ -10,7 +10,7 @@ export default function Page() {
   const router = useRouter();
   return (
     <Layout>
-      <div className="px-6">
+      <div className="px-6 p-6">
         <div className='px-6 mb-6'>
         <PageHeader title="Manage Lists" subtitle="Create or Edit Job Numbers" />
         </div>
