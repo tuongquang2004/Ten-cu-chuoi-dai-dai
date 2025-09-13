@@ -13,6 +13,7 @@ import { useState } from "react";
 import { usePagination } from './hooks/usePagination';
 import RightBar from "@/components/RightBar2";
 import useSWR from "swr";
+import EditRightBar from "@/components/EditRightBar";
 
 const addItem = () => {
     alert('You clicked a button :D');
@@ -23,6 +24,7 @@ const fetcher = (url: string) => fetch(url).then(r => r.json());
 export default function JobNumbers() {
 
         const [showRightBar, setShowRightBar] = useState(false);
+        const [editingRow, setEditingRow] = useState<JobNumberRow | null>(null);
         const { data, mutate } = useSWR<JobNumberRow[]>("/api/job_numbers", fetcher, {
             revalidateOnFocus: false,
           });
@@ -59,8 +61,20 @@ export default function JobNumbers() {
 
         const { page, setPage, perPage, onPerPageChange, pageCount, pageRows } = usePagination<JobNumberRow>(rows, 25);
 
-        const openRightBar = () => setShowRightBar(true);
-        const closeRightBar = () => setShowRightBar(false);
+        const openRightBar = () => {
+            setEditingRow(null);      
+            setShowRightBar(true);
+          };
+        
+        const closeRightBar = () => {
+            setShowRightBar(false);
+            setEditingRow(null);
+          };
+
+        const handleRowClick = (row: JobNumberRow) => {
+            setEditingRow(row);
+            setShowRightBar(true);
+          };
 
         const handleAddJobNumber = async (payload: JobNumberRow) => {
             await fetch("/api/job_numbers", {
@@ -69,8 +83,19 @@ export default function JobNumbers() {
               body: JSON.stringify(payload),
             });
             await mutate();
+            closeRightBar();
           };
         
+        const handleUpdateJobNumber = async (payload: JobNumberRow) => {
+            await fetch("/api/job_numbers", {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            await mutate();
+            closeRightBar();
+        };
+
         const PANEL_W = 600;
     return (
         <Layout>
@@ -92,7 +117,7 @@ export default function JobNumbers() {
                         </div>
                     </div>
                     <div className="border border-[#E4E7EC] rounded-lg overflow-hidden">
-                        <CommonTable data={pageRows} columns={testHeader} />
+                        <CommonTable data={pageRows} columns={testHeader} onRowClick={handleRowClick}/>
                         <Pagination
                             page={page}
                             pageCount={pageCount}
@@ -103,9 +128,19 @@ export default function JobNumbers() {
                     </div>
                 </div>
             </div>
-            {showRightBar && (
-                <RightBar onClose={closeRightBar} onSubmit={handleAddJobNumber} />
-            )}
+            {showRightBar && ( editingRow ? (
+                <EditRightBar
+                row={editingRow}
+                onClose={closeRightBar}
+                onSubmit={handleUpdateJobNumber} 
+              />
+            ) : (
+              <RightBar
+                onClose={closeRightBar}
+                onSubmit={handleAddJobNumber}
+              />
+            )
+          )}
         </Layout>
     )
 }

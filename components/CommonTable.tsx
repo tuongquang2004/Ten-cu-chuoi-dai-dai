@@ -1,7 +1,6 @@
 import { ReactNode } from "react"
 import { inter } from "@/lib/data";
 import { twMerge } from "tailwind-merge";
-// import Pagination from "./Pagination";
 
 type TableHeader<T> = {
     label: string,
@@ -13,12 +12,13 @@ type TableHeader<T> = {
 type TableProps<T> = {
     columns: TableHeader<T>[],
     data: T[],
+    onRowClick?: (row: T) => void,
     pagination?: boolean
 };
 
 const baseColumnHeader = 'text-start p-[12px]';
 
-export default function CommonTable<T extends object>({ columns, data}: Readonly<TableProps<T>>) {
+export default function CommonTable<T extends object>({ columns, data, onRowClick}: Readonly<TableProps<T>>) {
     return (
         <div className="border border-[#E4E7EC] overflow-hidden rounded-lg">
             <div className="max-h-[740px] overflow-y-auto">
@@ -32,7 +32,10 @@ export default function CommonTable<T extends object>({ columns, data}: Readonly
                 </thead>
                 <tbody>
                     {data.map((d, index) => (
-                        <tr className={`border-b-1 border-[#E4E7EC] hover:bg-[#F2F4F7]`} key={index + 1}>
+                        <tr  
+                        key={index +1}
+                        onClick={() => onRowClick?.(d)}
+                        className="cursor-pointer border-b border-[#E4E7EC] hover:bg-[#F2F4F7]">
                             {columns.map((c) => (
                                 <td className="p-[12px] text-[#1D2939]" key={String(c.key)}>
                                     {c.render ? c.render(d) : d[c.key] as ReactNode}

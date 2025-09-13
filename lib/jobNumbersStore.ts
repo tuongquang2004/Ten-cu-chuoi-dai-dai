@@ -23,3 +23,17 @@ export async function addJobNumber(row: JobNumberRow) {
   await writeJobNumbers(rows);
   return row;
 }
+
+export async function updateJobNumber(row: JobNumberRow, originalJobnumber?: string) {
+  const rows = await readJobNumbers();
+  const key = (originalJobnumber ?? row.jobnumber).toString().padStart(3, "0");
+
+  const idx = rows.findIndex(r => (r.jobnumber ?? "").toString().padStart(3, "0") === key);
+  if (idx === -1) {
+    throw new Error(`JobNumber ${key} not found`);
+  }
+
+  rows[idx] = row;
+  await writeJobNumbers(rows);
+  return row;
+}
