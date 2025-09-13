@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Breadcrumb from "@/components/Breadcrumb";
 import CommonButton from "@/components/CommonButton";
@@ -10,60 +10,64 @@ import RightBar from "@/components/RightBar";
 import DataForm from "@/components/DataForm";
 import CommonInput from "@/components/CommonInput";
 import CommonTable from "@/components/CommonTable";
-import { useEffect, useState } from "react";
-import { useReferralSources } from "./(hooks)/useReferralSources";
+import { useState } from "react";
 import ConfirmationModal from "@/components/ConfirmationModel";
 
+import { useReferralSourceData } from "./(hooks)/useReferralSourceData";
+import { useReferralSourceTable } from "./(hooks)/useReferralSourceTable";
+import { useReferralSourceForm } from "./(hooks)/useReferralSourceForm";
+import { useReferralSourceActions } from "./(hooks)/useReferralSourceActions";
+import { useReferralSourceSearchAndFilter } from "./(hooks)/useReferralSourceSearchAndFilter";
+
 export default function ReferralSources() {
-    const { sources, sourcesBackUp, header, form, refName, isShow, selectedSource, isChecked, setSources, setRefName, setIsShow, showAddForm, showEditForm, addSource, editSource } = useReferralSources();
     const [showModal, setShowModal] = useState<boolean>(false);
-    const [pendingSearch, setPendingSearch] = useState<string>('');
-    const [search, setSearch] = useState<string>('');
-    const [filter, setFilter] = useState<string[]>([]);
+    const { sources, sourcesBackUp, setSources } = useReferralSourceData();
+    const { header } = useReferralSourceTable();
+    const {
+        refName,
+        setRefName,
+        isChecked,
+        isShow,
+        setIsShow,
+        selectedSource,
+        form,
+        showAddForm,
+        showEditForm,
+        resetForm,
+    } = useReferralSourceForm();
+    const { addSource, editSource } = useReferralSourceActions(
+        refName,
+        isChecked,
+        selectedSource,
+        setSources,
+        resetForm
+    );
+    const { setPendingSearch, setFilter, handleSearch } =
+        useReferralSourceSearchAndFilter(sourcesBackUp, setSources);
 
     const hasNewInput = () => {
-        if (form.action === 'add') {
-            if (refName) {
-                setShowModal(true);
-            }
-            else {
-                setIsShow(false);
-            }
-        }
-        else if (form.action === 'edit') {
-            if (selectedSource.source !== refName || isChecked) {
-                setShowModal(true);
-            }
-            else {
-                setIsShow(false);
-            }
-        }
-    }
+        const shouldShowModal =
+            form.action === "add"
+                ? !!refName
+                : selectedSource.source !== refName || isChecked;
 
-    const handleSearch = () => {
-        setSearch(pendingSearch);
-    }
-
-    useEffect(() => {
-        let data = [...sourcesBackUp];
-        if (search.length !== 0) {
-            data = data.filter(d => d.source.toLowerCase().trim().includes(search.toLowerCase().trim()))
+        if (shouldShowModal) {
+            setShowModal(true);
+        } else {
+            setIsShow(false);
         }
+    };
 
-        if (filter.length === 1) {
-            data = data.filter(d => d.isActive === (filter[0] === "true"))
-        }
-
-        setSources(data);
-    }, [search, filter, sourcesBackUp, setSources])
+    const handleCancel = () => {
+        setShowModal(false);
+        setIsShow(false);
+        resetForm();
+    };
 
     return (
         <div>
             {showModal && (
-                <ConfirmationModal label="You have unsaved changes" content="Are you sure you want to cancel?" acceptLabel="Yes" onAccept={() => {
-                    setShowModal(false);
-                    setIsShow(false);
-                }} cancelLabel="No" onCancel={() => setShowModal(false)} />
+                <ConfirmationModal label="You have unsaved changes" content="Are you sure you want to cancel?" acceptLabel="Yes" onAccept={handleCancel} cancelLabel="No" onCancel={() => setShowModal(false)} />
             )}
             <Layout>
                 <div className="flex flex-1 h-full">
@@ -85,7 +89,7 @@ export default function ReferralSources() {
                     </div>
                     {isShow && (
                         <RightBar onClose={setIsShow}>
-                            <DataForm label={form.label} buttonLabel={form.buttonLabel} statusCheckbox={form.statusCheckbox} onCancel={hasNewInput} onSubmit={form.action === 'add' ? addSource : () => editSource(selectedSource.id)}>
+                            <DataForm label={form.label} buttonLabel={form.buttonLabel} statusCheckbox={form.statusCheckbox} checked={isChecked} onCancel={hasNewInput} onSubmit={form.action === "add" ? addSource : editSource}>
                                 <div>
                                     <CommonInput className="border-b-0" label="Referral Source" placeholder="Enter Referral Source name" value={refName} onChange={setRefName} />
                                 </div>

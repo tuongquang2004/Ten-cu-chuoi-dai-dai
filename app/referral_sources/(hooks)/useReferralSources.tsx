@@ -1,5 +1,4 @@
 "use client";
-
 import { cn } from "@/app/cn";
 import { createColumns } from "@/components/CommonTable";
 import { API } from "@/constants/apiEndpoints";
@@ -16,7 +15,6 @@ export function useReferralSources() {
     const [isShow, setIsShow] = useState<boolean>(false);
     const [selectedSource, setSelectedSource] = useState<RefSrc>(defaultRefSrc);
     const [form, setForm] = useState<FormProps>(defaultForm);
-
     const fetchSources = async () => {
         const res = await axios.get(API.REF.ROOT);
         if (res.data) {

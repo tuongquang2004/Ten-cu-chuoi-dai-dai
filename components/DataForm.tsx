@@ -10,12 +10,13 @@ type DataFormProps = {
         className?: string,
         current: boolean,
         onChange: (checked: boolean) => void;
-    }
+    },
+    checked?: boolean,
     onCancel: () => void
     onSubmit: () => void
 }
 
-export default function DataForm({ label, children, buttonLabel = 'Submit', statusCheckbox, onCancel, onSubmit }: Readonly<DataFormProps>) {
+export default function DataForm({ label, children, buttonLabel = 'Submit', statusCheckbox, onCancel, onSubmit, checked }: Readonly<DataFormProps>) {
     return (
         <div className="rounded-lg bg-white p-[12px] flex flex-col gap-2">
             <div className={`text-[#2F3680] ${Madani.className}`}>
@@ -24,7 +25,7 @@ export default function DataForm({ label, children, buttonLabel = 'Submit', stat
             {children}
             <div className="flex items-center justify-between">
                 {statusCheckbox && (
-                    <CommonCheckbox className={statusCheckbox.className} label={statusCheckbox.current ? 'Make Inactive' : 'Make Active'} onChange={statusCheckbox.onChange} />
+                    <CommonCheckbox checked={checked} className={statusCheckbox.className} label={statusCheckbox.current ? 'Make Inactive' : 'Make Active'} onChange={statusCheckbox.onChange} />
                 )}
                 <div className="flex justify-end gap-4 flex-1">
                     <CommonButton onClick={onCancel} variant="outline" className="w-fit">Cancel</CommonButton>
