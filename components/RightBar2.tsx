@@ -73,7 +73,7 @@ export default function RightBar({ onClose, onSubmit }: RightBarProps) {
                   name="jobnumber"
                   value={formData.jobnumber}
                   onChange={handleChange}
-                  className="w-full border-[#D0D5DD] px-3 py-1.5 text-sm text-[#101828] placeholder:text-[#98A2B3]"
+                  className="w-full border-[#D0D5DD] px-4 py-1.5 text-sm text-[#101828] placeholder:text-[#98A2B3]"
                   placeholder="1045"
                 />
               </div>
