@@ -33,6 +33,11 @@ export type JobNumberRow = {
   startdate: string;
   enddate: string;
   isActive: boolean;
+  description: string;
+  customer: string;
+  contact: string;
+  other: string;
+  completed: string;
 };
 
 export const inter = Inter({

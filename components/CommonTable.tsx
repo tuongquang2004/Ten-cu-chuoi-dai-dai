@@ -18,7 +18,7 @@ type TableProps<T> = {
 
 const baseColumnHeader = 'text-start p-[12px]';
 
-export default function CommonTable<T extends object>({ columns, data, pagination = false }: Readonly<TableProps<T>>) {
+export default function CommonTable<T extends object>({ columns, data}: Readonly<TableProps<T>>) {
     return (
         <div className="border border-[#E4E7EC] overflow-hidden rounded-lg">
             <div className="max-h-[740px] overflow-y-auto">

@@ -7,24 +7,26 @@ import PageHeader from "@/components/PageHeader";
 import SearchBar from "@/components/SearchBar";
 import Search2 from '@/public/assets/icons/search2.svg';
 import Pagination from "@/components/Pagination";
-// import Filter from "@/components/Filter";
-// import { useSource } from "@/referral_sources/(hooks)/useSorce";
 import CommonTable, { createColumns } from "@/components/CommonTable";
 import { JobNumberRow } from "@/lib/data";
-// import RightBar from "@/components/RightBar";
 import { useState } from "react";
-import jobNumbers from '@/data/job_numbers.json';
 import { usePagination } from './hooks/usePagination';
+import RightBar from "@/components/RightBar2";
+import useSWR from "swr";
 
 const addItem = () => {
     alert('You clicked a button :D');
   }
 
-export default function JobNumbers() {
-    // const { source, setSource } = useSource();
-    // const [isShow, setIsShow] = useState<boolean>(false);
+const fetcher = (url: string) => fetch(url).then(r => r.json());
 
-        const data: JobNumberRow[] = jobNumbers as JobNumberRow[];
+export default function JobNumbers() {
+
+        const [showRightBar, setShowRightBar] = useState(false);
+        const { data, mutate } = useSWR<JobNumberRow[]>("/api/job_numbers", fetcher, {
+            revalidateOnFocus: false,
+          });
+          const rows = data ?? [];
     
         const testHeader = createColumns<JobNumberRow>()([
             { key: "jobnumber", label:"Job Number"},
@@ -55,37 +57,55 @@ export default function JobNumbers() {
             },
         ])
 
-        const { page, setPage, perPage, onPerPageChange, pageCount, pageRows } = usePagination<JobNumberRow>(data, 25)
+        const { page, setPage, perPage, onPerPageChange, pageCount, pageRows } = usePagination<JobNumberRow>(rows, 25);
 
+        const openRightBar = () => setShowRightBar(true);
+        const closeRightBar = () => setShowRightBar(false);
+
+        const handleAddJobNumber = async (payload: JobNumberRow) => {
+            await fetch("/api/job_numbers", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            await mutate();
+          };
+        
+        const PANEL_W = 600;
     return (
         <Layout>
-            <div className="px-6">
+            <div className="transition-all duration-300" style={{ paddingRight: showRightBar ? PANEL_W : 0 }}>
                 <div className="px-6">
-                    <Breadcrumb current="Job Numbers"/>
-                    <PageHeader title="Manage Job Numbers" size="xl" subtitle="Create or Edit Job Numbers" />
-                </div>
-                <div className="px-6 ml-auto flex items-center w-full">
-                    <div className="flex items-center gap-3 py-6 flex-1">
-                        <SearchBar placeholder='Search Job Numbers' variant='third' icon_align='left' size = 'xl' className='min-w-[250px]'/>
-                        <CommonButton variant='square' size = 'xl' onClick={addItem}><Search2 /></CommonButton>
+                    <div className="px-6">
+                        <Breadcrumb current="Job Numbers"/>
+                        <PageHeader title="Manage Job Numbers" size="xl" subtitle="Create or Edit Job Numbers" />
                     </div>
-                    <div className="flex items-center gap-3">
-                        <CommonButton variant="outline" size = 'button' >Import</CommonButton>
-                        <CommonButton variant="outline" size = 'button' >Export</CommonButton>
-                        <CommonButton variant="yellow" size = 'button' >Add Job Number</CommonButton>
+                    <div className="px-6 ml-auto flex items-center w-full">
+                        <div className="flex items-center gap-3 py-6 flex-1">
+                            <SearchBar placeholder='Search Job Numbers' variant='third' icon_align='left' size = 'xl' className='min-w-[250px]'/>
+                            <CommonButton variant='square' size = 'xl' onClick={addItem}><Search2 /></CommonButton>
+                        </div>
+                        <div className="flex items-center gap-3">
+                            <CommonButton variant="outline" size = 'button' >Import</CommonButton>
+                            <CommonButton variant="outline" size = 'button' >Export</CommonButton>
+                            <CommonButton variant="yellow" size = 'button' onClick={openRightBar} >Add Job Number</CommonButton>
+                        </div>
                     </div>
-                </div>
-                <div className="border border-[#E4E7EC] rounded-lg overflow-hidden">
-                    <CommonTable data={pageRows} columns={testHeader} />
-                    <Pagination
-                        page={page}
-                        pageCount={pageCount}
-                        perPage={perPage}
-                        onPageChange={setPage}
-                        onPerPageChange={onPerPageChange}
-                        />
+                    <div className="border border-[#E4E7EC] rounded-lg overflow-hidden">
+                        <CommonTable data={pageRows} columns={testHeader} />
+                        <Pagination
+                            page={page}
+                            pageCount={pageCount}
+                            perPage={perPage}
+                            onPageChange={setPage}
+                            onPerPageChange={onPerPageChange}
+                            />
+                    </div>
                 </div>
             </div>
+            {showRightBar && (
+                <RightBar onClose={closeRightBar} onSubmit={handleAddJobNumber} />
+            )}
         </Layout>
     )
 }
