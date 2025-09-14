@@ -16,6 +16,8 @@ import useSWR from "swr";
 import EditRightBar from "@/components/EditRightBar";
 import { jobNumberColumns } from "@/lib/jobNumberColumns";
 import { fetcher, PANEL_W, addJobNumberApi, updateJobNumberApi } from "@/lib/jobNumberApi";
+import { useColumnsFilter } from './hooks/useColumnsFilter'
+import Filter from "@/components/Filter";
 
 const addItem = () => {
     alert('You clicked a button :D');
@@ -47,19 +49,25 @@ export default function JobNumbers() {
             setShowRightBar(true);
           };
 
-          const handleAddJobNumber = async (payload: JobNumberRow) => {
+        const handleAddJobNumber = async (payload: JobNumberRow) => {
             await addJobNumberApi(payload);
             await mutate();
             closeRightBar();
           };
         
-          const handleUpdateJobNumber = async (payload: JobNumberRow) => {
+        const handleUpdateJobNumber = async (payload: JobNumberRow) => {
             await updateJobNumberApi(payload);
             await mutate();
             closeRightBar();
           };
 
-    return (
+          const { filterItems, handleFilterChange, visibleColumns } =
+          useColumnsFilter<(typeof jobNumberColumns)[number]['key'], (typeof jobNumberColumns)[number]>(
+            jobNumberColumns,
+            'jobnumber'
+          )  
+    
+        return (
         <Layout>
             <div className="transition-all duration-300" style={{ paddingRight: showRightBar ? PANEL_W : 0 }}>
                 <div className="px-6">
@@ -78,8 +86,18 @@ export default function JobNumbers() {
                             <CommonButton variant="yellow" size = 'button' onClick={openRightBar} >Add Job Number</CommonButton>
                         </div>
                     </div>
-                    <div className="border border-[#E4E7EC] rounded-lg overflow-hidden">
-                        <CommonTable data={pageRows} columns={jobNumberColumns} onRowClick={handleRowClick}/>
+                    <div className="px-6">
+                      <Filter
+                              label="Columns"
+                              items={filterItems}
+                              onChange={handleFilterChange}
+                              showCount
+                              showReset
+                              data={rows}
+                            />
+                    </div>               
+                    <div className="border border-[#E4E7EC] rounded-lg overflow-hidden px-6">
+                        <CommonTable data={pageRows} columns={visibleColumns} onRowClick={handleRowClick}/>
                         <Pagination
                             page={page}
                             pageCount={pageCount}
