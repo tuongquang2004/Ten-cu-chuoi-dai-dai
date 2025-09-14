@@ -33,22 +33,18 @@ export default function ReferralSources() {
     const { page, setPage, perPage, onPerPageChange, pageCount, pageRows } = usePagination<RefSrc>(sources, 25);
 
     const hasNewInput = () => {
-        const shouldShowModal =
-            form.action === "add"
-                ? !!refName
-                : selectedSource.source !== refName || isChecked;
-
-        if (shouldShowModal) {
-            setShowModal(true);
-        } else {
-            setIsShow(false);
-        }
+        return form.action === "add"
+            ? !!refName
+            : selectedSource.source !== refName || isChecked;
     };
 
     const handleCancel = () => {
-        setShowModal(false);
-        setIsShow(false);
-        resetForm();
+        if (hasNewInput()) {
+            setShowModal(true);
+        } else {
+            setIsShow(false);
+            resetForm();
+        }
     };
 
     return (
@@ -78,7 +74,7 @@ export default function ReferralSources() {
                     </div>
                     {isShow && (
                         <RightBar onClose={setIsShow}>
-                            <DataForm label={form.label} buttonLabel={form.buttonLabel} statusCheckbox={form.statusCheckbox} checked={isChecked} onCancel={hasNewInput} onSubmit={form.action === "add" ? addSource : editSource}>
+                            <DataForm buttonDisabled={!hasNewInput()} label={form.label} buttonLabel={form.buttonLabel} statusCheckbox={form.statusCheckbox} checked={isChecked} onCancel={handleCancel} onSubmit={form.action === "add" ? addSource : editSource}>
                                 <div>
                                     <CommonInput className="border-b-0" label="Referral Source" placeholder="Enter Referral Source name" value={refName} onChange={setRefName} />
                                 </div>

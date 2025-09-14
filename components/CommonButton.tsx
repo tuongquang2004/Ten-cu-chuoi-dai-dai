@@ -23,15 +23,16 @@ const sizes = {
 
 type CommonButtonProps = {
     readonly children?: React.ReactNode;
-    readonly variant?: 'default' | 'primary' | 'danger' | 'warning' | 'outline' | 'circle' | 'square'| 'yellow',
+    readonly variant?: 'default' | 'primary' | 'danger' | 'warning' | 'outline' | 'circle' | 'square' | 'yellow',
     readonly size?: 'default' | 'sm' | 'lg' | 'xl' | 'button',
     readonly onClick?: () => void,
-    readonly className?: string
+    readonly className?: string,
+    readonly disabled?: boolean
 }
 
-export default function CommonButton({ children, variant = 'default', size = 'default', onClick, className }: CommonButtonProps) {
+export default function CommonButton({ children, variant = 'default', size = 'default', onClick, disabled, className }: CommonButtonProps) {
     return (
-        <button className={cn(base, variants[variant], sizes[size], className)}
+        <button disabled={disabled} className={cn(base, variants[variant], sizes[size], className)}
             onClick={onClick}>
             {children}
         </button>

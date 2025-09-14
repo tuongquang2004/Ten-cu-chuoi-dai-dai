@@ -1,44 +1,39 @@
-"use client"
-
 import { ReactNode, useState } from "react"
-import { inter } from "@/lib/data"
-import { cn } from "@/app/cn"
+import { inter } from "@/lib/data";
+import { twMerge } from "tailwind-merge";
 
 type TableHeader<T> = {
-    label: string
-    key: keyof T
-    headerClassName?: string
+    label: string,
+    key: keyof T,
+    headerClassName?: string,
     render?: (row: T) => ReactNode
-}
+};
 
 type TableProps<T> = {
-    columns: TableHeader<T>[]
-    data: T[]
-    onRowClick?: (row: T) => void
-}
+    columns: TableHeader<T>[],
+    data: T[],
+    onRowClick?: (row: T) => void,
+    pagination?: boolean
+};
+
+const baseColumnHeader = 'text-start p-[12px]';
 
 export default function CommonTable<T extends { id: string }>({
     columns,
     data,
     onRowClick
 }: Readonly<TableProps<T>>) {
-    const [selectedRow, setSelectedRow] = useState<string>("")
-
-    const baseColumnHeader = "text-start p-[12px]"
-    const baseRow = cn(
-        "border-b border-[#E4E7EC] hover:bg-[#F2F4F7]",
-        onRowClick && "cursor-pointer"
-    )
+    const [selectedRow, setSelectedRow] = useState<string>("");
 
     return (
         <div className="border border-[#E4E7EC] overflow-hidden rounded-lg">
             <div className="max-h-[740px] overflow-y-auto">
-                <table className={cn(inter.className, "rounded-lg w-full")}>
+                <table className={`${inter.className} rounded-lg w-full`}>
                     <thead>
-                        <tr className="border border-[#E4E7EC] border-b border-b-[#98A2B3] text-[#667085] bg-[#E4E7EC]">
-                            {columns.map((c) => (
+                        <tr className='border border-[#E4E7EC] border-b border-b-[#98A2B3] text-[#667085] bg-[#E4E7EC]'>
+                            {columns.map(c => (
                                 <th
-                                    className={cn(baseColumnHeader, c.headerClassName)}
+                                    className={twMerge(baseColumnHeader, c.headerClassName)}
                                     key={String(c.key)}
                                 >
                                     {c.label}
@@ -51,11 +46,11 @@ export default function CommonTable<T extends { id: string }>({
                             <tr
                                 key={index + 1}
                                 onClick={() => {
-                                    onRowClick?.(d)
-                                    setSelectedRow(d.id)
+                                    onRowClick?.(d);
+                                    setSelectedRow(d.id);
                                 }}
-                                className={cn(
-                                    baseRow,
+                                className={twMerge(
+                                    "cursor-pointer border-b border-[#E4E7EC] hover:bg-[#F2F4F7]",
                                     d.id === selectedRow && "bg-[#F2F4F7]"
                                 )}
                             >
@@ -68,10 +63,9 @@ export default function CommonTable<T extends { id: string }>({
                                             c.render(d)
                                         ) : (
                                             <div
-                                                className={cn(
+                                                className={twMerge(
                                                     "p-[12px]",
-                                                    d.id === selectedRow &&
-                                                    "font-[600] pl-[16px]"
+                                                    d.id === selectedRow && "font-[600] pl-[16px]"
                                                 )}
                                             >
                                                 {d[c.key] as ReactNode}
