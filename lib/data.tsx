@@ -1,4 +1,3 @@
-// lib/data.ts
 import { Exchange, Job, Payment, Referral, Shipping, Comment, Tag } from "@/public/assets/icons";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
@@ -47,8 +46,22 @@ export const defaultRefSrc = {
 export const defaultForm: FormProps = {
   label: "Form",
   buttonLabel: "Submit",
-  action: "" // or "add" | "edit"
+  action: ""
 }
+
+export type JobNumberRow = {
+  jobnumber: string;
+  level: number,
+  name: string;
+  startdate: string;
+  enddate: string;
+  isActive: boolean;
+  description: string;
+  customer: string;
+  contact: string;
+  other: string;
+  completed: string;
+};
 
 export const inter = Inter({
   subsets: ["latin"],

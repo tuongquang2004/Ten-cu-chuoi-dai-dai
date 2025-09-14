@@ -18,32 +18,19 @@ import { useReferralSourceTable } from "./(hooks)/useReferralSourceTable";
 import { useReferralSourceForm } from "./(hooks)/useReferralSourceForm";
 import { useReferralSourceActions } from "./(hooks)/useReferralSourceActions";
 import { useReferralSourceSearchAndFilter } from "./(hooks)/useReferralSourceSearchAndFilter";
+import { usePagination } from "./(hooks)/usePagination";
+import { RefSrc } from "@/lib/data";
+import Pagination from "@/components/Pagination";
 
 export default function ReferralSources() {
     const [showModal, setShowModal] = useState<boolean>(false);
     const { sources, sourcesBackUp, setSources } = useReferralSourceData();
     const { header } = useReferralSourceTable();
-    const {
-        refName,
-        setRefName,
-        isChecked,
-        isShow,
-        setIsShow,
-        selectedSource,
-        form,
-        showAddForm,
-        showEditForm,
-        resetForm,
-    } = useReferralSourceForm();
-    const { addSource, editSource } = useReferralSourceActions(
-        refName,
-        isChecked,
-        selectedSource,
-        setSources,
-        resetForm
-    );
-    const { setPendingSearch, setFilter, handleSearch } =
-        useReferralSourceSearchAndFilter(sourcesBackUp, setSources);
+    const { refName, setRefName, isChecked, isShow, setIsShow, selectedSource, form, showAddForm, showEditForm, resetForm, } = useReferralSourceForm();
+    const { addSource, editSource } = useReferralSourceActions(refName, isChecked, selectedSource, setSources, resetForm);
+    const { setPendingSearch, setFilter, handleSearch } = useReferralSourceSearchAndFilter(sourcesBackUp, setSources);
+
+    const { page, setPage, perPage, onPerPageChange, pageCount, pageRows } = usePagination<RefSrc>(sources, 25);
 
     const hasNewInput = () => {
         const shouldShowModal =
@@ -85,7 +72,9 @@ export default function ReferralSources() {
                             </div>
                         </div>
                         <Filter data={sourcesBackUp} onChange={setFilter} label="Status" showCount={true} showReset={true} items={[{ key: 'active', label: 'Active', value: 'true' }, { key: 'inactive', label: 'Inactive', value: 'false' }]} />
-                        <CommonTable data={sources} columns={header} pagination onRowClick={(row) => showEditForm(row.id)} />
+                        <CommonTable data={pageRows} columns={header} onRowClick={(row) => showEditForm(row.id)} />
+                        <Pagination page={page} pageCount={pageCount} perPage={perPage} onPageChange={setPage} onPerPageChange={onPerPageChange} />
+
                     </div>
                     {isShow && (
                         <RightBar onClose={setIsShow}>
