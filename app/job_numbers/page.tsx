@@ -7,19 +7,19 @@ import PageHeader from "@/components/PageHeader";
 import SearchBar from "@/components/SearchBar";
 import Search2 from '@/public/assets/icons/search2.svg';
 import Pagination from "@/components/Pagination";
-import CommonTable, { createColumns } from "@/components/CommonTable";
+import CommonTable from "@/components/CommonTable";
 import { JobNumberRow } from "@/lib/data";
 import { useState } from "react";
 import { usePagination } from './hooks/usePagination';
 import RightBar from "@/components/RightBar2";
 import useSWR from "swr";
 import EditRightBar from "@/components/EditRightBar";
+import { jobNumberColumns } from "@/lib/jobNumberColumns";
+import { fetcher, PANEL_W, addJobNumberApi, updateJobNumberApi } from "@/lib/jobNumberApi";
 
 const addItem = () => {
     alert('You clicked a button :D');
   }
-
-const fetcher = (url: string) => fetch(url).then(r => r.json());
 
 export default function JobNumbers() {
 
@@ -28,36 +28,7 @@ export default function JobNumbers() {
         const { data, mutate } = useSWR<JobNumberRow[]>("/api/job_numbers", fetcher, {
             revalidateOnFocus: false,
           });
-          const rows = data ?? [];
-    
-        const testHeader = createColumns<JobNumberRow>()([
-            { key: "jobnumber", label:"Job Number"},
-            { key: "level", label:"Level"},
-            { key: "name", label:"Name"},
-            { key: "startdate", label:"Start Date"},
-            { key: "enddate", label:"End Date"},
-            {
-                key: "isActive",
-                label: "Status",
-                headerClassName: 'text-center',
-                render: (row) => {
-                    const isActive = row.isActive
-                    const bgColor = isActive ? "bg-[#D2FFD7]" : "bg-[#FFDFDD]"
-                    const textColor = isActive ? "text-[#00770C]" : "text-[#E42C1B]"
-                    const text = isActive ? "Active" : "Inactive"
-    
-                    return (
-                        <div className="flex justify-center">
-                            <div
-                                className={`shadow-[2px_3px_8px_rgba(0,0,0,0.15)] text-center font-medium rounded-full w-fit py-[3px] min-w-[77px] text-[15px] ${bgColor} ${textColor}`}
-                            >
-                                {text}
-                            </div>
-                        </div>
-                    )
-                }
-            },
-        ])
+        const rows = data ?? [];
 
         const { page, setPage, perPage, onPerPageChange, pageCount, pageRows } = usePagination<JobNumberRow>(rows, 25);
 
@@ -76,27 +47,18 @@ export default function JobNumbers() {
             setShowRightBar(true);
           };
 
-        const handleAddJobNumber = async (payload: JobNumberRow) => {
-            await fetch("/api/job_numbers", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload),
-            });
+          const handleAddJobNumber = async (payload: JobNumberRow) => {
+            await addJobNumberApi(payload);
             await mutate();
             closeRightBar();
           };
         
-        const handleUpdateJobNumber = async (payload: JobNumberRow) => {
-            await fetch("/api/job_numbers", {
-              method: "PUT",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload),
-            });
+          const handleUpdateJobNumber = async (payload: JobNumberRow) => {
+            await updateJobNumberApi(payload);
             await mutate();
             closeRightBar();
-        };
+          };
 
-        const PANEL_W = 600;
     return (
         <Layout>
             <div className="transition-all duration-300" style={{ paddingRight: showRightBar ? PANEL_W : 0 }}>
@@ -117,7 +79,7 @@ export default function JobNumbers() {
                         </div>
                     </div>
                     <div className="border border-[#E4E7EC] rounded-lg overflow-hidden">
-                        <CommonTable data={pageRows} columns={testHeader} onRowClick={handleRowClick}/>
+                        <CommonTable data={pageRows} columns={jobNumberColumns} onRowClick={handleRowClick}/>
                         <Pagination
                             page={page}
                             pageCount={pageCount}
