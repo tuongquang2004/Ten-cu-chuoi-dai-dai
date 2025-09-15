@@ -15,17 +15,23 @@ type TableProps<T> = {
     data: T[],
     onRowClick?: (row: T) => void,
     pagination?: boolean
+    rowKey?: keyof T;
 };
 
 const baseColumnHeader = 'text-start p-[12px]';
 
-export default function CommonTable<T extends { id: string }>({
+export default function CommonTable<T extends Record<string, unknown>>({
     columns,
     data,
     onRowClick,
     pagination = false,
+    rowKey,
 }: Readonly<TableProps<T>>) {
     const [selectedRow, setSelectedRow] = useState<string>("");
+
+    const keyField = (rowKey ?? ("id" as keyof T));
+    const getRowId = (row: T) =>
+    String(row[keyField] as unknown as string | number | undefined);
 
     // Pagination state
     const [page, setPage] = useState(1);
@@ -54,59 +60,53 @@ export default function CommonTable<T extends { id: string }>({
                         </tr>
                     </thead>
                     <tbody>
-                        {paginatedData.map((d, index) => (
+                    {paginatedData.map((d) => {
+                        const rid = getRowId(d); 
+                        return (
                             <tr
-                                key={d.id}
-                                onClick={() => {
-                                    onRowClick?.(d);
-                                    setSelectedRow(d.id);
-                                }}
-                                className={cn(
-                                    "cursor-pointer border-b border-[#E4E7EC] hover:bg-[#F2F4F7]",
-                                    d.id === selectedRow && "bg-[#F2F4F7]"
-                                )}
+                            key={rid}
+                            onClick={() => {
+                                onRowClick?.(d);
+                                setSelectedRow(rid);
+                            }}
+                            className={cn(
+                                "cursor-pointer border-b border-[#E4E7EC] hover:bg-[#F2F4F7]",
+                                rid === selectedRow && "bg-[#F2F4F7]"
+                            )}
                             >
-                                {columns.map((c) => (
-                                    <td
-                                        className="text-[#1D2939]"
-                                        key={String(c.key)}
-                                    >
-                                        {c.render ? (
-                                            c.render(d)
-                                        ) : (
-                                            <div
-                                                className={cn(
-                                                    "p-[12px]",
-                                                    d.id === selectedRow && "font-[600] pl-[16px]"
-                                                )}
-                                            >
-                                                {d[c.key] as ReactNode}
-                                            </div>
-                                        )}
-                                    </td>
-                                ))}
+                            {columns.map((c) => (
+                                <td className="text-[#1D2939]" key={String(c.key)}>
+                                {c.render ? (
+                                    c.render(d)
+                                ) : (
+                                    <div className={cn("p-[12px]", rid === selectedRow && "font-[600] pl-[16px]")}>
+                                    {d[c.key] as ReactNode}
+                                    </div>
+                                )}
+                                </td>
+                            ))}
                             </tr>
-                        ))}
+                        );
+                        })}
                     </tbody>
-                </table>
-            </div>
+                    </table>
+                </div>
 
-            {/* Pagination footer */}
-            {pagination && (
-                <Pagination
+                {pagination && (
+                    <Pagination
                     page={page}
                     pageCount={pageCount}
                     perPage={perPage}
                     onPageChange={(p) => setPage(p)}
                     onPerPageChange={(n) => {
                         setPerPage(n);
-                        setPage(1); // reset to first page
+                        setPage(1);
                     }}
-                />
-            )}
-        </div>
-    )
-}
+                    />
+                )}
+                </div>
+            );
+            }
 
 export function createColumns<T extends object>() {
     return <U extends TableHeader<T>[]>(cols: U) => cols

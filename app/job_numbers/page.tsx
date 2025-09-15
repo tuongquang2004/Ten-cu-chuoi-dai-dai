@@ -114,7 +114,7 @@ export default function JobNumbers() {
                             />
                     </div>               
                     <div className="border border-[#E4E7EC] rounded-lg overflow-hidden px-6">
-                        <CommonTable data={pageRows} columns={visibleColumns} onRowClick={handleRowClick}/>
+                        <CommonTable data={pageRows} columns={visibleColumns} onRowClick={handleRowClick} rowKey="jobnumber"/>
                         <Pagination
                             page={page}
                             pageCount={pageCount}
