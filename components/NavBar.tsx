@@ -1,4 +1,4 @@
-import { Madani } from "@/lib/data";
+import { Madani } from "@/constants/fonts";
 import { useRouter } from "next/navigation"
 
 type NavBarProp = {

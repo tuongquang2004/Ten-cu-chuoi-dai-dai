@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { RefSrc } from "@/lib/data";
+import { RefSrc } from "@/constants/types"; 
 
 export function useReferralSourceSearchAndFilter(
     sourcesBackUp: RefSrc[],

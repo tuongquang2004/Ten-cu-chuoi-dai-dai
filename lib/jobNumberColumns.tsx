@@ -1,4 +1,4 @@
-import { JobNumberRow } from "@/lib/data";
+import { JobNumberRow } from "@/constants/types"; 
 import { createColumns } from "@/components/CommonTable";
 
 export const jobNumberColumns = createColumns<JobNumberRow>()([

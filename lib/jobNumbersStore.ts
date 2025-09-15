@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { JobNumberRow } from "@/lib/data";
+import { JobNumberRow } from "@/constants/types"; 
 
 const dbPath = path.join(process.cwd(), "data", "job_numbers.json");
 

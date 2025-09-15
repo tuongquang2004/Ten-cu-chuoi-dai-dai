@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { inter } from "@/lib/data";
+import { inter } from "@/constants/fonts";
 import { cn } from "@/app/cn";
 import { DownArrow, Reset } from "@/public/assets/icons";
 
@@ -35,7 +35,6 @@ export default function Filter({ label, items, showCount = false, showReset = fa
 
         onChange(selectedValues);
     };
-
 
     const handleReset = () => {
         setSelectedKeys([]);

@@ -2,12 +2,12 @@
 
 import { useEffect, useState, useRef } from "react";
 import CommonButton from "./CommonButton";
-import { JobNumberRow } from "@/lib/data";
+import { JobNumberRow } from "@/constants/types";
 
 type EditRightBarProps = {
-  topOffset?: number;               
-  width?: number;             
-  row: JobNumberRow;             
+  topOffset?: number;
+  width?: number;
+  row: JobNumberRow;
   onClose: () => void;
   onSubmit: (data: JobNumberRow & { originalJobnumber?: string }) => void;
 };
@@ -18,15 +18,15 @@ export default function EditRightBar({
   row,
   onClose,
   onSubmit,
-}: EditRightBarProps) {
-  
+}: Readonly<EditRightBarProps>) {
+
   const [formData, setFormData] = useState<JobNumberRow>(row);
   const originalJobnumberRef = useRef(row.jobnumber);
 
   useEffect(() => {
     setFormData(row);
     originalJobnumberRef.current = row.jobnumber;
-    }, [row]);
+  }, [row]);
 
   type FieldName = keyof JobNumberRow;
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -35,15 +35,15 @@ export default function EditRightBar({
       ...prev,
       [name]:
         name === "level" ? Number(value)
-        : name === "isActive" ? value === "true"
-        : value,
+          : name === "isActive" ? value === "true"
+            : value,
     }));
   };
 
   const handleSubmit = () => {
     onSubmit({ ...formData, originalJobnumber: originalJobnumberRef.current });
     onClose();
-    };
+  };
 
   return (
     <div

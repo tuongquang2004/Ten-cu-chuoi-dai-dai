@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { check } from "@/lib/data";
+import { check } from "@/constants/types"; 
 import { REGEX } from "@/constants/regex";
 
 const initialChecks: check[] = [

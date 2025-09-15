@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import type { TileItem } from './types'
+import type { TileItem } from '@/constants/types'
 
 export function Tile({ icon, label, href, onClick }: TileItem) {
   const content = (

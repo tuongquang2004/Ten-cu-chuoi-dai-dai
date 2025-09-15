@@ -5,8 +5,8 @@ import CommonButton from './CommonButton';
 import { useRouter } from 'next/navigation';
 import SearchBar from './SearchBar';
 import { ROUTES } from '@/constants/routes';
-import {Plus, Gear, Question} from '@/public/assets/icons';
-import {Logo} from '@/public/assets/logos';
+import { Plus, Gear, Question } from '@/public/assets/icons';
+import { Logo } from '@/public/assets/logos';
 
 type NavItem = { label: string; route: string }
 
@@ -52,7 +52,7 @@ export default function TopNav() {
       <div className="ml-auto flex items-center gap-2">
         <CommonButton variant='circle' size='sm' onClick={addItem}><Plus /></CommonButton>
 
-        <SearchBar placeholder='Search' variant='secondary' iconAlign='right' className='min-w-[250px]'/>
+        <SearchBar placeholder='Search' variant='secondary' iconAlign='right' className='min-w-[250px]' />
 
         <button className="p-1 text-slate-500 hover:text-slate-900" aria-label="Settings">
           <Gear />
@@ -60,7 +60,7 @@ export default function TopNav() {
         <button className="p-1 text-slate-500 hover:text-slate-900" aria-label="Notifications">
           <Question />
         </button>
-        <button onClick={()=>router.push(ROUTES.LOGIN)} className="h-7 cursor-pointer w-7 overflow-hidden rounded-full bg-slate-200 ring-1 ring-slate-300" />
+        <button onClick={() => router.push(ROUTES.LOGIN)} className="h-7 cursor-pointer w-7 overflow-hidden rounded-full bg-slate-200 ring-1 ring-slate-300" />
       </div>
     </header>
   )

@@ -1,4 +1,4 @@
-import { Madani } from "@/lib/data"
+import { Madani } from "@/constants/fonts";
 import CommonButton from "./CommonButton"
 import CommonCheckbox from "./CommonCheckbox"
 
