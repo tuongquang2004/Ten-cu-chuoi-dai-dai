@@ -68,9 +68,7 @@ export default function ReferralSources() {
                             </div>
                         </div>
                         <Filter data={sourcesBackUp} onChange={setFilter} label="Status" showCount={true} showReset={true} items={[{ key: 'active', label: 'Active', value: 'true' }, { key: 'inactive', label: 'Inactive', value: 'false' }]} />
-                        <CommonTable data={pageRows} columns={header} onRowClick={(row) => showEditForm(row.id)} />
-                        <Pagination page={page} pageCount={pageCount} perPage={perPage} onPageChange={setPage} onPerPageChange={onPerPageChange} />
-
+                        <CommonTable pagination data={pageRows} columns={header} onRowClick={(row) => showEditForm(row.id)} />
                     </div>
                     {isShow && (
                         <RightBar onClose={setIsShow}>

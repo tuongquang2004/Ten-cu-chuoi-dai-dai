@@ -1,6 +1,7 @@
 import { ReactNode, useState } from "react"
 import { inter } from "@/lib/data";
 import { twMerge } from "tailwind-merge";
+import Pagination from "./Pagination";
 
 type TableHeader<T> = {
     label: string,
@@ -21,9 +22,20 @@ const baseColumnHeader = 'text-start p-[12px]';
 export default function CommonTable<T extends { id: string }>({
     columns,
     data,
-    onRowClick
+    onRowClick,
+    pagination = false,
 }: Readonly<TableProps<T>>) {
     const [selectedRow, setSelectedRow] = useState<string>("");
+
+    // Pagination state
+    const [page, setPage] = useState(1);
+    const [perPage, setPerPage] = useState(10);
+
+    const pageCount = Math.ceil(data.length / perPage);
+
+    const paginatedData = pagination
+        ? data.slice((page - 1) * perPage, page * perPage)
+        : data;
 
     return (
         <div className="border border-[#E4E7EC] overflow-hidden rounded-lg">
@@ -42,9 +54,9 @@ export default function CommonTable<T extends { id: string }>({
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((d, index) => (
+                        {paginatedData.map((d, index) => (
                             <tr
-                                key={index + 1}
+                                key={d.id}
                                 onClick={() => {
                                     onRowClick?.(d);
                                     setSelectedRow(d.id);
@@ -78,6 +90,20 @@ export default function CommonTable<T extends { id: string }>({
                     </tbody>
                 </table>
             </div>
+
+            {/* Pagination footer */}
+            {pagination && (
+                <Pagination
+                    page={page}
+                    pageCount={pageCount}
+                    perPage={perPage}
+                    onPageChange={(p) => setPage(p)}
+                    onPerPageChange={(n) => {
+                        setPerPage(n);
+                        setPage(1); // reset to first page
+                    }}
+                />
+            )}
         </div>
     )
 }
