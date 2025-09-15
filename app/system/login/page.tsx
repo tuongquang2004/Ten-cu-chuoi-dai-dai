@@ -3,11 +3,11 @@
 import AuthLayout from "@/components/AuthLayout";
 import CommonButton from "@/components/CommonButton";
 import CommonInput from "@/components/CommonInput";
-import { Icon } from "@/components/Icon";
 import PageHeader from "@/components/PageHeader";
 import { useLoginForm } from "../(hooks)/useLoginForm";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
+import { Logo } from '@/public/assets/logos';
 
 export default function Login() {
     const router = useRouter();
@@ -18,7 +18,7 @@ export default function Login() {
             <AuthLayout>
                 <div className="flex flex-col justify-center gap-8 w-full">
                     <div className="flex justify-start">
-                        <Icon.Logo />
+                        <Logo />
                     </div>
                     <PageHeader title="Login" subtitle="Please login with yor email address and password" titleColor="#252C88" subtitleColor="#475467" size="xl" />
                     <div className="flex flex-col gap-4 w-full">
