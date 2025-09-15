@@ -1,7 +1,7 @@
 import { ReactNode, useState } from "react"
 import { inter } from "@/lib/data";
-import { twMerge } from "tailwind-merge";
 import Pagination from "./Pagination";
+import { cn } from "@/app/cn";
 
 type TableHeader<T> = {
     label: string,
@@ -45,7 +45,7 @@ export default function CommonTable<T extends { id: string }>({
                         <tr className='border border-[#E4E7EC] border-b border-b-[#98A2B3] text-[#667085] bg-[#E4E7EC]'>
                             {columns.map(c => (
                                 <th
-                                    className={twMerge(baseColumnHeader, c.headerClassName)}
+                                    className={cn(baseColumnHeader, c.headerClassName)}
                                     key={String(c.key)}
                                 >
                                     {c.label}
@@ -61,7 +61,7 @@ export default function CommonTable<T extends { id: string }>({
                                     onRowClick?.(d);
                                     setSelectedRow(d.id);
                                 }}
-                                className={twMerge(
+                                className={cn(
                                     "cursor-pointer border-b border-[#E4E7EC] hover:bg-[#F2F4F7]",
                                     d.id === selectedRow && "bg-[#F2F4F7]"
                                 )}
@@ -75,7 +75,7 @@ export default function CommonTable<T extends { id: string }>({
                                             c.render(d)
                                         ) : (
                                             <div
-                                                className={twMerge(
+                                                className={cn(
                                                     "p-[12px]",
                                                     d.id === selectedRow && "font-[600] pl-[16px]"
                                                 )}
