@@ -18,6 +18,7 @@ type FilterProps = {
 export default function Filter({ label, items, showCount = false, showReset = false, onChange, className }: Readonly<FilterProps>) {
     const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
     const [isShow, setIsShow] = useState<boolean>(false);
+    const filterActive = selectedKeys.length !== 0;
 
     const handleSelect = (key: string) => {
         let newKeys: string[];
@@ -39,19 +40,20 @@ export default function Filter({ label, items, showCount = false, showReset = fa
     const handleReset = () => {
         setSelectedKeys([]);
         onChange([]);
+        setIsShow(false);
     }
 
     return (
         <div className={`relative ${inter.className}`}>
             <div className="flex items-center justify-center gap-1 w-fit">
-                <button className="flex items-center gap-1 font-[700] cursor-pointer" onClick={() => setIsShow(prev => !prev)}>
-                    {showCount && (
+                <button className={cn(`flex items-center gap-1 cursor-pointer`, filterActive && 'font-[700]')} onClick={() => setIsShow(prev => !prev)}>
+                    {showCount && filterActive && (
                         <p>{`(${selectedKeys.length})`}</p>
                     )}
                     {label}
                     <DownArrow />
                 </button>
-                {showReset && (
+                {showReset && filterActive && (
                     <button className="cursor-pointer" onClick={() => handleReset()}>
                         <Reset />
                     </button>
