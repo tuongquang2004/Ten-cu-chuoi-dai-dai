@@ -18,10 +18,11 @@ import { usePaymentMethodTable } from "./hooks/usePaymentMethodTable";
 import { usePaymentMethodForm } from "./hooks/usePaymentMethodForm";
 import { useSearchAndFilter } from "@/hooks/useSeachAndFilter";
 import { usePaymentMethodActions } from "./hooks/usePaymentMethodActions";
-import { defaultPaymentMethod } from "@/constants/defaultValues";
+import ImportModal from "@/components/ImportModal";
+import { useModal } from "@/hooks/useModal";
 
 export default function ReferralSources() {
-    const [showModal, setShowModal] = useState<boolean>(false);
+    const { showConfirmModal, setShowConfirmModal, showImportModal, setShowImportModal } = useModal();
     const { items, backup, setItems } = usePaymentMethodData();
     const { setPendingSearch, setFilter, handleSearch } = useSearchAndFilter(backup, setItems)
     const { header } = usePaymentMethodTable();
@@ -51,29 +52,32 @@ export default function ReferralSources() {
 
     const handleCancel = () => {
         if (hasNewInput()) {
-            setShowModal(true);
+            setShowConfirmModal(true);
         } else {
             cancelAction();
         }
     };
 
     const cancelAction = () => {
-        setShowModal(false)
+        setShowConfirmModal(false)
         setIsShow(false);
         resetForm();
     }
 
     return (
         <div>
-            {showModal && (
+            {showConfirmModal && (
                 <ConfirmationModal
                     label="You have unsaved changes"
                     content="Are you sure you want to cancel?"
                     acceptLabel="Yes"
                     onAccept={cancelAction}
                     cancelLabel="No"
-                    onCancel={() => setShowModal(false)}
+                    onCancel={() => setShowConfirmModal(false)}
                 />
+            )}
+            {showImportModal && (
+                <ImportModal label="Import Payment Methods" buttonLabel="Import Payment Methods" onClose={() => setShowImportModal(false)} templateFile="payment_method_template.txt" />
             )}
             <Layout>
                 <div className="flex flex-1 h-full">
@@ -85,7 +89,7 @@ export default function ReferralSources() {
                                 <SearchBar onChange={setPendingSearch} buttonFunction={handleSearch} placeholder="Search Payment Methods" iconAlign="left" buttonAlign="right" className="border border-[#98A2B3] h-full min-w-[417px] placeholder:text-[14px]" />
                             </div>
                             <div className="flex justify-center xl:justify-end gap-3 w-fit justify-self-end">
-                                <CommonButton variant="outline">Import</CommonButton>
+                                <CommonButton onClick={() => setShowImportModal(true)} variant="outline">Import</CommonButton>
                                 <CommonButton variant="outline">Export</CommonButton>
                                 <CommonButton onClick={showAddForm} variant="outline" className="bg-[#E87200] text-white border-none">Add Payment Method</CommonButton>
                             </div>
