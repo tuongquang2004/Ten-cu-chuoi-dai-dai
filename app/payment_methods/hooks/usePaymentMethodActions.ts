@@ -30,7 +30,7 @@ export function usePaymentMethodActions(
     const trimmedName = name.trim();
     const trimmedType = type.trim();
     const trimmedCode = code.trim();
-    const addMethod = async () => {
+    const addItem = async () => {
         if (!checkInput(trimmedName, trimmedType)) {
             alert(VALIDATION_ERROR.MISSING_REQUIRED_FIELDS);
             return;
@@ -59,7 +59,7 @@ export function usePaymentMethodActions(
         }
     };
 
-    const editMethod = async () => {
+    const editItem = async () => {
         if (!checkInput(trimmedName, trimmedType)) {
             alert(VALIDATION_ERROR.MISSING_REQUIRED_FIELDS);
             return;
@@ -84,5 +84,5 @@ export function usePaymentMethodActions(
         }
     };
 
-    return { addMethod, editMethod };
+    return { addItem, editItem };
 }

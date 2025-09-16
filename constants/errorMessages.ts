@@ -10,6 +10,7 @@ export const VALIDATION_ERROR = {
   MISSING_PASSWORD: 'Please enter your password',
   MISSING_CONFIRM_PASSWORD: 'Please confirm your password',
   MISSING_REFERRAL_NAME: 'Please enter a referral name',
+  MISSING_SHIP_NAME: 'Please enter a shipping method name',
   INVALID_EMAIL: 'The email is not valid',
   MISMATCH_PASSWORDS: 'This password does not match the one you entered above',
   MISSING_REQUIRED_FIELDS:'Please enter all required fields'

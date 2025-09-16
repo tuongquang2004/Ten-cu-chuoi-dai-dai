@@ -6,7 +6,7 @@ export const defaultForm: FormProps = {
     action: ""
 }
 
-export const defaultRefSrc = {
+export const defaultValueSimple = {
     id: "",
     isActive: true,
     name: "",

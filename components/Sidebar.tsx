@@ -58,7 +58,7 @@ export default function Sidebar() {
     <aside className={`${inter.className} hidden md:block w-[240px] shrink-0 bg-[#F2F4F7] border-r border-[#D0D5DD] min-h-full`}>
       <ul className="space-y-2 px-3 py-8 text-sm">
         {items.map(i => {
-          const active = i.href !== '#' && pathname === i.href
+          const active = i.href !== '#' && pathname.includes(i.href)
           return (
             <li key={i.label}>
               <Link

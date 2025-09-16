@@ -39,7 +39,7 @@ export default function Pagination({
                 <button
                     onClick={() => !prevDisabled && onPageChange(page - 1)}
                     className="flex items-center gap-1 rounded px-3 py-1 text-sm text-[#344054]
-                     border border-transparent hover:bg-slate-50"
+                     border border-transparent hover:bg-slate-50 cursor-pointer"
                 >
                     <LeftArrow2 /> Previous
                 </button>
@@ -52,7 +52,7 @@ export default function Pagination({
                             className={
                                 n === page
                                     ? "h-8 w-8 rounded-md border text-sm bg-[#2F3680] text-white border-[#E87200]"
-                                    : "mx-3 text-sm text-[#344054] hover:text-[#2F3680]"
+                                    : "mx-3 text-sm text-[#344054] hover:text-[#2F3680] cursor-pointer"
                             }
                             aria-current={n === page ? "page" : undefined}
                         >
@@ -64,7 +64,7 @@ export default function Pagination({
                 <button
                     onClick={() => !nextDisabled && onPageChange(page + 1)}
                     className="flex items-center gap-1 rounded px-3 py-1 text-sm text-[#344054]
-                     border border-transparent hover:bg-slate-50"
+                     border border-transparent hover:bg-slate-50 cursor-pointer"
                 >
                     Next <RightArrow2 />
                 </button>

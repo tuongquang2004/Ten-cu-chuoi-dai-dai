@@ -4,5 +4,6 @@ export const ROUTES = {
   REGISTER: "/system/register",
   REFERRAL_SOURCES: '/referral_sources',
   PAYMENT_METHODS: '/payment_methods',
+  SHIPPING_METHODS: '/shipping_methods',
   TEMPLATE_FOLDER:'/files/template_files/'
 };

@@ -35,7 +35,7 @@ export default function ReferralSources() {
         showAddForm,
         showEditForm,
         resetForm, } = useReferralSourceForm();
-    const { addSource, editSource } = useReferralSourceActions(name, isChecked, selected, setItems, resetForm);
+    const { addItem, editItem } = useReferralSourceActions(name, isChecked, selected, setItems, resetForm);
     const { setPendingSearch, setFilter, handleSearch } = useSearchAndFilter(backup, setItems);
 
     const hasNewInput = () => {
@@ -83,12 +83,18 @@ export default function ReferralSources() {
                     <div className="px-12 p-6 flex flex-col gap-3 w-full">
                         <Breadcrumb current="Referral Sources"></Breadcrumb>
                         <PageHeader title="Manage Referral Sources" subtitle="Create or Edit Referral sources entries" />
-                        <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
+                        <div className="flex justify-between gap-3">
                             <div className="flex items-center">
-                                <SearchBar onChange={setPendingSearch} buttonFunction={handleSearch} placeholder="Search Referral Sources" iconAlign="left" buttonAlign="right" className="border border-[#98A2B3] h-full min-w-[417px] placeholder:text-[14px]" />
+                                <SearchBar
+                                    onChange={setPendingSearch}
+                                    buttonFunction={handleSearch}
+                                    placeholder="Search Referral Sources"
+                                    iconAlign="left"
+                                    buttonAlign="right"
+                                    className="border border-[#98A2B3] h-full placeholder:text-[14px] min-w-[417px]" />
                             </div>
                             <div className="flex justify-center xl:justify-end gap-3 w-fit justify-self-end">
-                                <CommonButton variant="outline" onClick={()=>setShowImportModal(true)}>Import</CommonButton>
+                                <CommonButton variant="outline" onClick={() => setShowImportModal(true)}>Import</CommonButton>
                                 <CommonButton variant="outline">Export</CommonButton>
                                 <CommonButton onClick={showAddForm} variant="outline" className="bg-[#E87200] text-white border-none">Add Referral Source</CommonButton>
                             </div>
@@ -98,7 +104,7 @@ export default function ReferralSources() {
                     </div>
                     {isShow && (
                         <RightBar onClose={cancelAction}>
-                            <DataForm buttonDisabled={!hasNewInput()} label={form.label} buttonLabel={form.buttonLabel} statusCheckbox={form.statusCheckbox} checked={isChecked} onCancel={handleCancel} onSubmit={form.action === "add" ? addSource : editSource}>
+                            <DataForm buttonDisabled={!hasNewInput()} label={form.label} buttonLabel={form.buttonLabel} statusCheckbox={form.statusCheckbox} checked={isChecked} onCancel={handleCancel} onSubmit={form.action === "add" ? addItem : editItem}>
                                 <div>
                                     <CommonInput className="border-b-0" label="Referral Source" placeholder="Enter Referral Source name" value={name} onChange={setName} />
                                 </div>
