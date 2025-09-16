@@ -10,7 +10,7 @@ export const manageTiles: TileItemData[] = [
   { label: 'Payment Methods', icon: <Payment />, href: '/' },
   { label: 'Job Numbers', icon: <Job />, href: '/job_numbers' },
   { label: 'Exchange Rates', icon: <Exchange />, href: '/' },
-  { label: 'Comments', icon: <Comment />, href: '/' },
+  { label: 'Comments', icon: <Comment />, href: '/comments' },
   { label: 'Special Pricing Schedule', icon: <Tag />, href: '/' },
 ]
 
@@ -61,6 +61,11 @@ export type JobNumberRow = {
   contact: string;
   other: string;
   completed: string;
+};
+
+export type CommentRow = {
+  comment: string;
+  isActive: boolean;
 };
 
 export const inter = Inter({

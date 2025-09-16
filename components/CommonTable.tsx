@@ -31,7 +31,7 @@ export default function CommonTable<T extends Record<string, unknown>>({
 
     const keyField = (rowKey ?? ("id" as keyof T));
     const getRowId = (row: T) =>
-    String(row[keyField] as unknown as string | number | undefined);
+        String(row[keyField] as unknown as string | number | undefined);
 
     // Pagination state
     const [page, setPage] = useState(1);

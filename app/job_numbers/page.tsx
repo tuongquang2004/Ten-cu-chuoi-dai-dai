@@ -88,7 +88,7 @@ export default function JobNumbers() {
         <Layout>
             <div className="transition-all duration-300" style={{ paddingRight: showRightBar ? PANEL_W : 0 }}>
                 <div className="px-6">
-                    <div className="px-6">
+                    <div className="px-6 py-6">
                         <Breadcrumb current="Job Numbers"/>
                         <PageHeader title="Manage Job Numbers" size="xl" subtitle="Create or Edit Job Numbers" />
                     </div>
