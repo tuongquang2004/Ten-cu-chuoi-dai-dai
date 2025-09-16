@@ -1,219 +1,423 @@
 {
   "referral": [
     {
-      "source": "Ad Campaign",
+      "name": "Ad Campaign",
       "isActive": true,
       "id": "1"
     },
     {
-      "source": "Affiliate Marketing",
+      "name": "Affiliate Marketing",
       "isActive": true,
       "id": "2"
     },
     {
-      "source": "Business Referral",
+      "name": "Business Referral",
       "isActive": true,
       "id": "3"
     },
     {
       "id": "4",
-      "source": "Social Media",
+      "name": "Social Media",
       "isActive": true
     },
     {
       "id": "5",
-      "source": "Email Marketing",
+      "name": "Email Marketing",
       "isActive": true
     },
     {
       "id": "6",
-      "source": "Organic Search",
+      "name": "Organic Search",
       "isActive": true
     },
     {
       "id": "7",
-      "source": "Event/Trade Show",
+      "name": "Event/Trade Show",
       "isActive": true
     },
     {
       "id": "8",
-      "source": "Partner Website",
+      "name": "Partner Website",
       "isActive": true
     },
     {
       "id": "9",
-      "source": "Direct Contact",
+      "name": "Direct Contact",
       "isActive": true
     },
     {
       "id": "10",
-      "source": "Customer Referral",
+      "name": "Customer Referral",
       "isActive": true
     },
     {
-      "source": "Influencer Marketing",
+      "name": "Influencer Marketing",
       "isActive": false,
       "id": "11"
     },
     {
       "id": "12",
-      "source": "Cold Call",
+      "name": "Cold Call",
       "isActive": false
     },
     {
       "id": "13",
-      "source": "Print Advertisement",
+      "name": "Print Advertisement",
       "isActive": false
     },
     {
       "id": "14",
-      "source": "Radio/TV Spot",
+      "name": "Radio/TV Spot",
       "isActive": false
     },
     {
       "id": "15",
-      "source": "Industry Forum",
+      "name": "Industry Forum",
       "isActive": true
     },
     {
       "id": "16",
-      "source": "Online Community",
+      "name": "Online Community",
       "isActive": true
     },
     {
       "id": "17",
-      "source": "Partner Referral",
+      "name": "Partner Referral",
       "isActive": false
     },
     {
       "id": "18",
-      "source": "Coupon/Promotion",
+      "name": "Coupon/Promotion",
       "isActive": true
     },
     {
       "id": "19",
-      "source": "Webinar",
+      "name": "Webinar",
       "isActive": true
     },
     {
       "id": "20",
-      "source": "Loyalty Program",
+      "name": "Loyalty Program",
       "isActive": false
     },
     {
       "id": "21",
-      "source": "Networking Event",
+      "name": "Networking Event",
       "isActive": true
     },
     {
       "id": "22",
-      "source": "Sponsorship",
+      "name": "Sponsorship",
       "isActive": false
     },
     {
       "id": "23",
-      "source": "Press Release",
+      "name": "Press Release",
       "isActive": true
     },
     {
       "id": "24",
-      "source": "Podcast Mention",
+      "name": "Podcast Mention",
       "isActive": false
     },
     {
       "id": "25",
-      "source": "Blog Post",
+      "name": "Blog Post",
       "isActive": true
     },
     {
       "id": "26",
-      "source": "Community Meetup",
+      "name": "Community Meetup",
       "isActive": true
     },
     {
       "id": "27",
-      "source": "Trade Association",
+      "name": "Trade Association",
       "isActive": true
     },
     {
       "id": "28",
-      "source": "Referral Contest",
+      "name": "Referral Contest",
       "isActive": false
     },
     {
       "id": "29",
-      "source": "SMS Marketing",
+      "name": "SMS Marketing",
       "isActive": true
     },
     {
       "id": "30",
-      "source": "Online Ad Network",
+      "name": "Online Ad Network",
       "isActive": true
     },
     {
       "id": "31",
-      "source": "Video Marketing",
+      "name": "Video Marketing",
       "isActive": true
     },
     {
       "id": "32",
-      "source": "Influencer Collaboration",
+      "name": "Influencer Collaboration",
       "isActive": true
     },
     {
       "id": "33",
-      "source": "Mobile App Referral",
+      "name": "Mobile App Referral",
       "isActive": false
     },
     {
       "id": "34",
-      "source": "Chatbot Recommendation",
+      "name": "Chatbot Recommendation",
       "isActive": true
     },
     {
       "id": "35",
-      "source": "Corporate Partnership",
+      "name": "Corporate Partnership",
       "isActive": false
     },
     {
-      "source": "Test 1 New",
+      "name": "Test 1 New",
       "isActive": true,
       "id": "95de"
     },
     {
-      "source": "Test 2 New",
+      "name": "Test 2 New",
       "isActive": true,
       "id": "8707"
     },
     {
       "id": "8ddb",
-      "source": "Test  3",
+      "name": "Test  3",
       "isActive": false
     },
     {
-      "source": "Test 4",
+      "name": "Test 4",
       "isActive": true,
       "id": "d2d1"
     },
     {
-      "source": "Test add",
+      "name": "Test add",
       "isActive": true,
       "id": "22a0"
     },
     {
-      "source": "Test",
+      "name": "Test",
       "isActive": true,
       "id": "1954"
     },
     {
       "id": "4d1e",
-      "source": "Test 2",
+      "name": "Test 2",
       "isActive": false
     },
     {
-      "source": "Test 3",
+      "name": "Test 3",
       "isActive": true,
       "id": "6406"
+    },
+    {
+      "name": "a",
+      "isActive": true,
+      "id": "443d"
+    },
+    {
+      "id": "0793",
+      "name": "a",
+      "isActive": true
+    },
+    {
+      "name": "New",
+      "isActive": true,
+      "id": "ab3c"
+    },
+    {
+      "id": "78ea",
+      "name": "New src",
+      "isActive": true
+    }
+  ],
+  "payment_methods": [
+    {
+      "id": "1",
+      "name": "AllenPay",
+      "type": "Installment",
+      "code": "123456789",
+      "isActive": true
+    },
+    {
+      "id": "2",
+      "name": "Bank Transfer",
+      "type": "Installment",
+      "code": "968574123",
+      "isActive": false
+    },
+    {
+      "id": "3",
+      "name": "Bitcoin",
+      "type": "Cryptocurrency",
+      "code": "BTC-001",
+      "isActive": true
+    },
+    {
+      "id": "4",
+      "name": "Cash",
+      "type": "Physical",
+      "code": "",
+      "isActive": true
+    },
+    {
+      "id": "5",
+      "name": "Credit Card",
+      "type": "Card",
+      "code": "CC-001",
+      "isActive": true
+    },
+    {
+      "id": "6",
+      "name": "Debit Card",
+      "type": "Card",
+      "code": "DC-001",
+      "isActive": true
+    },
+    {
+      "id": "7",
+      "name": "PayPal",
+      "type": "E-Wallet",
+      "code": "PP-2024",
+      "isActive": true
+    },
+    {
+      "id": "8",
+      "name": "Google Pay",
+      "type": "E-Wallet",
+      "code": "GP-2024",
+      "isActive": true
+    },
+    {
+      "id": "9",
+      "name": "Apple Pay",
+      "type": "E-Wallet",
+      "code": "AP-2024",
+      "isActive": true
+    },
+    {
+      "id": "10",
+      "name": "Samsung Pay",
+      "type": "E-Wallet",
+      "code": "SP-2024",
+      "isActive": false
+    },
+    {
+      "id": "11",
+      "name": "Ethereum",
+      "type": "Cryptocurrency",
+      "code": "ETH-002",
+      "isActive": true
+    },
+    {
+      "id": "12",
+      "name": "Litecoin",
+      "type": "Cryptocurrency",
+      "code": "LTC-003",
+      "isActive": false
+    },
+    {
+      "id": "13",
+      "name": "USDT (Tether)",
+      "type": "Cryptocurrency",
+      "code": "USDT-004",
+      "isActive": true
+    },
+    {
+      "id": "14",
+      "name": "Western Union",
+      "type": "Money Transfer",
+      "code": "WU-009",
+      "isActive": true
+    },
+    {
+      "id": "15",
+      "name": "MoneyGram",
+      "type": "Money Transfer",
+      "code": "MG-010",
+      "isActive": true
+    },
+    {
+      "id": "16",
+      "name": "Venmo",
+      "type": "E-Wallet",
+      "code": "VN-011",
+      "isActive": true
+    },
+    {
+      "id": "17",
+      "name": "Zelle",
+      "type": "Bank Transfer",
+      "code": "ZL-012",
+      "isActive": false
+    },
+    {
+      "id": "18",
+      "name": "Stripe",
+      "type": "Online Gateway",
+      "code": "ST-013",
+      "isActive": true
+    },
+    {
+      "id": "19",
+      "name": "Square",
+      "type": "Online Gateway",
+      "code": "SQ-014",
+      "isActive": true
+    },
+    {
+      "id": "20",
+      "name": "AliPay",
+      "type": "E-Wallet",
+      "code": "ALP-015",
+      "isActive": true
+    },
+    {
+      "id": "21",
+      "name": "WeChat Pay",
+      "type": "E-Wallet",
+      "code": "WCP-016",
+      "isActive": true
+    },
+    {
+      "id": "22",
+      "name": "GrabPay",
+      "type": "E-Wallet",
+      "code": "GRB-017",
+      "isActive": false
+    },
+    {
+      "id": "23",
+      "name": "GCash",
+      "type": "E-Wallet",
+      "code": "GC-018",
+      "isActive": true
+    },
+    {
+      "id": "24",
+      "name": "Payoneer",
+      "type": "Online Gateway",
+      "code": "PYN-019",
+      "isActive": true
+    },
+    {
+      "id": "25",
+      "name": "Revolut",
+      "type": "E-Wallet",
+      "code": "RVL-020",
+      "isActive": true
+    },
+    {
+      "name": "Doge Coin",
+      "type": "Cryptocurrency",
+      "code": "░░░░░░░░░▄░░░░░░░░░░░░░░▄░░░░ ░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌░░░ ░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐░░░ ░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░░░ ░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░░░ ░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░░░  ░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌░░ ░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐░░ ░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌░ ░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌░ ▐▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐░ ▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌ ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐░ ░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌░ ░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐░░ ░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌░░ ░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀░░░ ░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀░░░░░ ░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀░░░░░░░░",
+      "isActive": true,
+      "id": "ee72"
     }
   ]
 }

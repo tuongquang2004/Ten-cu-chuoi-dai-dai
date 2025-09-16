@@ -12,5 +12,9 @@ export const API = {
     REF: {
         ROOT: 'http://localhost:9999/referral',
         BY_ID: (id: string) => `http://localhost:9999/referral/${id}`
+    },
+    PAYMENT_METHODS: {
+        ROOT: 'http://localhost:9999/payment_methods',
+        BY_ID: (id: string) => `http://localhost:9999/payment_methods/${id}`
     }
 }

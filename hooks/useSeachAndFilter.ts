@@ -1,11 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { RefSrc } from "@/constants/types"; 
 
-export function useReferralSourceSearchAndFilter(
-    sourcesBackUp: RefSrc[],
-    setSources: React.Dispatch<React.SetStateAction<RefSrc[]>>
+type SearchableFilterable = {
+    name: string;
+    isActive: boolean;
+};
+
+export function useSearchAndFilter<T extends SearchableFilterable>(
+    backup: T[],
+    setSources: React.Dispatch<React.SetStateAction<T[]>>
 ) {
     const [pendingSearch, setPendingSearch] = useState<string>("");
     const [search, setSearch] = useState<string>("");
@@ -16,10 +20,11 @@ export function useReferralSourceSearchAndFilter(
     };
 
     useEffect(() => {
-        let data = [...sourcesBackUp];
+        let data = [...backup];
+
         if (search.length !== 0) {
             data = data.filter((d) =>
-                d.source.toLowerCase().trim().includes(search.toLowerCase().trim())
+                d.name.toLowerCase().trim().includes(search.toLowerCase().trim())
             );
         }
 
@@ -28,7 +33,7 @@ export function useReferralSourceSearchAndFilter(
         }
 
         setSources(data);
-    }, [search, filter, sourcesBackUp, setSources]);
+    }, [search, filter, backup, setSources]);
 
     return { pendingSearch, setPendingSearch, filter, setFilter, handleSearch };
 }

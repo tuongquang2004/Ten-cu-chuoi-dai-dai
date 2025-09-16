@@ -7,7 +7,7 @@ import StatusBadge from "@/constants/customRender";
 export function useReferralSourceTable() {
     const header = createColumns<RefSrc>()([
         {
-            key: "source",
+            key: "name",
             label: "Source",
         },
         {

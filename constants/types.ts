@@ -6,7 +6,7 @@ export type check = {
 
 export type RefSrc = {
     id: string,
-    source: string,
+    name: string,
     isActive: boolean
 }
 
@@ -36,3 +36,11 @@ export type JobNumberRow = {
 };
 
 export type TileItem = { label: string; icon: React.ReactNode; href?: string; onClick?: () => void }
+
+export type PaymentMethod = {
+    id: string,
+    name: string,
+    type: string,
+    code: string,
+    isActive: boolean
+}

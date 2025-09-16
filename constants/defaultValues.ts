@@ -9,5 +9,13 @@ export const defaultForm: FormProps = {
 export const defaultRefSrc = {
     id: "",
     isActive: true,
-    source: "",
+    name: "",
+}
+
+export const defaultPaymentMethod = {
+    id: "",
+    name: "",
+    type: "",
+    code: "",
+    isActive: true
 }
