@@ -471,5 +471,1474 @@
       "name": "Freight Shipping",
       "isActive": false
     }
+  ],
+  "exchange_rates": [
+    {
+      "id": "1",
+      "description": "United Arab Emirates Dirham",
+      "code": "AED",
+      "prefix": "US$",
+      "rate": 2.448316,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": true
+    },
+    {
+      "id": "2",
+      "description": "Afghan Afghani",
+      "code": "AFN",
+      "prefix": "US$",
+      "rate": 45.374975,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": true
+    },
+    {
+      "id": "3",
+      "description": "Albanian Lek",
+      "code": "ALL",
+      "prefix": "US$",
+      "rate": 54.923805,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": true
+    },
+    {
+      "id": "4",
+      "description": "Armenian Dram",
+      "code": "AMD",
+      "prefix": "US$",
+      "rate": 255.400488,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": true
+    },
+    {
+      "id": "5",
+      "description": "Netherlands Antillean Guilder",
+      "code": "ANG",
+      "prefix": "US$",
+      "rate": 1.193325,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": true
+    },
+    {
+      "id": "6",
+      "description": "Angolan Kwanza",
+      "code": "AOA",
+      "prefix": "US$",
+      "rate": 628.39271,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": true
+    },
+    {
+      "id": "7",
+      "description": "Argentine Peso",
+      "code": "ARS",
+      "prefix": "US$",
+      "rate": 974.659926,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": true
+    },
+    {
+      "id": "8",
+      "description": "Australian Dollar",
+      "code": "AUD",
+      "prefix": "US$",
+      "rate": 1,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": true
+    },
+    {
+      "id": "9",
+      "description": "Aruban Florin",
+      "code": "AWG",
+      "prefix": "US$",
+      "rate": 1.193325,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": true
+    },
+    {
+      "id": "10",
+      "description": "Azerbaijani Manat",
+      "code": "AZN",
+      "prefix": "US$",
+      "rate": 1.131695,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": true
+    },
+    {
+      "id": "11",
+      "description": "Bosnia and Herzegovina Convertible Mark",
+      "code": "BAM",
+      "prefix": "US$",
+      "rate": 1.108533,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "12",
+      "description": "Barbados Dollar",
+      "code": "BBD",
+      "prefix": "US$",
+      "rate": 1.333324,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "13",
+      "description": "Bangladeshi Taka",
+      "code": "BDT",
+      "prefix": "US$",
+      "rate": 81.106351,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "14",
+      "description": "Bulgarian Lev",
+      "code": "BGN",
+      "prefix": "US$",
+      "rate": 1.108426,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "15",
+      "description": "Bahraini Dinar",
+      "code": "BHD",
+      "prefix": "US$",
+      "rate": 0.250665,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "16",
+      "description": "Burundian Franc",
+      "code": "BIF",
+      "prefix": "US$",
+      "rate": 1991.666667,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "17",
+      "description": "Bermudian Dollar",
+      "code": "BMD",
+      "prefix": "US$",
+      "rate": 0.666662,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "18",
+      "description": "Brunei Dollar",
+      "code": "BND",
+      "prefix": "US$",
+      "rate": 0.85365,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "19",
+      "description": "Bolivian Boliviano",
+      "code": "BOB",
+      "prefix": "US$",
+      "rate": 4.602436,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "20",
+      "description": "Brazilian Real",
+      "code": "BRL",
+      "prefix": "US$",
+      "rate": 3.551978,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "21",
+      "description": "BSD Currency",
+      "code": "BSD",
+      "prefix": "US$",
+      "rate": 0.666662,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "22",
+      "description": "BTN Currency",
+      "code": "BTN",
+      "prefix": "US$",
+      "rate": 58.790664,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "23",
+      "description": "BWP Currency",
+      "code": "BWP",
+      "prefix": "US$",
+      "rate": 9.206519,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "24",
+      "description": "BYN Currency",
+      "code": "BYN",
+      "prefix": "US$",
+      "rate": 2.167408,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "25",
+      "description": "BZD Currency",
+      "code": "BZD",
+      "prefix": "US$",
+      "rate": 1.333324,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "26",
+      "description": "CAD Currency",
+      "code": "CAD",
+      "prefix": "US$",
+      "rate": 0.919731,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "27",
+      "description": "CDF Currency",
+      "code": "CDF",
+      "prefix": "US$",
+      "rate": 1916.509434,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "28",
+      "description": "CHF Currency",
+      "code": "CHF",
+      "prefix": "US$",
+      "rate": 0.529852,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "29",
+      "description": "CLP Currency",
+      "code": "CLP",
+      "prefix": "US$",
+      "rate": 635.013865,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "30",
+      "description": "CNY Currency",
+      "code": "CNY",
+      "prefix": "US$",
+      "rate": 4.74447,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "31",
+      "description": "COP Currency",
+      "code": "COP",
+      "prefix": "US$",
+      "rate": 2594.241635,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "32",
+      "description": "CRC Currency",
+      "code": "CRC",
+      "prefix": "US$",
+      "rate": 335.274643,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "33",
+      "description": "CUP Currency",
+      "code": "CUP",
+      "prefix": "US$",
+      "rate": 15.999889,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "34",
+      "description": "CVE Currency",
+      "code": "CVE",
+      "prefix": "US$",
+      "rate": 62.496416,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "35",
+      "description": "CZK Currency",
+      "code": "CZK",
+      "prefix": "US$",
+      "rate": 13.77785,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "36",
+      "description": "DJF Currency",
+      "code": "DJF",
+      "prefix": "US$",
+      "rate": 118.479847,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "37",
+      "description": "DKK Currency",
+      "code": "DKK",
+      "prefix": "US$",
+      "rate": 4.230186,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "38",
+      "description": "DOP Currency",
+      "code": "DOP",
+      "prefix": "US$",
+      "rate": 42.153158,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "39",
+      "description": "DZD Currency",
+      "code": "DZD",
+      "prefix": "US$",
+      "rate": 86.356307,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "40",
+      "description": "EGP Currency",
+      "code": "EGP",
+      "prefix": "US$",
+      "rate": 32.071062,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "41",
+      "description": "ERN Currency",
+      "code": "ERN",
+      "prefix": "US$",
+      "rate": 9.999931,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "42",
+      "description": "ETB Currency",
+      "code": "ETB",
+      "prefix": "US$",
+      "rate": 96.052009,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "43",
+      "description": "EUR Currency",
+      "code": "EUR",
+      "prefix": "US$",
+      "rate": 0.566784,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "44",
+      "description": "FJD Currency",
+      "code": "FJD",
+      "prefix": "US$",
+      "rate": 1.4859,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "45",
+      "description": "FKP Currency",
+      "code": "FKP",
+      "prefix": "US$",
+      "rate": 0.490117,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "46",
+      "description": "FOK Currency",
+      "code": "FOK",
+      "prefix": "US$",
+      "rate": 4.230196,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "47",
+      "description": "GBP Currency",
+      "code": "GBP",
+      "prefix": "US$",
+      "rate": 0.490118,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "48",
+      "description": "GEL Currency",
+      "code": "GEL",
+      "prefix": "US$",
+      "rate": 1.800696,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "49",
+      "description": "GGP Currency",
+      "code": "GGP",
+      "prefix": "US$",
+      "rate": 0.490117,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "50",
+      "description": "GHS Currency",
+      "code": "GHS",
+      "prefix": "US$",
+      "rate": 8.396931,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "51",
+      "description": "GIP Currency",
+      "code": "GIP",
+      "prefix": "US$",
+      "rate": 0.490117,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "52",
+      "description": "GMD Currency",
+      "code": "GMD",
+      "prefix": "US$",
+      "rate": 48.830552,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "53",
+      "description": "GNF Currency",
+      "code": "GNF",
+      "prefix": "US$",
+      "rate": 5786.007343,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "54",
+      "description": "GTQ Currency",
+      "code": "GTQ",
+      "prefix": "US$",
+      "rate": 5.101881,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "55",
+      "description": "GYD Currency",
+      "code": "GYD",
+      "prefix": "US$",
+      "rate": 139.430336,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "56",
+      "description": "HKD Currency",
+      "code": "HKD",
+      "prefix": "US$",
+      "rate": 5.185215,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "57",
+      "description": "HNL Currency",
+      "code": "HNL",
+      "prefix": "US$",
+      "rate": 17.441013,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "58",
+      "description": "HRK Currency",
+      "code": "HRK",
+      "prefix": "US$",
+      "rate": 4.270433,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "59",
+      "description": "HTG Currency",
+      "code": "HTG",
+      "prefix": "US$",
+      "rate": 87.226277,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "60",
+      "description": "HUF Currency",
+      "code": "HUF",
+      "prefix": "US$",
+      "rate": 220.821707,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "61",
+      "description": "IDR Currency",
+      "code": "IDR",
+      "prefix": "US$",
+      "rate": 10939.823674,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "62",
+      "description": "ILS Currency",
+      "code": "ILS",
+      "prefix": "US$",
+      "rate": 2.23419,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "63",
+      "description": "IMP Currency",
+      "code": "IMP",
+      "prefix": "US$",
+      "rate": 0.490117,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "64",
+      "description": "INR Currency",
+      "code": "INR",
+      "prefix": "US$",
+      "rate": 58.793027,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "65",
+      "description": "IQD Currency",
+      "code": "IQD",
+      "prefix": "US$",
+      "rate": 871.888412,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "66",
+      "description": "IRR Currency",
+      "code": "IRR",
+      "prefix": "US$",
+      "rate": 28417.256798,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "67",
+      "description": "ISK Currency",
+      "code": "ISK",
+      "prefix": "US$",
+      "rate": 81.137055,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "68",
+      "description": "JEP Currency",
+      "code": "JEP",
+      "prefix": "US$",
+      "rate": 0.490117,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "69",
+      "description": "JMD Currency",
+      "code": "JMD",
+      "prefix": "US$",
+      "rate": 106.825527,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "70",
+      "description": "JOD Currency",
+      "code": "JOD",
+      "prefix": "US$",
+      "rate": 0.472663,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "71",
+      "description": "JPY Currency",
+      "code": "JPY",
+      "prefix": "US$",
+      "rate": 98.223252,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "72",
+      "description": "KES Currency",
+      "code": "KES",
+      "prefix": "US$",
+      "rate": 86.010172,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "73",
+      "description": "KGS Currency",
+      "code": "KGS",
+      "prefix": "US$",
+      "rate": 58.253196,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "74",
+      "description": "KHR Currency",
+      "code": "KHR",
+      "prefix": "US$",
+      "rate": 2673.026316,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "75",
+      "description": "KID Currency",
+      "code": "KID",
+      "prefix": "US$",
+      "rate": 1,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "76",
+      "description": "KMF Currency",
+      "code": "KMF",
+      "prefix": "US$",
+      "rate": 278.839352,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "77",
+      "description": "KRW Currency",
+      "code": "KRW",
+      "prefix": "US$",
+      "rate": 923.851853,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "78",
+      "description": "KWD Currency",
+      "code": "KWD",
+      "prefix": "US$",
+      "rate": 0.202989,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "79",
+      "description": "KYD Currency",
+      "code": "KYD",
+      "prefix": "US$",
+      "rate": 0.555551,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "80",
+      "description": "KZT Currency",
+      "code": "KZT",
+      "prefix": "US$",
+      "rate": 360.290657,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "81",
+      "description": "LAK Currency",
+      "code": "LAK",
+      "prefix": "US$",
+      "rate": 14453.631964,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "82",
+      "description": "LBP Currency",
+      "code": "LBP",
+      "prefix": "US$",
+      "rate": 59666.254031,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "83",
+      "description": "LKR Currency",
+      "code": "LKR",
+      "prefix": "US$",
+      "rate": 200.944936,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "84",
+      "description": "LRD Currency",
+      "code": "LRD",
+      "prefix": "US$",
+      "rate": 118.284422,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "85",
+      "description": "LSL Currency",
+      "code": "LSL",
+      "prefix": "US$",
+      "rate": 11.565512,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "86",
+      "description": "LYD Currency",
+      "code": "LYD",
+      "prefix": "US$",
+      "rate": 3.606554,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "87",
+      "description": "MAD Currency",
+      "code": "MAD",
+      "prefix": "US$",
+      "rate": 5.99761,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "88",
+      "description": "MDL Currency",
+      "code": "MDL",
+      "prefix": "US$",
+      "rate": 11.042675,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "89",
+      "description": "MGA Currency",
+      "code": "MGA",
+      "prefix": "US$",
+      "rate": 2987.5,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "90",
+      "description": "MKD Currency",
+      "code": "MKD",
+      "prefix": "US$",
+      "rate": 34.8489,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "91",
+      "description": "MMK Currency",
+      "code": "MMK",
+      "prefix": "US$",
+      "rate": 1397.96607,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "92",
+      "description": "MNT Currency",
+      "code": "MNT",
+      "prefix": "US$",
+      "rate": 2373.729859,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "93",
+      "description": "MOP Currency",
+      "code": "MOP",
+      "prefix": "US$",
+      "rate": 5.340767,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "94",
+      "description": "MRU Currency",
+      "code": "MRU",
+      "prefix": "US$",
+      "rate": 26.667104,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "95",
+      "description": "MUR Currency",
+      "code": "MUR",
+      "prefix": "US$",
+      "rate": 30.311351,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "96",
+      "description": "MVR Currency",
+      "code": "MVR",
+      "prefix": "US$",
+      "rate": 10.269839,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "97",
+      "description": "MWK Currency",
+      "code": "MWK",
+      "prefix": "US$",
+      "rate": 1160.424538,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "98",
+      "description": "MXN Currency",
+      "code": "MXN",
+      "prefix": "US$",
+      "rate": 12.252463,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "99",
+      "description": "MYR Currency",
+      "code": "MYR",
+      "prefix": "US$",
+      "rate": 2.802191,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "100",
+      "description": "MZN Currency",
+      "code": "MZN",
+      "prefix": "US$",
+      "rate": 42.55856,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "101",
+      "description": "NAD Currency",
+      "code": "NAD",
+      "prefix": "US$",
+      "rate": 11.565512,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "102",
+      "description": "NGN Currency",
+      "code": "NGN",
+      "prefix": "US$",
+      "rate": 1000.352868,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "103",
+      "description": "NIO Currency",
+      "code": "NIO",
+      "prefix": "US$",
+      "rate": 24.495346,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "104",
+      "description": "NOK Currency",
+      "code": "NOK",
+      "prefix": "US$",
+      "rate": 6.554626,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "105",
+      "description": "NPR Currency",
+      "code": "NPR",
+      "prefix": "US$",
+      "rate": 94.065063,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "106",
+      "description": "NZD Currency",
+      "code": "NZD",
+      "prefix": "US$",
+      "rate": 1.117672,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "107",
+      "description": "OMR Currency",
+      "code": "OMR",
+      "prefix": "US$",
+      "rate": 0.25633,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "108",
+      "description": "PAB Currency",
+      "code": "PAB",
+      "prefix": "US$",
+      "rate": 0.666662,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "109",
+      "description": "PEN Currency",
+      "code": "PEN",
+      "prefix": "US$",
+      "rate": 2.3263,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "110",
+      "description": "PGK Currency",
+      "code": "PGK",
+      "prefix": "US$",
+      "rate": 2.79819,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "111",
+      "description": "PHP Currency",
+      "code": "PHP",
+      "prefix": "US$",
+      "rate": 38.110284,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "112",
+      "description": "PKR Currency",
+      "code": "PKR",
+      "prefix": "US$",
+      "rate": 188.912912,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "113",
+      "description": "PLN Currency",
+      "code": "PLN",
+      "prefix": "US$",
+      "rate": 2.408019,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "114",
+      "description": "PYG Currency",
+      "code": "PYG",
+      "prefix": "US$",
+      "rate": 4742.500903,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "115",
+      "description": "QAR Currency",
+      "code": "QAR",
+      "prefix": "US$",
+      "rate": 2.42665,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "116",
+      "description": "RON Currency",
+      "code": "RON",
+      "prefix": "US$",
+      "rate": 2.867644,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "117",
+      "description": "RSD Currency",
+      "code": "RSD",
+      "prefix": "US$",
+      "rate": 66.399328,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "118",
+      "description": "RUB Currency",
+      "code": "RUB",
+      "prefix": "US$",
+      "rate": 55.193592,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "119",
+      "description": "RWF Currency",
+      "code": "RWF",
+      "prefix": "US$",
+      "rate": 968.171191,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "120",
+      "description": "SAR Currency",
+      "code": "SAR",
+      "prefix": "US$",
+      "rate": 2.499983,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "121",
+      "description": "SBD Currency",
+      "code": "SBD",
+      "prefix": "US$",
+      "rate": 5.511791,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "122",
+      "description": "SCR Currency",
+      "code": "SCR",
+      "prefix": "US$",
+      "rate": 10.026519,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "123",
+      "description": "SDG Currency",
+      "code": "SDG",
+      "prefix": "US$",
+      "rate": 297.8739,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "124",
+      "description": "SEK Currency",
+      "code": "SEK",
+      "prefix": "US$",
+      "rate": 6.186146,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "125",
+      "description": "SGD Currency",
+      "code": "SGD",
+      "prefix": "US$",
+      "rate": 0.85365,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "126",
+      "description": "SHP Currency",
+      "code": "SHP",
+      "prefix": "US$",
+      "rate": 0.490117,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "127",
+      "description": "SLE Currency",
+      "code": "SLE",
+      "prefix": "US$",
+      "rate": 15.550674,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "128",
+      "description": "SLL Currency",
+      "code": "SLL",
+      "prefix": "US$",
+      "rate": 15550.35932,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "129",
+      "description": "SOS Currency",
+      "code": "SOS",
+      "prefix": "US$",
+      "rate": 381.144465,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "130",
+      "description": "SRD Currency",
+      "code": "SRD",
+      "prefix": "US$",
+      "rate": 26.172378,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "131",
+      "description": "SSP Currency",
+      "code": "SSP",
+      "prefix": "US$",
+      "rate": 3145.848642,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "132",
+      "description": "STN Currency",
+      "code": "STN",
+      "prefix": "US$",
+      "rate": 13.886203,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "133",
+      "description": "SYP Currency",
+      "code": "SYP",
+      "prefix": "US$",
+      "rate": 8713.482227,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "134",
+      "description": "SZL Currency",
+      "code": "SZL",
+      "prefix": "US$",
+      "rate": 11.565512,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "135",
+      "description": "THB Currency",
+      "code": "THB",
+      "prefix": "US$",
+      "rate": 21.212998,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "136",
+      "description": "TJS Currency",
+      "code": "TJS",
+      "prefix": "US$",
+      "rate": 6.292103,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "137",
+      "description": "TMT Currency",
+      "code": "TMT",
+      "prefix": "US$",
+      "rate": 2.329956,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "138",
+      "description": "TND Currency",
+      "code": "TND",
+      "prefix": "US$",
+      "rate": 1.930716,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "139",
+      "description": "TOP Currency",
+      "code": "TOP",
+      "prefix": "US$",
+      "rate": 1.587528,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "140",
+      "description": "TRY Currency",
+      "code": "TRY",
+      "prefix": "US$",
+      "rate": 27.538939,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "141",
+      "description": "TTD Currency",
+      "code": "TTD",
+      "prefix": "US$",
+      "rate": 4.517288,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "142",
+      "description": "TVD Currency",
+      "code": "TVD",
+      "prefix": "US$",
+      "rate": 1,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "143",
+      "description": "TWD Currency",
+      "code": "TWD",
+      "prefix": "US$",
+      "rate": 20.124261,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "144",
+      "description": "TZS Currency",
+      "code": "TZS",
+      "prefix": "US$",
+      "rate": 1642.300349,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "145",
+      "description": "UAH Currency",
+      "code": "UAH",
+      "prefix": "US$",
+      "rate": 27.46637,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "146",
+      "description": "UGX Currency",
+      "code": "UGX",
+      "prefix": "US$",
+      "rate": 2334.115443,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "147",
+      "description": "USD Currency",
+      "code": "USD",
+      "prefix": "US$",
+      "rate": 0.666681,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "148",
+      "description": "UYU Currency",
+      "code": "UYU",
+      "prefix": "US$",
+      "rate": 26.680517,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "149",
+      "description": "UZS Currency",
+      "code": "UZS",
+      "prefix": "US$",
+      "rate": 8181.033445,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "150",
+      "description": "VES Currency",
+      "code": "VES",
+      "prefix": "US$",
+      "rate": 106.964631,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "151",
+      "description": "VND Currency",
+      "code": "VND",
+      "prefix": "US$",
+      "rate": 17496.777783,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "152",
+      "description": "VUV Currency",
+      "code": "VUV",
+      "prefix": "US$",
+      "rate": 78.328741,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "153",
+      "description": "WST Currency",
+      "code": "WST",
+      "prefix": "US$",
+      "rate": 1.815896,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "154",
+      "description": "XAF Currency",
+      "code": "XAF",
+      "prefix": "US$",
+      "rate": 371.785803,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "155",
+      "description": "XCD Currency",
+      "code": "XCD",
+      "prefix": "US$",
+      "rate": 1.799988,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "156",
+      "description": "XCG Currency",
+      "code": "XCG",
+      "prefix": "US$",
+      "rate": 1.193325,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "157",
+      "description": "XDR Currency",
+      "code": "XDR",
+      "prefix": "US$",
+      "rate": 0.484676,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "158",
+      "description": "XOF Currency",
+      "code": "XOF",
+      "prefix": "US$",
+      "rate": 371.785803,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "159",
+      "description": "XPF Currency",
+      "code": "XPF",
+      "prefix": "US$",
+      "rate": 67.635445,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "160",
+      "description": "YER Currency",
+      "code": "YER",
+      "prefix": "US$",
+      "rate": 159.442062,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "161",
+      "description": "ZAR Currency",
+      "code": "ZAR",
+      "prefix": "US$",
+      "rate": 11.56966,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "162",
+      "description": "ZMW Currency",
+      "code": "ZMW",
+      "prefix": "US$",
+      "rate": 15.842126,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    },
+    {
+      "id": "163",
+      "description": "ZWL Currency",
+      "code": "ZWL",
+      "prefix": "US$",
+      "rate": 17.821561,
+      "last_updated": "2025-07-18T10:42:00Z",
+      "status": false
+    }
   ]
 }

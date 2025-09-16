@@ -19,11 +19,12 @@ import { useSearchAndFilter } from "@/hooks/useSeachAndFilter";
 import { useShippingMethodTable } from "./hooks/useShippingMethodTable";
 import { useShippingMethodForm } from "./hooks/useShippingMethodForm";
 import { useShippingMethodActions } from "./hooks/useShippingMethodActions";
+import axios from "axios";
 
 export default function ShippingMethods() {
     const { showConfirmModal, setShowConfirmModal, showImportModal, setShowImportModal } = useModal();
     const { items, backup, setItems } = useShippingMethodData();
-    const { setPendingSearch, setFilter, handleSearch } = useSearchAndFilter(backup, setItems)
+    const { setPendingSearch, setFilter, handleSearch } = useSearchAndFilter(backup, setItems, "name")
     const { header } = useShippingMethodTable();
     const {
         name,
@@ -59,6 +60,12 @@ export default function ShippingMethods() {
         resetForm();
     }
 
+    const getRate = () => {
+        axios.get('https://open.er-api.com/v6/latest/AUD')
+            .then(res => console.log(res.data)
+            )
+    }
+
     return (
         <div>
             {showConfirmModal && (
@@ -80,6 +87,7 @@ export default function ShippingMethods() {
                 />
             )}
             <Layout>
+                <button onClick={() => getRate()}>Test get exchange rate</button>
                 <div className="flex flex-1 h-full">
                     <div className="px-12 p-6 flex flex-col gap-3 w-full">
                         <Breadcrumb current="Shipping Methods"></Breadcrumb>

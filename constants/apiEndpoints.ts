@@ -20,5 +20,9 @@ export const API = {
     SHIPPING_METHODS: {
         ROOT: 'http://localhost:9999/shipping_methods',
         BY_ID: (id: string) => `http://localhost:9999/shipping_methods/${id}`
+    },
+    EXCHANGE_RATES: {
+        ROOT: 'http://localhost:9999/exchange_rates',
+        BY_ID: (id: string) => `http://localhost:9999/exchange_rates/${id}`
     }
 }

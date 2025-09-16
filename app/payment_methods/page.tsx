@@ -23,7 +23,7 @@ import { useModal } from "@/hooks/useModal";
 export default function ReferralSources() {
     const { showConfirmModal, setShowConfirmModal, showImportModal, setShowImportModal } = useModal();
     const { items, backup, setItems } = usePaymentMethodData();
-    const { setPendingSearch, setFilter, handleSearch } = useSearchAndFilter(backup, setItems)
+    const { setPendingSearch, setFilter, handleSearch } = useSearchAndFilter(backup, setItems, "name")
     const { header } = usePaymentMethodTable();
     const {
         name,
@@ -90,13 +90,13 @@ export default function ReferralSources() {
                         <PageHeader title="Manage Payment Methods" subtitle="Create or Edit Payment Methods" />
                         <div className="flex justify-between gap-3 flex-col xl:flex-row flex-col xl:flex-row">
                             <div className="flex items-center flex-1">
-                                <SearchBar 
-                                onChange={setPendingSearch} 
-                                buttonFunction={handleSearch} 
-                                placeholder="Search Payment Methods" 
-                                iconAlign="left" 
-                                buttonAlign="right" 
-                                className="border border-[#98A2B3] h-full placeholder:text-[14px] w-full max-w-[417px]" />
+                                <SearchBar
+                                    onChange={setPendingSearch}
+                                    buttonFunction={handleSearch}
+                                    placeholder="Search Payment Methods"
+                                    iconAlign="left"
+                                    buttonAlign="right"
+                                    className="border border-[#98A2B3] h-full placeholder:text-[14px] w-full max-w-[417px]" />
                             </div>
                             <div className="flex justify-center xl:justify-end gap-3 w-fit justify-self-end">
                                 <CommonButton onClick={() => setShowImportModal(true)} variant="outline">Import</CommonButton>

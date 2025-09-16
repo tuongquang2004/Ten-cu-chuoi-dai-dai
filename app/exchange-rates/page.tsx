@@ -10,74 +10,18 @@ import RightBar from "@/components/RightBar";
 import DataForm from "@/components/DataForm";
 import CommonInput from "@/components/CommonInput";
 import CommonTable from "@/components/CommonTable";
-import ConfirmationModal from "@/components/ConfirmationModal";
 
-import { useReferralSourceData } from "./hooks/useReferralSourceData";
-import { useReferralSourceTable } from "./hooks/useReferralSourceTable";
-import { useReferralSourceForm } from "./hooks/useReferralSourceForm";
-import { useReferralSourceActions } from "./hooks/useReferralSourceActions";
 import { useSearchAndFilter } from "@/hooks/useSeachAndFilter";
-import { useModal } from "@/hooks/useModal";
-import ImportModal from "@/components/ImportModal";
+import { useExchangeRateData } from "./hooks/useExchangeRateData";
+import { useExchangeRateTable } from "./hooks/useExchangeRateTable";
 
-export default function ReferralSources() {
-    const { showConfirmModal, setShowConfirmModal, showImportModal, setShowImportModal } = useModal();
-    const { items, backup, setItems } = useReferralSourceData();
-    const { header } = useReferralSourceTable();
-    const {
-        name,
-        setName,
-        isChecked,
-        isShow,
-        setIsShow,
-        selected,
-        form,
-        showAddForm,
-        showEditForm,
-        resetForm, } = useReferralSourceForm();
-    const { addItem, editItem } = useReferralSourceActions(name, isChecked, selected, setItems, resetForm);
-    const { setPendingSearch, setFilter, handleSearch } = useSearchAndFilter(backup, setItems, "name");
-
-    const hasNewInput = () => {
-        return form.action === "add"
-            ? !!name
-            : selected.name !== name || isChecked;
-    };
-
-    const handleCancel = () => {
-        if (hasNewInput()) {
-            setShowConfirmModal(true);
-        } else {
-            cancelAction();
-        }
-    };
-
-    const cancelAction = () => {
-        setShowConfirmModal(false)
-        setIsShow(false);
-        resetForm();
-    }
+export default function ExchangeRates() {
+    const { items, backup, setItems } = useExchangeRateData();
+    const { header } = useExchangeRateTable();
+    const { setPendingSearch, setFilter, handleSearch } = useSearchAndFilter(backup, setItems, "code");
 
     return (
         <div>
-            {showConfirmModal && (
-                <ConfirmationModal
-                    label="You have unsaved changes"
-                    content="Are you sure you want to cancel?"
-                    acceptLabel="Yes"
-                    onAccept={cancelAction}
-                    cancelLabel="No"
-                    onCancel={() => setShowConfirmModal(false)}
-                />
-            )}
-            {showImportModal && (
-                <ImportModal
-                    label="Import Referral Sources"
-                    buttonLabel="Import Referral Sources"
-                    onClose={() => setShowImportModal(false)}
-                    templateFile="referral_source_template.txt"
-                />
-            )}
             <Layout>
                 <div className="flex flex-1 h-full">
                     <div className="px-12 p-6 flex flex-col gap-3 w-full">
