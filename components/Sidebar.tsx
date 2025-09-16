@@ -55,8 +55,8 @@ export default function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className={`${inter.className} hidden md:block w-[240px] shrink-0 bg-[#F2F4F7] border-r border-[#D0D5DD] min-h-screen`}>
-      <ul className="space-y-6 px-3 py-8 text-sm">
+    <aside className={`${inter.className} hidden md:block w-[240px] shrink-0 bg-[#F2F4F7] border-r border-[#D0D5DD] min-h-full`}>
+      <ul className="space-y-2 px-3 py-8 text-sm">
         {items.map(i => {
           const active = i.href !== '#' && pathname === i.href
           return (

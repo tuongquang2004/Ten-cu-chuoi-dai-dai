@@ -1,37 +1,54 @@
 "use client";
 
 import { useState } from "react";
-import { FormProps, RefSrc } from "@/constants/types";
-import { defaultForm, defaultRefSrc } from "@/constants/defaultValues";
+import { FormProps } from "@/constants/types";
+import { defaultForm } from "@/constants/defaultValues";
 import { inter } from "@/constants/fonts";
 import axios from "axios";
-import { API } from "@/constants/apiEndpoints";
 
-export function useReferralSourceForm() {
+type BaseEntity = {
+    isActive: boolean;
+};
+
+type UseFormConfig<T extends BaseEntity, K extends keyof T> = {
+    defaultEntity: T;
+    apiById: (id: string) => string;
+    labels: {
+        add: { form: string; button: string };
+        edit: { form: string; button: string };
+    };
+    nameKey: K;
+};
+
+export function useCommonForm<T extends BaseEntity, K extends keyof T & string>(
+    config: UseFormConfig<T, K>
+) {
+    const { defaultEntity, apiById, labels, nameKey } = config;
+
     const [name, setName] = useState<string>("");
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const [isShow, setIsShow] = useState<boolean>(false);
-    const [selected, setSelected] = useState<RefSrc>(defaultRefSrc);
+    const [selected, setSelected] = useState<T>(defaultEntity);
     const [form, setForm] = useState<FormProps>(defaultForm);
 
-    const getRefSrcById = async (id: string) => {
+    const getById = async (id: string): Promise<T | null> => {
         try {
-            const res = await axios.get(API.REF.BY_ID(id));
+            const res = await axios.get(apiById(id));
             if (res.data) {
-                setSelected(res.data);
-                return res.data;
+                setSelected(res.data as T);
+                return res.data as T;
             }
         } catch (error) {
-            console.error("Failed to fetch referral source by id:", error);
-            return null;
+            console.error("Failed to fetch entity by id:", error);
         }
+        return null;
     };
 
     const showAddForm = () => {
         setIsShow(true);
         setForm({
-            label: "Add Referral Source",
-            buttonLabel: "Add Referral Source",
+            label: labels.add.form,
+            buttonLabel: labels.add.button,
             action: "add",
         });
         setName("");
@@ -39,12 +56,12 @@ export function useReferralSourceForm() {
     };
 
     const showEditForm = async (id: string) => {
-        const res = await getRefSrcById(id);
+        const res = await getById(id);
         if (res) {
             setIsShow(true);
             setForm({
-                label: "Edit Referral Source",
-                buttonLabel: "Save Changes",
+                label: labels.edit.form,
+                buttonLabel: labels.edit.button,
                 statusCheckbox: {
                     className: `${inter.className} font-[700] text-[14px]`,
                     current: res.isActive,
@@ -52,7 +69,7 @@ export function useReferralSourceForm() {
                 },
                 action: "edit",
             });
-            setName(res.name);
+            setName(String(res[nameKey]));
             setIsChecked(false);
         }
     };
@@ -61,7 +78,7 @@ export function useReferralSourceForm() {
         setName("");
         setIsChecked(false);
         setIsShow(false);
-        setSelected(defaultRefSrc);
+        setSelected(defaultEntity);
         setForm(defaultForm);
     };
 
@@ -76,6 +93,6 @@ export function useReferralSourceForm() {
         form,
         showAddForm,
         showEditForm,
-        resetForm,
+        resetForm
     };
 }

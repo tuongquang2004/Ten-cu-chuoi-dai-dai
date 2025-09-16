@@ -12,6 +12,7 @@ export const VALIDATION_ERROR = {
   MISSING_REFERRAL_NAME: 'Please enter a referral name',
   INVALID_EMAIL: 'The email is not valid',
   MISMATCH_PASSWORDS: 'This password does not match the one you entered above',
+  MISSING_REQUIRED_FIELDS:'Please enter all required fields'
 }
 
 export const UNKNOWN_ERROR = 'An unknown error occurred'

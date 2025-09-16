@@ -1,28 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import { FormProps, RefSrc } from "@/constants/types";
-import { defaultForm, defaultRefSrc } from "@/constants/defaultValues";
+import { FormProps, PaymentMethod } from "@/constants/types";
+import { defaultForm, defaultPaymentMethod } from "@/constants/defaultValues";
 import { inter } from "@/constants/fonts";
 import axios from "axios";
 import { API } from "@/constants/apiEndpoints";
 
-export function useReferralSourceForm() {
+export function usePaymentMethodForm() {
     const [name, setName] = useState<string>("");
+    const [type, setType] = useState<string>("");
+    const [code, setCode] = useState<string>("");
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const [isShow, setIsShow] = useState<boolean>(false);
-    const [selected, setSelected] = useState<RefSrc>(defaultRefSrc);
+    const [selected, setSelected] = useState<PaymentMethod>(defaultPaymentMethod);
     const [form, setForm] = useState<FormProps>(defaultForm);
 
-    const getRefSrcById = async (id: string) => {
+    const getMethodById = async (id: string) => {
         try {
-            const res = await axios.get(API.REF.BY_ID(id));
+            const res = await axios.get(API.PAYMENT_METHODS.BY_ID(id));
             if (res.data) {
                 setSelected(res.data);
                 return res.data;
             }
         } catch (error) {
-            console.error("Failed to fetch referral source by id:", error);
+            console.error("Failed to fetch payment method by id:", error);
             return null;
         }
     };
@@ -30,20 +32,22 @@ export function useReferralSourceForm() {
     const showAddForm = () => {
         setIsShow(true);
         setForm({
-            label: "Add Referral Source",
-            buttonLabel: "Add Referral Source",
+            label: "Add New Payment Method",
+            buttonLabel: "Add Payment Method",
             action: "add",
         });
         setName("");
+        setType("");
+        setCode("");
         setIsChecked(false);
     };
 
     const showEditForm = async (id: string) => {
-        const res = await getRefSrcById(id);
+        const res = await getMethodById(id);
         if (res) {
             setIsShow(true);
             setForm({
-                label: "Edit Referral Source",
+                label: "Edit Payment Method",
                 buttonLabel: "Save Changes",
                 statusCheckbox: {
                     className: `${inter.className} font-[700] text-[14px]`,
@@ -53,26 +57,35 @@ export function useReferralSourceForm() {
                 action: "edit",
             });
             setName(res.name);
+            setType(res.type);
+            setCode(res.code);
             setIsChecked(false);
         }
     };
 
     const resetForm = () => {
         setName("");
+        setType("");
+        setCode("");
         setIsChecked(false);
         setIsShow(false);
-        setSelected(defaultRefSrc);
+        setSelected(defaultPaymentMethod);
         setForm(defaultForm);
     };
 
     return {
         name,
         setName,
+        type,
+        setType,
+        code,
+        setCode,
         isChecked,
         setIsChecked,
         isShow,
         setIsShow,
         selected,
+        setSelected,
         form,
         showAddForm,
         showEditForm,
