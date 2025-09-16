@@ -2,6 +2,7 @@
 
 import { API_ERROR, UNKNOWN_ERROR } from "@/constants/errorMessages";
 import { ROUTES } from "@/constants/routes";
+import { toastMessages } from "@/constants/toastMessages";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 
@@ -11,13 +12,11 @@ export function useLogin() {
     const handleLogin = async (email: string, password: string) => {
         try {
             await axios.post(ROUTES.LOGIN, { email, password });
-            alert(ROUTES.LOGIN);
+            alert(toastMessages.LOGIN);
             router.push(ROUTES.ROOT);
         } catch (err) {
             const error = err as AxiosError<{ error: string }>;
             const status = error.response?.status;
-            console.log(`${email} - ${password}`);
-
 
             if (status && API_ERROR[status]) {
                 alert(API_ERROR[status]);

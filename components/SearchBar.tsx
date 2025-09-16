@@ -1,7 +1,7 @@
 'use client'
 
 import CommonButton from "./CommonButton";
-import { inter } from "@/lib/data";
+import { inter } from "@/constants/fonts";
 import { Search } from '@/public/assets/icons';
 import { cn } from "@/app/cn";
 

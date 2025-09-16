@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API } from "@/constants/apiEndpoints";
-import { RefSrc } from "@/lib/data";
+import { RefSrc } from "@/constants/types"; 
 
 export function useReferralSourceData() {
     const [sourcesBackUp, setSourcesBackUp] = useState<RefSrc[]>([]);

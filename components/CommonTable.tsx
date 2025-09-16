@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react"
-import { inter } from "@/lib/data";
+import { inter } from "@/constants/fonts";
 import Pagination from "./Pagination";
 import { cn } from "@/app/cn";
 
@@ -27,7 +27,6 @@ export default function CommonTable<T extends { id: string }>({
 }: Readonly<TableProps<T>>) {
     const [selectedRow, setSelectedRow] = useState<string>("");
 
-    // Pagination state
     const [page, setPage] = useState(1);
     const [perPage, setPerPage] = useState(10);
 
@@ -91,7 +90,6 @@ export default function CommonTable<T extends { id: string }>({
                 </table>
             </div>
 
-            {/* Pagination footer */}
             {pagination && (
                 <Pagination
                     page={page}
@@ -100,7 +98,7 @@ export default function CommonTable<T extends { id: string }>({
                     onPageChange={(p) => setPage(p)}
                     onPerPageChange={(n) => {
                         setPerPage(n);
-                        setPage(1); // reset to first page
+                        setPage(1);
                     }}
                 />
             )}

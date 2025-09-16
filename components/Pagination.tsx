@@ -1,12 +1,13 @@
 'use client'
 
 import { LeftArrow2, RightArrow2 } from '@/public/assets/icons'
+import { useEffect } from 'react';
 
 type PaginationProps = {
-    page: number;                   // trang hiện tại (1-based)
-    pageCount: number;              // tổng số trang
-    perPage: number;                // số dòng mỗi trang
-    perPageOptions?: number[];      // các lựa chọn per page
+    page: number;
+    pageCount: number;
+    perPage: number;
+    perPageOptions?: number[];
     onPageChange: (p: number) => void;
     onPerPageChange: (n: number) => void;
     className?: string;
@@ -20,16 +21,20 @@ export default function Pagination({
     onPageChange,
     onPerPageChange,
     className = '',
-}: PaginationProps) {
+}: Readonly<PaginationProps>) {
     const prevDisabled = page <= 1
     const nextDisabled = page >= pageCount
 
+    useEffect(() => {
+        if (page > pageCount && pageCount > 0) {
+            onPageChange(pageCount);
+        }
+    }, [page, pageCount, onPageChange]);
 
     const pages = Array.from({ length: pageCount }, (_, i) => i + 1)
 
     return (
         <div className={`flex items-center px-2 py-3 border-t border-[#E4E7EC] bg-white rounded-b-lg ${className}`}>
-            {/* Prev + page numbers + Next */}
             <div className="flex items-center gap-2">
                 <button
                     onClick={() => !prevDisabled && onPageChange(page - 1)}
@@ -65,7 +70,6 @@ export default function Pagination({
                 </button>
             </div>
 
-            {/* Per Pages */}
             <div className="flex items-center gap-2 border-l border-[#E4E7EC] pl-3">
                 <div className="relative">
                     <select
@@ -80,7 +84,6 @@ export default function Pagination({
                             </option>
                         ))}
                     </select>
-                    {/* caret */}
                     <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#344054]">▾</span>
                 </div>
             </div>

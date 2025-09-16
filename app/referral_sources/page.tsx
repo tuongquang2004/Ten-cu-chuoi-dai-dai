@@ -11,16 +11,15 @@ import DataForm from "@/components/DataForm";
 import CommonInput from "@/components/CommonInput";
 import CommonTable from "@/components/CommonTable";
 import { useState } from "react";
-import ConfirmationModal from "@/components/ConfirmationModel";
+import ConfirmationModal from "@/components/ConfirmationModal";
 
-import { useReferralSourceData } from "./(hooks)/useReferralSourceData";
-import { useReferralSourceTable } from "./(hooks)/useReferralSourceTable";
-import { useReferralSourceForm } from "./(hooks)/useReferralSourceForm";
-import { useReferralSourceActions } from "./(hooks)/useReferralSourceActions";
-import { useReferralSourceSearchAndFilter } from "./(hooks)/useReferralSourceSearchAndFilter";
-import { usePagination } from "./(hooks)/usePagination";
-import { RefSrc } from "@/lib/data";
-import Pagination from "@/components/Pagination";
+import { useReferralSourceData } from "./hooks/useReferralSourceData";
+import { useReferralSourceTable } from "./hooks/useReferralSourceTable";
+import { useReferralSourceForm } from "./hooks/useReferralSourceForm";
+import { useReferralSourceActions } from "./hooks/useReferralSourceActions";
+import { useReferralSourceSearchAndFilter } from "./hooks/useReferralSourceSearchAndFilter";
+import { usePagination } from "../../hooks/usePagination";
+import { RefSrc } from "@/constants/types";
 
 export default function ReferralSources() {
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -30,7 +29,7 @@ export default function ReferralSources() {
     const { addSource, editSource } = useReferralSourceActions(refName, isChecked, selectedSource, setSources, resetForm);
     const { setPendingSearch, setFilter, handleSearch } = useReferralSourceSearchAndFilter(sourcesBackUp, setSources);
 
-    const { page, setPage, perPage, onPerPageChange, pageCount, pageRows } = usePagination<RefSrc>(sources, 25);
+    const { pageRows } = usePagination<RefSrc>(sources, 25);
 
     const hasNewInput = () => {
         return form.action === "add"
@@ -42,15 +41,27 @@ export default function ReferralSources() {
         if (hasNewInput()) {
             setShowModal(true);
         } else {
-            setIsShow(false);
-            resetForm();
+            cancelAction();
         }
     };
+
+    const cancelAction = () => {
+        setShowModal(false)
+        setIsShow(false);
+        resetForm();
+    }
 
     return (
         <div>
             {showModal && (
-                <ConfirmationModal label="You have unsaved changes" content="Are you sure you want to cancel?" acceptLabel="Yes" onAccept={handleCancel} cancelLabel="No" onCancel={() => setShowModal(false)} />
+                <ConfirmationModal
+                    label="You have unsaved changes"
+                    content="Are you sure you want to cancel?"
+                    acceptLabel="Yes"
+                    onAccept={cancelAction}
+                    cancelLabel="No"
+                    onCancel={() => setShowModal(false)}
+                />
             )}
             <Layout>
                 <div className="flex flex-1 h-full">
@@ -64,7 +75,7 @@ export default function ReferralSources() {
                             <div className="flex justify-center xl:justify-end gap-3 w-fit justify-self-end">
                                 <CommonButton variant="outline">Import</CommonButton>
                                 <CommonButton variant="outline">Export</CommonButton>
-                                <CommonButton onClick={showAddForm} variant="outline" className="bg-[#E87200] text-white border-none">Add Referal Source</CommonButton>
+                                <CommonButton onClick={showAddForm} variant="outline" className="bg-[#E87200] text-white border-none">Add Referral Source</CommonButton>
                             </div>
                         </div>
                         <Filter data={sourcesBackUp} onChange={setFilter} label="Status" showCount={true} showReset={true} items={[{ key: 'active', label: 'Active', value: 'true' }, { key: 'inactive', label: 'Inactive', value: 'false' }]} />

@@ -1,4 +1,4 @@
-import { inter, Madani } from "@/lib/data"
+import { inter, Madani } from "@/constants/fonts"
 import CommonButton from "./CommonButton"
 import { CloseButton } from "@/public/assets/icons"
 
@@ -11,7 +11,7 @@ type ConfirmationModalProps = {
     onAccept?: () => void
 }
 
-export default function ConfirmationModal({ label, content, acceptLabel = 'Accept', cancelLabel = 'Cancel', onAccept, onCancel }: ConfirmationModalProps) {
+export default function ConfirmationModal({ label, content, acceptLabel = 'Accept', cancelLabel = 'Cancel', onAccept, onCancel }: Readonly<ConfirmationModalProps>) {
     return (
         <div className="fixed w-screen h-screen bg-neutral-900/40 z-10">
             <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg min-w-[488px] shadow-lg">

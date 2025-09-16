@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import {RightArrow} from '@/public/assets/icons';
+import { RightArrow } from '@/public/assets/icons';
 
 type Crumb = { label: string; href: string };
 
@@ -15,7 +15,7 @@ export default function Breadcrumb({
     { label: "Settings", href: "" },
     { label: "Manage Lists", href: "/" },
   ],
-}: BreadcrumbProps) {
+}: Readonly<BreadcrumbProps>) {
   return (
     <nav aria-label="Breadcrumb" className="flex gap-2">
       {base.map((c, idx) => (

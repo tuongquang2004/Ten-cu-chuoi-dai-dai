@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { defaultForm, defaultRefSrc, FormProps, RefSrc, inter } from "@/lib/data";
+import { FormProps, RefSrc } from "@/constants/types";
+import { defaultForm, defaultRefSrc } from "@/constants/defaultValues";
+import { inter } from "@/constants/fonts";
 import axios from "axios";
 import { API } from "@/constants/apiEndpoints";
 
@@ -52,8 +54,6 @@ export function useReferralSourceForm() {
             });
             setRefName(res.source);
             setIsChecked(false);
-            console.log('new');
-            
         }
     };
 

@@ -1,5 +1,5 @@
-import { check } from "@/lib/data";
-import {Check, Cross} from '@/public/assets/icons';
+import { check } from '@/constants/types';
+import { Check, Cross } from '@/public/assets/icons';
 import { cn } from "@/app/cn";
 
 type PasswordChecksProps = {

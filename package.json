@@ -7,7 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "json-server": "npx json-server --watch data/ref_src.json --port 9999"
+    "json-server": "npx json-server --watch data/db.json --port 9999"
   },
   "dependencies": {
     "axios": "^1.11.0",

@@ -15,9 +15,9 @@ export function useRegister() {
                 name: name,
                 password: password
             })
-            alert(toastMessages.register);
+            alert(toastMessages.REGISTER);
             router.push(ROUTES.LOGIN);
-            alert(toastMessages.afterRegister);
+            alert(toastMessages.REDIRECT_AFTER_REGISTER);
         } catch (err) {
             const error = err as AxiosError<{ error: string }>;
             const status = error.response?.status;
