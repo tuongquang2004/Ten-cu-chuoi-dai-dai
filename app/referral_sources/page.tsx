@@ -83,15 +83,15 @@ export default function ReferralSources() {
                     <div className="px-12 p-6 flex flex-col gap-3 w-full">
                         <Breadcrumb current="Referral Sources"></Breadcrumb>
                         <PageHeader title="Manage Referral Sources" subtitle="Create or Edit Referral sources entries" />
-                        <div className="flex justify-between gap-3">
-                            <div className="flex items-center">
+                        <div className="flex justify-between gap-3 flex-col xl:flex-row">
+                            <div className="flex items-center flex-1">
                                 <SearchBar
                                     onChange={setPendingSearch}
                                     buttonFunction={handleSearch}
                                     placeholder="Search Referral Sources"
                                     iconAlign="left"
                                     buttonAlign="right"
-                                    className="border border-[#98A2B3] h-full placeholder:text-[14px] min-w-[417px]" />
+                                    className="border border-[#98A2B3] h-full placeholder:text-[14px] w-full max-w-[417px]" />
                             </div>
                             <div className="flex justify-center xl:justify-end gap-3 w-fit justify-self-end">
                                 <CommonButton variant="outline" onClick={() => setShowImportModal(true)}>Import</CommonButton>

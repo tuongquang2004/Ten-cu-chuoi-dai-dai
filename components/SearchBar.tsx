@@ -34,26 +34,24 @@ export default function SearchBar({ placeholder, variant = 'default', iconAlign,
     const base = `rounded w-full flex-1 ${(iconAlign && iconAlign === 'left') ? 'pl-8 pr-2' : 'pl-2 pr-8'}`
 
     return (
-        <div className="flex justify-center gap-2 w-full">
+        <div className="relative flex-1 flex items-center gap-2">
             {buttonAlign && buttonAlign === 'left' && (
                 <CommonButton onClick={buttonFunction} variant="square" className="text-white cursor-pointer"><Search /></CommonButton>
             )}
-            <div className="relative flex-1">
-                <input
-                    onKeyDown={(e) => {
-                        if (e.key === "Enter" && buttonFunction) {
-                            e.preventDefault();
-                            buttonFunction();
-                        }
-                    }}
-                    onChange={e => onChange(e.target.value)}
-                    placeholder={placeholder}
-                    className={cn(base, variants[variant], sizes[size], className, iconAlign === 'left' ? 'pl-9 pr-3' : 'pl-3 pr-9')} />
+            <input
+                onKeyDown={(e) => {
+                    if (e.key === "Enter" && buttonFunction) {
+                        e.preventDefault();
+                        buttonFunction();
+                    }
+                }}
+                onChange={e => onChange(e.target.value)}
+                placeholder={placeholder}
+                className={cn(base, variants[variant], sizes[size], className, iconAlign === 'left' ? 'pl-9 pr-3' : 'pl-3 pr-9')} />
 
-                {iconAlign && (
-                    <div className={`absolute top-1/2 -translate-y-1/2 ${iconAlign === 'left' ? 'left-2' : 'right-2'}`}><Search /></div>
-                )}
-            </div>
+            {iconAlign && (
+                <div className={`absolute top-1/2 -translate-y-1/2 ${iconAlign === 'left' ? 'left-2' : 'right-2'}`}><Search /></div>
+            )}
             {buttonAlign && buttonAlign === 'right' && (
                 <CommonButton onClick={buttonFunction} variant="square" className="text-white cursor-pointer"><Search /></CommonButton>
             )}

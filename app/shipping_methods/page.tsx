@@ -84,15 +84,15 @@ export default function ShippingMethods() {
                     <div className="px-12 p-6 flex flex-col gap-3 w-full">
                         <Breadcrumb current="Shipping Methods"></Breadcrumb>
                         <PageHeader title="Manage Payment Methods" subtitle="Create or Edit Shipping Methods" />
-                        <div className="flex justify-between gap-3 w-full">
-                            <div className="flex items-center">
+                        <div className="flex justify-between items-center gap-3 w-full">
+                            <div className="flex items-center flex-1">
                                 <SearchBar
                                     onChange={setPendingSearch}
                                     buttonFunction={handleSearch}
                                     placeholder="Search Shipping Methods"
                                     iconAlign="left"
                                     buttonAlign="right"
-                                    className="border border-[#98A2B3] h-full placeholder:text-[14px] min-w-[417px]" />
+                                    className="border border-[#98A2B3] h-full placeholder:text-[14px] w-full max-w-[417px]" />
                             </div>
                             <div className="flex justify-center xl:justify-end gap-3 w-fit">
                                 <CommonButton onClick={() => setShowImportModal(true)} variant="outline">Import</CommonButton>
