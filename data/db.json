@@ -419,5 +419,57 @@
       "isActive": true,
       "id": "ee72"
     }
+  ],
+  "shipping_methods": [
+    {
+      "name": "Hamilton",
+      "isActive": true,
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "name": "Standard Shipping",
+      "isActive": true
+    },
+    {
+      "id": "3",
+      "name": "Express Shipping",
+      "isActive": true
+    },
+    {
+      "id": "4",
+      "name": "Overnight Delivery",
+      "isActive": true
+    },
+    {
+      "id": "5",
+      "name": "International Economy",
+      "isActive": true
+    },
+    {
+      "id": "6",
+      "name": "International Priority",
+      "isActive": true
+    },
+    {
+      "id": "7",
+      "name": "Drone Delivery",
+      "isActive": false
+    },
+    {
+      "id": "8",
+      "name": "Same-Day Delivery",
+      "isActive": true
+    },
+    {
+      "id": "9",
+      "name": "Curbside Pickup",
+      "isActive": true
+    },
+    {
+      "id": "10",
+      "name": "Freight Shipping",
+      "isActive": false
+    }
   ]
 }

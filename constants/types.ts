@@ -49,3 +49,9 @@ export type PaymentMethod = {
   code: string;
   isActive: boolean;
 };
+
+export type ShippingMethod = {
+  id: string;
+  name: string;
+  isActive: boolean;
+};

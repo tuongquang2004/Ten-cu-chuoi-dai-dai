@@ -5,6 +5,18 @@ export const API_ERROR: Record<number, string> = {
 };
 
 export const VALIDATION_ERROR = {
+<<<<<<< HEAD
+  MISSING_EMAIL: 'Please enter your email',
+  MISSING_NAME: 'Please enter your name',
+  MISSING_PASSWORD: 'Please enter your password',
+  MISSING_CONFIRM_PASSWORD: 'Please confirm your password',
+  MISSING_REFERRAL_NAME: 'Please enter a referral name',
+  MISSING_SHIP_NAME: 'Please enter a shipping method name',
+  INVALID_EMAIL: 'The email is not valid',
+  MISMATCH_PASSWORDS: 'This password does not match the one you entered above',
+  MISSING_REQUIRED_FIELDS:'Please enter all required fields'
+}
+=======
   MISSING_EMAIL: "Please enter your email",
   MISSING_NAME: "Please enter your name",
   MISSING_PASSWORD: "Please enter your password",
@@ -14,5 +26,6 @@ export const VALIDATION_ERROR = {
   MISMATCH_PASSWORDS: "This password does not match the one you entered above",
   MISSING_REQUIRED_FIELDS: "Please enter all required fields",
 };
+>>>>>>> feature/import-modal
 
 export const UNKNOWN_ERROR = "An unknown error occurred";

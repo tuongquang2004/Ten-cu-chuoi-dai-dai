@@ -59,7 +59,11 @@ export default function Sidebar() {
     >
       <ul className="space-y-2 px-3 py-8 text-sm">
         {items.map((i) => {
-          const active = i.href !== "#" && pathname === i.href;
+          // active if pathname matches exactly or starts with the href
+          const active =
+            i.href !== "#" &&
+            (pathname === i.href || pathname.startsWith(i.href + "/"));
+
           return (
             <li key={i.label}>
               <Link

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FormProps, RefSrc } from "@/constants/types";
-import { defaultForm, defaultRefSrc } from "@/constants/defaultValues";
+import { defaultForm, defaultValueSimple } from "@/constants/defaultValues";
 import { inter } from "@/constants/fonts";
 import axios from "axios";
 import { API } from "@/constants/apiEndpoints";
@@ -11,7 +11,7 @@ export function useReferralSourceForm() {
   const [name, setName] = useState<string>("");
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isShow, setIsShow] = useState<boolean>(false);
-  const [selected, setSelected] = useState<RefSrc>(defaultRefSrc);
+  const [selected, setSelected] = useState<RefSrc>(defaultValueSimple);
   const [form, setForm] = useState<FormProps>(defaultForm);
 
   const getRefSrcById = async (id: string) => {
@@ -61,7 +61,7 @@ export function useReferralSourceForm() {
     setName("");
     setIsChecked(false);
     setIsShow(false);
-    setSelected(defaultRefSrc);
+    setSelected(defaultValueSimple);
     setForm(defaultForm);
   };
 

@@ -39,10 +39,13 @@ export default function SearchBar({
   onChange,
   buttonFunction,
 }: SearchBarProp) {
-  const base = `rounded ${iconAlign && iconAlign === "left" ? "pl-8 pr-2" : "pl-2 pr-8"}`;
+  const base = `rounded w-full flex-1 ${
+    iconAlign && iconAlign === "left" ? "pl-8 pr-2" : "pl-2 pr-8"
+  }`;
+
   return (
-    <div className="flex justify-center gap-2">
-      {buttonAlign && buttonAlign === "left" && (
+    <div className="flex items-center gap-2 w-full">
+      {buttonAlign === "left" && (
         <CommonButton
           onClick={buttonFunction}
           variant="square"
@@ -51,6 +54,7 @@ export default function SearchBar({
           <Search />
         </CommonButton>
       )}
+
       <div className="relative flex-1">
         <input
           onKeyDown={(e) => {
@@ -66,18 +70,21 @@ export default function SearchBar({
             variants[variant],
             sizes[size],
             className,
-            iconAlign === "left" ? "pl-9 pr-3" : "pl-3 pr-9",
+            iconAlign === "left" ? "pl-9 pr-3" : "pl-3 pr-9"
           )}
         />
         {iconAlign && (
           <div
-            className={`absolute top-1/2 -translate-y-1/2 ${iconAlign === "left" ? "left-2" : "right-2"}`}
+            className={`absolute top-1/2 -translate-y-1/2 ${
+              iconAlign === "left" ? "left-2" : "right-2"
+            }`}
           >
             <Search />
           </div>
         )}
       </div>
-      {buttonAlign && buttonAlign === "right" && (
+
+      {buttonAlign === "right" && (
         <CommonButton
           onClick={buttonFunction}
           variant="square"

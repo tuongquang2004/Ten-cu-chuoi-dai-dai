@@ -32,7 +32,7 @@ export function useReferralSourceActions(
   setItems: React.Dispatch<React.SetStateAction<RefSrc[]>>,
   resetForm: () => void,
 ) {
-  const addSource = async () => {
+  const addItem = async () => {
     const trimmedName = name.trim();
     if (!checkName(trimmedName)) {
       alert(VALIDATION_ERROR.MISSING_REFERRAL_NAME);
@@ -60,7 +60,7 @@ export function useReferralSourceActions(
     }
   };
 
-  const editSource = async () => {
+  const editItem = async () => {
     if (!checkName(name)) {
       alert(VALIDATION_ERROR.MISSING_REFERRAL_NAME);
       return;
@@ -83,5 +83,5 @@ export function useReferralSourceActions(
     }
   };
 
-  return { addSource, editSource };
+  return { addItem, editItem };
 }

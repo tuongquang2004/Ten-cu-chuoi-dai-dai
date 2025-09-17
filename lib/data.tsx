@@ -21,10 +21,34 @@ export const manageTiles: TileItemData[] = [
     icon: <Referral />,
     href: ROUTES.REFERRAL_SOURCES,
   },
-  { label: "Shipping Methods", icon: <Shipping />, href: "/" },
-  { label: "Payment Methods", icon: <Payment />, href: ROUTES.PAYMENT_METHODS },
-  { label: "Job Numbers", icon: <Job />, href: "/job_numbers" },
-  { label: "Exchange Rates", icon: <Exchange />, href: "/" },
-  { label: "Comments", icon: <Comment />, href: "/" },
-  { label: "Special Pricing Schedule", icon: <Tag />, href: "/" },
+  {
+    label: "Shipping Methods",
+    icon: <Shipping />,
+    href: ROUTES.SHIPPING_METHODS,
+  },
+  {
+    label: "Payment Methods",
+    icon: <Payment />,
+    href: ROUTES.PAYMENT_METHODS,
+  },
+  {
+    label: "Job Numbers",
+    icon: <Job />,
+    href: "/job_numbers",
+  },
+  {
+    label: "Exchange Rates",
+    icon: <Exchange />,
+    href: "/",
+  },
+  {
+    label: "Comments",
+    icon: <Comment />,
+    href: "/",
+  },
+  {
+    label: "Special Pricing Schedule",
+    icon: <Tag />,
+    href: "/",
+  },
 ];
