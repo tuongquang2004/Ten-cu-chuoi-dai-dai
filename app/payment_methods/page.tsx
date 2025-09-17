@@ -43,25 +43,28 @@ export default function ReferralSources() {
     } = usePaymentMethodForm();
     const { addItem, editItem } = usePaymentMethodActions(name, type, code, isChecked, selected, setItems, resetForm);
 
-    const hasNewInput = () => {
-        return form.action === "add"
-            ? !!name || !!type || !!code
-            : selected.name !== name || selected.type !== type || selected.code !== code || isChecked;
-    };
+  const hasNewInput = () => {
+    return form.action === "add"
+      ? !!name || !!type || !!code
+      : selected.name !== name ||
+          selected.type !== type ||
+          selected.code !== code ||
+          isChecked;
+  };
 
-    const handleCancel = () => {
-        if (hasNewInput()) {
-            setShowConfirmModal(true);
-        } else {
-            cancelAction();
-        }
-    };
-
-    const cancelAction = () => {
-        setShowConfirmModal(false)
-        setIsShow(false);
-        resetForm();
+  const handleCancel = () => {
+    if (hasNewInput()) {
+      setShowConfirmModal(true);
+    } else {
+      cancelAction();
     }
+  };
+
+  const cancelAction = () => {
+    setShowConfirmModal(false);
+    setIsShow(false);
+    resetForm();
+  };
 
     return (
         <div>

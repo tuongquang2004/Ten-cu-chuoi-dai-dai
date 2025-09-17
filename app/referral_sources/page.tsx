@@ -38,25 +38,23 @@ export default function ReferralSources() {
     const { addItem, editItem } = useReferralSourceActions(name, isChecked, selected, setItems, resetForm);
     const { setPendingSearch, setFilter, handleSearch } = useSearchAndFilter(backup, setItems, "name");
 
-    const hasNewInput = () => {
-        return form.action === "add"
-            ? !!name
-            : selected.name !== name || isChecked;
-    };
+  const hasNewInput = () => {
+    return form.action === "add" ? !!name : selected.name !== name || isChecked;
+  };
 
-    const handleCancel = () => {
-        if (hasNewInput()) {
-            setShowConfirmModal(true);
-        } else {
-            cancelAction();
-        }
-    };
-
-    const cancelAction = () => {
-        setShowConfirmModal(false)
-        setIsShow(false);
-        resetForm();
+  const handleCancel = () => {
+    if (hasNewInput()) {
+      setShowConfirmModal(true);
+    } else {
+      cancelAction();
     }
+  };
+
+  const cancelAction = () => {
+    setShowConfirmModal(false);
+    setIsShow(false);
+    resetForm();
+  };
 
     return (
         <div>

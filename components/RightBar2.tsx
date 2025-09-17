@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 import CommonButton from "./CommonButton";
@@ -9,7 +9,10 @@ type RightBarProps = {
   onSubmit: (data: JobNumberRow) => void;
 };
 
-export default function RightBar({ onClose, onSubmit }: Readonly<RightBarProps>) {
+export default function RightBar({
+  onClose,
+  onSubmit,
+}: Readonly<RightBarProps>) {
   const [formData, setFormData] = useState<JobNumberRow>({
     jobnumber: "",
     level: 1,
@@ -27,7 +30,7 @@ export default function RightBar({ onClose, onSubmit }: Readonly<RightBarProps>)
   type FieldName = keyof JobNumberRow;
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target as { name: FieldName; value: string };
 
@@ -61,14 +64,18 @@ export default function RightBar({ onClose, onSubmit }: Readonly<RightBarProps>)
       <div className="p-4">
         <div className="mx-3 mt- rounded-lg border border-[#E4E7EC] bg-white shadow-sm">
           <div className="flex items-center justify-between px-5 pt-4 pb-3">
-            <h2 className="text-[14px] font-semibold text-[#2F3680]">Add Job Number</h2>
+            <h2 className="text-[14px] font-semibold text-[#2F3680]">
+              Add Job Number
+            </h2>
           </div>
 
           <div className="px-5 pb-5">
             {/* Job Number / Level */}
             <div className="grid grid-cols-2 gap-25 py-0">
               <div className="flex items-center gap-6">
-                <div className="w-28 text-[12px] font-bold text-[#1D2939] whitespace-nowrap  ">Job Number</div>
+                <div className="w-28 text-[12px] font-bold text-[#1D2939] whitespace-nowrap  ">
+                  Job Number
+                </div>
                 <input
                   name="jobnumber"
                   value={formData.jobnumber}
@@ -78,7 +85,9 @@ export default function RightBar({ onClose, onSubmit }: Readonly<RightBarProps>)
                 />
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-16 text-[12px] font-bold text-[#1D2939]">Level</div>
+                <div className="w-16 text-[12px] font-bold text-[#1D2939]">
+                  Level
+                </div>
                 <input
                   type="number"
                   name="level"
@@ -93,7 +102,9 @@ export default function RightBar({ onClose, onSubmit }: Readonly<RightBarProps>)
             {/* Job Name */}
             <div className="grid grid-cols-2 gap-6 py-0">
               <div className="col-span-2 flex items-center gap-3">
-                <div className="w-28 text-[12px] font-bold text-[#1D2939]">Job Name</div>
+                <div className="w-28 text-[12px] font-bold text-[#1D2939]">
+                  Job Name
+                </div>
                 <input
                   name="name"
                   value={formData.name}
@@ -107,10 +118,12 @@ export default function RightBar({ onClose, onSubmit }: Readonly<RightBarProps>)
             {/* Description */}
             <div className="grid grid-cols-2 gap-6 py-0">
               <div className="col-span-2 flex items-center gap-3">
-                <div className="w-28 text-[12px] font-bold text-[#1D2939]">Description</div>
+                <div className="w-28 text-[12px] font-bold text-[#1D2939]">
+                  Description
+                </div>
                 <input
                   name="description"
-                  value={(formData).description ?? ""}
+                  value={formData.description ?? ""}
                   onChange={handleChange}
                   className="w-full border-[#D0D5DD] px-3 py-1.5 text-sm text-[#101828]"
                   placeholder="Lorem ipsum dolor sit amet"
@@ -126,7 +139,9 @@ export default function RightBar({ onClose, onSubmit }: Readonly<RightBarProps>)
             <div className="grid grid-cols-2 gap-x-6 gap-y-4">
               {/* Start Date / End Date */}
               <div className="flex items-center gap-3">
-                <div className="w-28 text-[12px] font-medium text-[#1D2939]">Start Date</div>
+                <div className="w-28 text-[12px] font-medium text-[#1D2939]">
+                  Start Date
+                </div>
                 <input
                   type="text"
                   name="startdate"
@@ -137,7 +152,9 @@ export default function RightBar({ onClose, onSubmit }: Readonly<RightBarProps>)
                 />
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-28 text-[12px] font-medium text-[#1D2939]">End Date</div>
+                <div className="w-28 text-[12px] font-medium text-[#1D2939]">
+                  End Date
+                </div>
                 <input
                   type="text"
                   name="enddate"
@@ -150,20 +167,24 @@ export default function RightBar({ onClose, onSubmit }: Readonly<RightBarProps>)
 
               {/* Customer / Contact*/}
               <div className="flex items-center gap-3">
-                <div className="w-28 text-[12px] font-medium text-[#1D2939]">Customer</div>
+                <div className="w-28 text-[12px] font-medium text-[#1D2939]">
+                  Customer
+                </div>
                 <input
                   name="customer"
-                  value={(formData).customer ?? ""}
+                  value={formData.customer ?? ""}
                   onChange={handleChange}
                   className="w-full border-[#D0D5DD] px-3 py-1.5 text-sm text-[#101828]"
                   placeholder="Select Customer"
                 />
               </div>
               <div className="flex items-center gap-7">
-                <div className="w-20 text-[12px] font-medium text-[#1D2939]">Contact</div>
+                <div className="w-20 text-[12px] font-medium text-[#1D2939]">
+                  Contact
+                </div>
                 <input
                   name="contact"
-                  value={(formData).contact ?? ""}
+                  value={formData.contact ?? ""}
                   onChange={handleChange}
                   className="w-full border-[#D0D5DD] px-3 py-1.5 text-sm text-[#101828]"
                   placeholder="John Do"
@@ -172,20 +193,24 @@ export default function RightBar({ onClose, onSubmit }: Readonly<RightBarProps>)
 
               {/* Other / Completed */}
               <div className="flex items-center gap-3">
-                <div className="w-28 text-[12px] font-medium text-[#1D2939]">Other</div>
+                <div className="w-28 text-[12px] font-medium text-[#1D2939]">
+                  Other
+                </div>
                 <input
                   name="other"
-                  value={(formData).other ?? ""}
+                  value={formData.other ?? ""}
                   onChange={handleChange}
                   className="w-full border-[#D0D5DD] px-3 py-1.5 text-sm text-[#101828]"
                   placeholder="Other"
                 />
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-28 text-[12px] font-medium text-[#1D2939]">Completed</div>
+                <div className="w-28 text-[12px] font-medium text-[#1D2939]">
+                  Completed
+                </div>
                 <input
                   name="completed"
-                  value={(formData).completed ?? ""}
+                  value={formData.completed ?? ""}
                   onChange={handleChange}
                   className="w-full border-[#D0D5DD] px-3 py-1.5 text-sm text-[#101828]"
                   placeholder="20%"
@@ -194,7 +219,9 @@ export default function RightBar({ onClose, onSubmit }: Readonly<RightBarProps>)
 
               {/* Status */}
               <div className="col-span-2 flex items-center ">
-                <div className="w-28 text-[12px] font-medium text-[#1D2939]">Status</div>
+                <div className="w-28 text-[12px] font-medium text-[#1D2939]">
+                  Status
+                </div>
                 <select
                   name="isActive"
                   value={String(formData.isActive)}

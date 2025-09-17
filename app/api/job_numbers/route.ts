@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { addJobNumber, readJobNumbers, updateJobNumber } from "@/lib/jobNumbersStore";
+import {
+  addJobNumber,
+  readJobNumbers,
+  updateJobNumber,
+} from "@/lib/jobNumbersStore";
 
 export async function GET() {
   const rows = await readJobNumbers();
@@ -28,7 +32,9 @@ export async function POST(req: Request) {
 
 export async function PUT(req: Request) {
   const body = await req.json();
-  const originalJobnumber = String(body.originalJobnumber ?? body.jobnumber ?? "").padStart(3, "0");
+  const originalJobnumber = String(
+    body.originalJobnumber ?? body.jobnumber ?? "",
+  ).padStart(3, "0");
 
   const row = {
     jobnumber: String(body.jobnumber ?? "").padStart(3, "0"),
