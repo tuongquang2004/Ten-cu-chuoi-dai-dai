@@ -1,21 +1,21 @@
-import { FormProps } from "./types"
+import { FormProps } from "./types";
 
 export const defaultForm: FormProps = {
-    label: "Form",
-    buttonLabel: "Submit",
-    action: ""
-}
+  label: "Form",
+  buttonLabel: "Submit",
+  action: "",
+};
 
 export const defaultRefSrc = {
-    id: "",
-    isActive: true,
-    name: "",
-}
+  id: "",
+  isActive: true,
+  name: "",
+};
 
 export const defaultPaymentMethod = {
-    id: "",
-    name: "",
-    type: "",
-    code: "",
-    isActive: true
-}
+  id: "",
+  name: "",
+  type: "",
+  code: "",
+  isActive: true,
+};

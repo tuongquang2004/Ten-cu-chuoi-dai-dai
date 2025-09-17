@@ -1,6 +1,6 @@
-import { JOB_NUMBERS_ENDPOINT} from "@/lib/constants";
+import { JOB_NUMBERS_ENDPOINT } from "@/lib/constants";
 
-export const fetcher = (url: string) => fetch(url).then(r => r.json());
+export const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export const addJobNumberApi = (payload: unknown) =>
   fetch(JOB_NUMBERS_ENDPOINT, {
