@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react"
+import { ReactNode, useState, useEffect } from "react"
 import { inter } from "@/lib/data";
 import Pagination from "./Pagination";
 import { cn } from "@/app/cn";
@@ -29,9 +29,19 @@ export default function CommonTable<T extends Record<string, unknown>>({
 }: Readonly<TableProps<T>>) {
     const [selectedRow, setSelectedRow] = useState<string>("");
 
-    const keyField = (rowKey ?? ("id" as keyof T));
-    const getRowId = (row: T) =>
-        String(row[keyField] as unknown as string | number | undefined);
+    const getRowId = (row: T, idx: number) => {
+    const key = (rowKey ?? ("id" as keyof T));
+    const raw = row[key] as unknown;
+        if (raw === undefined || raw === null || raw === "") {
+            return String(idx);
+        }
+    
+        return String(raw as string | number);
+    };
+
+    useEffect(() => {
+        setSelectedRow("");
+      }, [data]);
 
     // Pagination state
     const [page, setPage] = useState(1);
@@ -60,8 +70,8 @@ export default function CommonTable<T extends Record<string, unknown>>({
                         </tr>
                     </thead>
                     <tbody>
-                    {paginatedData.map((d) => {
-                        const rid = getRowId(d); 
+                    {paginatedData.map((d, idx) => {
+                        const rid = getRowId(d, idx); 
                         return (
                             <tr
                             key={rid}

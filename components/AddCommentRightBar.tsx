@@ -54,7 +54,7 @@ export default function AddCommentRightBar({ onClose, onSubmit }: RightBarProps)
           <div className="px-5 pb-5">
             {/* Comment */}
             <div className="grid grid-cols-2 gap-6 py-0">
-              <div className="col-span-2 flex items-start gap-3">
+              <div className="flex flex-col gap-2 items-start">
                 <div className="w-28 pt-2 text-[12px] font-bold text-[#1D2939] whitespace-nowrap">
                   Comment
                 </div>
@@ -62,8 +62,8 @@ export default function AddCommentRightBar({ onClose, onSubmit }: RightBarProps)
                   name="comment"
                   value={formData.comment}
                   onChange={handleChange}
-                  className="w-full min-h-[96px] border-[#D0D5DD] px-3 py-2 text-sm text-[#101828]"
-                  placeholder="Type your comment…"
+                  className="w-full min-h-[96px] border-[#D0D5DD] py-2 text-sm text-[#101828]"
+                  placeholder="Enter Comment"
                 />
               </div>
             </div>
