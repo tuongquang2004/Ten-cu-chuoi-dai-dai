@@ -10,7 +10,6 @@ import RightBar from "@/components/RightBar";
 import DataForm from "@/components/DataForm";
 import CommonInput from "@/components/CommonInput";
 import CommonTable from "@/components/CommonTable";
-import { useState } from "react";
 import ConfirmationModal from "@/components/ConfirmationModal";
 
 import { useReferralSourceData } from "./hooks/useReferralSourceData";
@@ -18,9 +17,11 @@ import { useReferralSourceTable } from "./hooks/useReferralSourceTable";
 import { useReferralSourceForm } from "./hooks/useReferralSourceForm";
 import { useReferralSourceActions } from "./hooks/useReferralSourceActions";
 import { useSearchAndFilter } from "@/hooks/useSeachAndFilter";
+import { useModal } from "@/hooks/useModal";
+import ImportModal from "@/components/ImportModal";
 
 export default function ReferralSources() {
-    const [showModal, setShowModal] = useState<boolean>(false);
+    const { showConfirmModal, setShowConfirmModal, showImportModal, setShowImportModal } = useModal();
     const { items, backup, setItems } = useReferralSourceData();
     const { header } = useReferralSourceTable();
     const {
@@ -45,28 +46,36 @@ export default function ReferralSources() {
 
     const handleCancel = () => {
         if (hasNewInput()) {
-            setShowModal(true);
+            setShowConfirmModal(true);
         } else {
             cancelAction();
         }
     };
 
     const cancelAction = () => {
-        setShowModal(false)
+        setShowConfirmModal(false)
         setIsShow(false);
         resetForm();
     }
 
     return (
         <div>
-            {showModal && (
+            {showConfirmModal && (
                 <ConfirmationModal
                     label="You have unsaved changes"
                     content="Are you sure you want to cancel?"
                     acceptLabel="Yes"
                     onAccept={cancelAction}
                     cancelLabel="No"
-                    onCancel={() => setShowModal(false)}
+                    onCancel={() => setShowConfirmModal(false)}
+                />
+            )}
+            {showImportModal && (
+                <ImportModal
+                    label="Import Referral Sources"
+                    buttonLabel="Import Referral Sources"
+                    onClose={() => setShowImportModal(false)}
+                    templateFile="referral_source_template.txt"
                 />
             )}
             <Layout>
@@ -79,7 +88,7 @@ export default function ReferralSources() {
                                 <SearchBar onChange={setPendingSearch} buttonFunction={handleSearch} placeholder="Search Referral Sources" iconAlign="left" buttonAlign="right" className="border border-[#98A2B3] h-full min-w-[417px] placeholder:text-[14px]" />
                             </div>
                             <div className="flex justify-center xl:justify-end gap-3 w-fit justify-self-end">
-                                <CommonButton variant="outline">Import</CommonButton>
+                                <CommonButton variant="outline" onClick={()=>setShowImportModal(true)}>Import</CommonButton>
                                 <CommonButton variant="outline">Export</CommonButton>
                                 <CommonButton onClick={showAddForm} variant="outline" className="bg-[#E87200] text-white border-none">Add Referral Source</CommonButton>
                             </div>
