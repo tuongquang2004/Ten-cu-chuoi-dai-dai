@@ -5,7 +5,8 @@ import { API } from "@/constants/apiEndpoints";
 import { VALIDATION_ERROR } from "@/constants/errorMessages";
 import { PaymentMethod } from "@/constants/types";
 
-const checkInput = (name: string, type: string) => name.trim().length > 0 && type.trim().length > 0;
+const checkInput = (name: string, type: string) =>
+    name.trim().length > 0 && type.trim().length > 0;
 
 const makeMethodActive = async (id: string, isActive: boolean) => {
     try {
@@ -25,7 +26,7 @@ export function usePaymentMethodActions(
     isChecked: boolean,
     selected: PaymentMethod,
     setItems: React.Dispatch<React.SetStateAction<PaymentMethod[]>>,
-    resetForm: () => void
+    resetForm: () => void,
 ) {
     const trimmedName = name.trim();
     const trimmedType = type.trim();
@@ -46,7 +47,7 @@ export function usePaymentMethodActions(
             if (res.data) {
                 let data = res.data;
                 const confirm = window.confirm(
-                    `${trimmedName} added successfully. Do you want to make it active?`
+                    `${trimmedName} added successfully. Do you want to make it active?`,
                 );
                 if (confirm) {
                     data = await makeMethodActive(data.id, true);
@@ -74,7 +75,7 @@ export function usePaymentMethodActions(
             });
             if (res.data) {
                 setItems((prev) =>
-                    prev.map((item) => (item.id === selected.id ? res.data : item))
+                    prev.map((item) => (item.id === selected.id ? res.data : item)),
                 );
                 alert("Updated successfully");
                 resetForm();

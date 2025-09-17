@@ -1,15 +1,16 @@
-import { NextResponse } from 'next/server'
-import { findByEmail } from '@/lib/userStore'
-import { setSession } from '@/lib/auth'
+import { NextResponse } from "next/server";
+import { findByEmail } from "@/lib/userStore";
+import { setSession } from "@/lib/auth";
 
 export async function POST(req: Request) {
-  const { email, password } = await req.json()
-  if (!email || !password) return NextResponse.json({ error: 'Missing' }, { status: 400 })
+  const { email, password } = await req.json();
+  if (!email || !password)
+    return NextResponse.json({ error: "Missing" }, { status: 400 });
 
-  const user = await findByEmail(email)
+  const user = await findByEmail(email);
   if (!user || user.password !== password) {
-    return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 })
+    return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
-  setSession(user.email)
-  return NextResponse.json({ ok: true })
+  setSession(user.email);
+  return NextResponse.json({ ok: true });
 }

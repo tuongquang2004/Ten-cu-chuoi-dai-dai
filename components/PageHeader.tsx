@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { cn } from "@/app/cn";
 
@@ -30,7 +30,7 @@ export default function PageHeader({
         className={cn(
           "font-semibold",
           sizes[size].title,
-          `text-[${titleColor}]`
+          `text-[${titleColor}]`,
         )}
       >
         {title}
