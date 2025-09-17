@@ -3,5 +3,9 @@ export function useExchangeRateDataActions() {
         console.log(`Rate id: ${id}`);
     }
 
-    return { getRate };
+    const changeStatus = (id: string | undefined) => {
+
+    }
+
+    return { getRate, changeStatus };
 }

@@ -13,12 +13,14 @@ import { useExchangeRateData } from "./hooks/useExchangeRateData";
 import { useExchangeRateTable } from "./hooks/useExchangeRateTable";
 import { useModal } from "@/hooks/useModal";
 import ImportModal from "@/components/ImportModal";
+import { useExchangeRateDataActions } from "./hooks/useExchangeRateDataActions";
 
 export default function ExchangeRates() {
     const { showImportModal, setShowImportModal } = useModal();
     const { items, backup, setItems } = useExchangeRateData();
     const { header } = useExchangeRateTable();
     const { setPendingSearch, setFilter, handleSearch } = useSearchAndFilter(backup, setItems, "code");
+    const { changeStatus, getRate } = useExchangeRateDataActions();
 
     return (
         <div>
@@ -53,7 +55,7 @@ export default function ExchangeRates() {
                             </div>
                         </div>
                         <Filter onChange={setFilter} label="Status" showCount={true} showReset={true} items={[{ key: 'active', label: 'Active', value: 'true' }, { key: 'inactive', label: 'Inactive', value: 'false' }]} />
-                        <CommonTable pagination data={items} columns={header} />
+                        <CommonTable pagination data={items} columns={header} contextMenu={(row) => [{ label: row?.isActive ? 'Deactivate' : 'Activate', key: 'action', onClick: () => changeStatus(row?.id) }]} />
                     </div>
                 </div>
             </Layout >

@@ -16,7 +16,7 @@ type TableProps<T> = {
     columns: TableHeader<T>[],
     data: T[],
     onRowClick?: (row: T) => void,
-    contextMenu?: (row: T | null) => Array<{ key?: string, label: string, onClick: () => void }>,
+    contextMenu?: (row: T | null) => Array<{ key: string, label: string, onClick: () => void }>,
     pagination?: boolean,
     selectedId?: string
 };
