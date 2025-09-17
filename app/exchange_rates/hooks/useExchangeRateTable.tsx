@@ -41,7 +41,9 @@ export function useExchangeRateTable() {
             label: "Rate",
             headerClassName: "text-center",
             render: (row) => (
-                <CommonButton onClick={() => getRate(row.id)}>Get Rate</CommonButton>
+                <div className="flex justify-center">
+                    <CommonButton variant="outline" onClick={() => getRate(row.id)} className="font-semibold bg-white">Get Rate</CommonButton>
+                </div>
             )
         },
     ]);

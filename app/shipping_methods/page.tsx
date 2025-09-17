@@ -108,7 +108,7 @@ export default function ShippingMethods() {
                                 <CommonButton onClick={showAddForm} variant="outline" className="bg-[#E87200] text-white border-none">Add Shippping Method</CommonButton>
                             </div>
                         </div>
-                        <Filter data={backup} onChange={setFilter} label="Status" showCount={true} showReset={true} items={[{ key: 'active', label: 'Active', value: 'true' }, { key: 'inactive', label: 'Inactive', value: 'false' }]} />
+                        <Filter onChange={setFilter} label="Status" showCount={true} showReset={true} items={[{ key: 'active', label: 'Active', value: 'true' }, { key: 'inactive', label: 'Inactive', value: 'false' }]} />
                         <CommonTable selectedId={selected.id} pagination data={items} columns={header} onRowClick={(row) => showEditForm(row.id)} />
                     </div>
                     {isShow && (

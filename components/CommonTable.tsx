@@ -2,6 +2,8 @@ import { ReactNode, useState } from "react"
 import { inter } from "@/constants/fonts";
 import Pagination from "./Pagination";
 import { cn } from "@/app/cn";
+import { useContextMenu } from "@/hooks/useContextMenu";
+import ContextMenu from "./ContextMenu";
 
 type TableHeader<T> = {
     label: string,
@@ -14,6 +16,7 @@ type TableProps<T> = {
     columns: TableHeader<T>[],
     data: T[],
     onRowClick?: (row: T) => void,
+    contextMenu?: (row: T | null) => Array<{ key?: string, label: string, onClick: () => void }>,
     pagination?: boolean,
     selectedId?: string
 };
@@ -24,11 +27,14 @@ export default function CommonTable<T extends { id: string }>({
     columns,
     data,
     onRowClick,
+    contextMenu,
     pagination = false,
     selectedId
 }: Readonly<TableProps<T>>) {
+
     const [page, setPage] = useState(1);
     const [perPage, setPerPage] = useState(10);
+    const [contextRow, setContextRow] = useState<T | null>(null)
 
     const pageCount = Math.ceil(data.length / perPage);
 
@@ -36,10 +42,17 @@ export default function CommonTable<T extends { id: string }>({
         ? data.slice((page - 1) * perPage, page * perPage)
         : data;
 
+    const { menuPos, handleContextMenu, hideMenu } = useContextMenu();
+
     return (
         <div className="border border-[#E4E7EC] overflow-hidden rounded-lg">
+            {menuPos && contextMenu && (
+                <div className="absolute" style={{ top: menuPos.y, left: menuPos.x }}>
+                    <ContextMenu items={contextMenu(contextRow)} />
+                </div>
+            )}
             <div className="max-h-[536px] overflow-y-auto">
-                <table className={`${inter.className} rounded-lg w-full`}>
+                <table className={`${inter.className} rounded-lg w-full min-h-[536px]`}>
                     <thead>
                         <tr className='border border-[#E4E7EC] border-b border-b-[#98A2B3] text-[#667085] bg-[#E4E7EC]'>
                             {columns.map(c => (
@@ -57,6 +70,12 @@ export default function CommonTable<T extends { id: string }>({
                             <tr
                                 key={d.id}
                                 onClick={() => onRowClick?.(d)}
+                                onContextMenu={e => {
+                                    if (contextMenu) {
+                                        setContextRow(d);
+                                        handleContextMenu(e);
+                                    }
+                                }}
                                 className={cn("cursor-pointer border-b border-[#E4E7EC] hover:bg-[#F2F4F7]", d.id === selectedId && "bg-[#F2F4F7]")}>
                                 {columns.map((c) => (
                                     <td className="text-[#1D2939]" key={String(c.key)}>

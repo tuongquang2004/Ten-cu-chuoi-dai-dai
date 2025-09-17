@@ -8,7 +8,6 @@ import { DownArrow, Reset } from "@/public/assets/icons";
 type FilterProps = {
     label: string,
     items: Array<{ key: string, label: string, value: string }>,
-    data: object[],
     onChange: (value: string[]) => void,
     showCount?: boolean,
     showReset?: boolean,

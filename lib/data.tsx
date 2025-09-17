@@ -8,7 +8,7 @@ export const manageTiles: TileItemData[] = [
   { label: 'Shipping Methods', icon: <Shipping />, href: ROUTES.SHIPPING_METHODS },
   { label: 'Payment Methods', icon: <Payment />, href: ROUTES.PAYMENT_METHODS },
   { label: 'Job Numbers', icon: <Job />, href: '/job_numbers' },
-  { label: 'Exchange Rates', icon: <Exchange />, href: '/' },
+  { label: 'Exchange Rates', icon: <Exchange />, href: ROUTES.EXCHANGE_RATES },
   { label: 'Comments', icon: <Comment />, href: '/' },
   { label: 'Special Pricing Schedule', icon: <Tag />, href: '/' },
 ]
