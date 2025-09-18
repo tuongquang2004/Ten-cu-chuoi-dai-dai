@@ -5,11 +5,7 @@ import axios from "axios";
 export function useExchangeRateActions(
   setItems: React.Dispatch<React.SetStateAction<ExchangeRate[]>>
 ) {
-  const API_KEY = process.env.NEXT_PUBLIC_EXCHANGE_RATE_API_KEY;
-
-  const getRate = () => {
-    console.log(API_KEY);
-  };
+  const getRate = () => {};
 
   const changeStatus = async (id: string, newStatus: boolean) => {
     try {
