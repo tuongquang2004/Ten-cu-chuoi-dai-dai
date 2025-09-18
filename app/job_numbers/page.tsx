@@ -1,21 +1,21 @@
-'use client'
+"use client";
 
 import Breadcrumb from "@/components/Breadcrumb";
 import CommonButton from "@/components/CommonButton";
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import SearchBar from "@/components/SearchBar";
-import Search2 from '@/public/assets/icons/search2.svg';
+import Search2 from "@/public/assets/icons/search2.svg";
 import Pagination from "@/components/Pagination";
 import CommonTable from "@/components/CommonTable";
-import { JobNumberRow } from "@/lib/data";
+import { JobNumberRow } from "@/constants/types";
 import { useState } from "react";
-import { usePagination } from './hooks/usePagination';
+import { usePagination } from "@/hooks/usePagination";
 import RightBar from "@/components/RightBar2";
 import useSWR from "swr";
 import EditRightBar from "@/components/EditRightBar";
 import { jobNumberColumns } from "@/lib/jobNumberColumns";
-import { useColumnsFilter } from './hooks/useColumnsFilter'
+import { useColumnsFilter } from "./hooks/useColumnsFilter";
 import Filter from "@/components/Filter";
 import {
   fetcher,
@@ -30,52 +30,56 @@ import {
 } from "@/lib/constants";
 
 const addItem = () => {
-    alert('You clicked a button :D');
-  }
+  alert("You clicked a button :D");
+};
 
 export default function JobNumbers() {
+  const [showRightBar, setShowRightBar] = useState(false);
+  const [editingRow, setEditingRow] = useState<JobNumberRow | null>(null);
+  const { data, mutate } = useSWR<JobNumberRow[]>(
+    JOB_NUMBERS_ENDPOINT,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+    },
+  );
+  const rows = data ?? [];
 
-        const [showRightBar, setShowRightBar] = useState(false);
-        const [editingRow, setEditingRow] = useState<JobNumberRow | null>(null);
-        const { data, mutate } = useSWR<JobNumberRow[]>(JOB_NUMBERS_ENDPOINT, fetcher, {
-          revalidateOnFocus: false,
-        });
-        const rows = data ?? [];
+  const [searchTerm, setSearchTerm] = useState("");
 
-        const [searchTerm, setSearchTerm] = useState("");
+  const filteredRows = rows.filter((r) =>
+    r.jobnumber.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
-        const filteredRows = rows.filter(r =>
-            r.jobnumber.toLowerCase().includes(searchTerm.toLowerCase())
-          );
+  const { page, setPage, perPage, onPerPageChange, pageCount, pageRows } =
+    usePagination<JobNumberRow>(filteredRows, DEFAULT_PER_PAGE);
 
-        const { page, setPage, perPage, onPerPageChange, pageCount, pageRows } = usePagination<JobNumberRow>(filteredRows, DEFAULT_PER_PAGE);
+  const openRightBar = () => {
+    setEditingRow(null);
+    setShowRightBar(true);
+  };
 
-        const openRightBar = () => {
-            setEditingRow(null);      
-            setShowRightBar(true);
-          };
-        
-        const closeRightBar = () => {
-            setShowRightBar(false);
-            setEditingRow(null);
-          };
+  const closeRightBar = () => {
+    setShowRightBar(false);
+    setEditingRow(null);
+  };
 
-        const handleRowClick = (row: JobNumberRow) => {
-            setEditingRow(row);
-            setShowRightBar(true);
-          };
+  const handleRowClick = (row: JobNumberRow) => {
+    setEditingRow(row);
+    setShowRightBar(true);
+  };
 
-        const handleAddJobNumber = async (payload: JobNumberRow) => {
-            await addJobNumberApi(payload);
-            await mutate();
-            closeRightBar();
-          };
-        
-        const handleUpdateJobNumber = async (payload: JobNumberRow) => {
-            await updateJobNumberApi(payload);
-            await mutate();
-            closeRightBar();
-          };
+  const handleAddJobNumber = async (payload: JobNumberRow) => {
+    await addJobNumberApi(payload);
+    await mutate();
+    closeRightBar();
+  };
+
+  const handleUpdateJobNumber = async (payload: JobNumberRow) => {
+    await updateJobNumberApi(payload);
+    await mutate();
+    closeRightBar();
+  };
 
           const { filterItems, handleFilterChange, visibleColumns } =
           useColumnsFilter<(typeof jobNumberColumns)[number]['key'], (typeof jobNumberColumns)[number]>(

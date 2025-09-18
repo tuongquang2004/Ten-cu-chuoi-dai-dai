@@ -1,26 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import { defaultForm, defaultRefSrc, FormProps, RefSrc, inter } from "@/lib/data";
+import { FormProps, ShippingMethod } from "@/constants/types";
+import { defaultForm, defaultValueSimple } from "@/constants/defaultValues";
+import { inter } from "@/constants/fonts";
 import axios from "axios";
 import { API } from "@/constants/apiEndpoints";
 
-export function useReferralSourceForm() {
-    const [refName, setRefName] = useState<string>("");
+export function useShippingMethodForm() {
+    const [name, setName] = useState<string>("");
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const [isShow, setIsShow] = useState<boolean>(false);
-    const [selectedSource, setSelectedSource] = useState<RefSrc>(defaultRefSrc);
+    const [selected, setSelected] = useState<ShippingMethod>(defaultValueSimple);
     const [form, setForm] = useState<FormProps>(defaultForm);
 
-    const getRefSrcById = async (id: string) => {
+    const getShippingMethodById = async (id: string) => {
         try {
-            const res = await axios.get(API.REF.BY_ID(id));
+            const res = await axios.get(API.SHIPPING_METHODS.BY_ID(id));
             if (res.data) {
-                setSelectedSource(res.data);
+                setSelected(res.data);
                 return res.data;
             }
         } catch (error) {
-            console.error("Failed to fetch referral source by id:", error);
+            console.error("Failed to fetch shipping method by id:", error);
             return null;
         }
     };
@@ -28,20 +30,20 @@ export function useReferralSourceForm() {
     const showAddForm = () => {
         setIsShow(true);
         setForm({
-            label: "Add Referral Source",
-            buttonLabel: "Add Referral Source",
+            label: "Add Shipping Method",
+            buttonLabel: "Add Shipping Method",
             action: "add",
         });
-        setRefName("");
+        setName("");
         setIsChecked(false);
     };
 
     const showEditForm = async (id: string) => {
-        const res = await getRefSrcById(id);
+        const res = await getShippingMethodById(id);
         if (res) {
             setIsShow(true);
             setForm({
-                label: "Edit Referral Source",
+                label: "Edit Shipping Method",
                 buttonLabel: "Save Changes",
                 statusCheckbox: {
                     className: `${inter.className} font-[700] text-[14px]`,
@@ -50,29 +52,27 @@ export function useReferralSourceForm() {
                 },
                 action: "edit",
             });
-            setRefName(res.source);
+            setName(res.name);
             setIsChecked(false);
-            console.log('new');
-            
         }
     };
 
     const resetForm = () => {
-        setRefName("");
+        setName("");
         setIsChecked(false);
         setIsShow(false);
-        setSelectedSource(defaultRefSrc);
+        setSelected(defaultValueSimple);
         setForm(defaultForm);
     };
 
     return {
-        refName,
-        setRefName,
+        name,
+        setName,
         isChecked,
         setIsChecked,
         isShow,
         setIsShow,
-        selectedSource,
+        selected,
         form,
         showAddForm,
         showEditForm,

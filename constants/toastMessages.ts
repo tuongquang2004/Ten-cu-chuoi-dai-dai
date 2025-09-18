@@ -1,5 +1,5 @@
 export const toastMessages = {
-    login:'Login Successfully',
-    register:'Registered Successfully',
-    afterRegister:'Please login with your account'
-}
+  LOGIN: "Login Successfully",
+  REGISTER: "Registered Successfully",
+  REDIRECT_AFTER_REGISTER: "Please login with your account",
+};

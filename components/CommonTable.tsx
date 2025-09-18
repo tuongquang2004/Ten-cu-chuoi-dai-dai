@@ -1,13 +1,13 @@
 import { ReactNode, useState, useEffect } from "react"
-import { inter } from "@/lib/data";
+import { inter } from "@/constants/fonts";
 import Pagination from "./Pagination";
 import { cn } from "@/app/cn";
 
 type TableHeader<T> = {
-    label: string,
-    key: keyof T,
-    headerClassName?: string,
-    render?: (row: T) => ReactNode
+  label: string;
+  key: keyof T;
+  headerClassName?: string;
+  render?: (row: T) => ReactNode;
 };
 
 type TableProps<T> = {
@@ -18,7 +18,7 @@ type TableProps<T> = {
     rowKey?: keyof T;
 };
 
-const baseColumnHeader = 'text-start p-[12px]';
+const baseColumnHeader = "text-start p-[12px]";
 
 export default function CommonTable<T extends Record<string, unknown>>({
     columns,
@@ -47,11 +47,11 @@ export default function CommonTable<T extends Record<string, unknown>>({
     const [page, setPage] = useState(1);
     const [perPage, setPerPage] = useState(10);
 
-    const pageCount = Math.ceil(data.length / perPage);
+  const pageCount = Math.ceil(data.length / perPage);
 
-    const paginatedData = pagination
-        ? data.slice((page - 1) * perPage, page * perPage)
-        : data;
+  const paginatedData = pagination
+    ? data.slice((page - 1) * perPage, page * perPage)
+    : data;
 
     return (
         <div className="border border-[#E4E7EC] overflow-hidden rounded-lg">
@@ -119,5 +119,5 @@ export default function CommonTable<T extends Record<string, unknown>>({
             }
 
 export function createColumns<T extends object>() {
-    return <U extends TableHeader<T>[]>(cols: U) => cols
+  return <U extends TableHeader<T>[]>(cols: U) => cols;
 }

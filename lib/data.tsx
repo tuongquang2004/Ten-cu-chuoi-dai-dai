@@ -1,18 +1,57 @@
-import { Exchange, Job, Payment, Referral, Shipping, Comment, Tag } from "@/public/assets/icons";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
+import {
+  Exchange,
+  Job,
+  Payment,
+  Referral,
+  Shipping,
+  Comment,
+  Tag,
+} from "@/public/assets/icons";
+import { ROUTES } from "@/constants/routes";
 
-export type TileItemData = { label: string; icon: React.ReactNode; href?: string }
+export type TileItemData = {
+  label: string;
+  icon: React.ReactNode;
+  href?: string;
+};
 
 export const manageTiles: TileItemData[] = [
-  { label: 'Referral Sources', icon: <Referral />, href: '/referral_sources' },
-  { label: 'Shipping Methods', icon: <Shipping />, href: '/' },
-  { label: 'Payment Methods', icon: <Payment />, href: '/' },
-  { label: 'Job Numbers', icon: <Job />, href: '/job_numbers' },
-  { label: 'Exchange Rates', icon: <Exchange />, href: '/' },
-  { label: 'Comments', icon: <Comment />, href: '/comments' },
-  { label: 'Special Pricing Schedule', icon: <Tag />, href: '/' },
-]
+  {
+    label: "Referral Sources",
+    icon: <Referral />,
+    href: ROUTES.REFERRAL_SOURCES,
+  },
+  {
+    label: "Shipping Methods",
+    icon: <Shipping />,
+    href: ROUTES.SHIPPING_METHODS,
+  },
+  {
+    label: "Payment Methods",
+    icon: <Payment />,
+    href: ROUTES.PAYMENT_METHODS,
+  },
+  {
+    label: "Job Numbers",
+    icon: <Job />,
+    href: ROUTES.JOB_NUMBERS,
+  },
+  {
+    label: "Exchange Rates",
+    icon: <Exchange />,
+    href: "/",
+  },
+  {
+    label: "Comments",
+    icon: <Comment />,
+    href: ROUTES.COMMENTS,
+  },
+  {
+    label: "Special Pricing Schedule",
+    icon: <Tag />,
+    href: "/",
+  },
+];
 
 export type check = {
   key: string,
@@ -67,12 +106,3 @@ export type CommentRow = {
   comment: string;
   isActive: boolean;
 };
-
-export const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
-
-export const Madani = localFont({
-  src: "../public/fonts/MadaniArabic-Medium.ttf"
-});
