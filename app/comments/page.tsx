@@ -5,13 +5,11 @@ import Breadcrumb from "@/components/Breadcrumb";
 import PageHeader from "@/components/PageHeader";
 import SearchBar from "@/components/SearchBar";
 import CommonTable from "@/components/CommonTable";
-import Pagination from "@/components/Pagination";
 import Filter from "@/components/Filter";
 import AddCommentRightBar from "@/components/AddCommentRightBar";
 import EditCommentRightBar from "@/components/EditCommentRightBar";
 import Search2 from '@/public/assets/icons/search2.svg';
 import CommonButton from "@/components/CommonButton";
-
 import useSWR from "swr";
 import { useState, useMemo } from "react";
 import { useStatusFilter } from './hooks/useStatusFilter'
@@ -20,9 +18,7 @@ import { commentColumns } from "@/lib/commentsColumns";
 import {
   COMMENTS_ENDPOINT,
   COMMENTS_PRIMARY_KEY,
-  DEFAULT_PER_PAGE,
 } from "@/lib/constants";
-import { usePagination } from "./hooks/usePagination";
 import {
   fetcher,
   PANEL_W,
@@ -52,17 +48,6 @@ export default function CommentsPage() {
 
  
   const { filterItems, handleStatusChange, filteredRows } = useStatusFilter(rowsAfterSearch);
-
- 
-  const {
-    page,
-    setPage,
-    perPage,
-    onPerPageChange,
-    pageCount,
-    pageRows,
-  } = usePagination<CommentRow>(filteredRows, DEFAULT_PER_PAGE);
-
 
   const primaryKey = COMMENTS_PRIMARY_KEY as (typeof commentColumns)[number]["key"];
   const visibleColumns = commentColumns;
@@ -114,8 +99,8 @@ export default function CommentsPage() {
           </div>
 
           {/* Search + Add */}
-          <div className="px-6 ml-auto flex items-center w-full">
-            <div className="flex items-center gap-3 py-6 flex-1">
+          <div className="px-6 ml-auto flex items-center justify-between w-full">
+            <div className="flex items-center gap-3 py-6 max-w-xl">
               <SearchBar
                 placeholder="Search Comments"
                 variant="third"
@@ -126,6 +111,7 @@ export default function CommentsPage() {
               />
               <CommonButton variant='square' size = 'xl' onClick={addItem}><Search2 /></CommonButton>
             </div>
+            
             <div className="flex items-center gap-3">
               <button
                 className="h-11 rounded-full bg-[#E87200] text-white px-4"
@@ -151,17 +137,11 @@ export default function CommentsPage() {
           {/* Table + Pagination */}
           <div className="border border-[#E4E7EC] rounded-lg overflow-hidden px-6">
             <CommonTable
-              data={pageRows}
+              data={filteredRows}
               columns={visibleColumns}
               rowKey={primaryKey}            
-              onRowClick={handleRowClick}    
-            />
-            <Pagination
-              page={page}
-              pageCount={pageCount}
-              perPage={perPage}
-              onPageChange={setPage}
-              onPerPageChange={onPerPageChange}
+              onRowClick={handleRowClick}
+              pagination    
             />
           </div>
         </div>
