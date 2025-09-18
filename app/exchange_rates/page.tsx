@@ -46,25 +46,21 @@ export default function ExchangeRates() {
         />
       )}
       {menuPos && selected && (
-        <div
-          className="absolute"
-          style={{
+        <ContextMenu
+          position={{
             top: menuPos.y,
             left: menuPos.x,
           }}
-        >
-          <ContextMenu
-            items={[
-              {
-                label: selected.isActive ? "Deactivate" : "Activate",
-                key: "action",
-                onClick: () => {
-                  changeStatus(selected?.id, !selected?.isActive);
-                },
+          items={[
+            {
+              label: selected.isActive ? "Deactivate" : "Activate",
+              key: "action",
+              onClick: () => {
+                changeStatus(selected?.id, !selected?.isActive);
               },
-            ]}
-          />
-        </div>
+            },
+          ]}
+        />
       )}
       <Layout>
         <div className="flex flex-1 h-full">

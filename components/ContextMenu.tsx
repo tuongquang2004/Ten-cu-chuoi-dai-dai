@@ -6,15 +6,20 @@ type ContextMenuProps = {
     label: string;
     onClick: () => void;
   }>;
+  position: { top: number; left: number };
   className?: string;
 };
 
 export default function ContextMenu({
   items,
+  position,
   className,
 }: Readonly<ContextMenuProps>) {
   return (
-    <div className="flex flex-col border border-[#D0D5DD] rounded-lg bg-white">
+    <div
+      className="absolute flex flex-col border border-[#D0D5DD] rounded-lg bg-white"
+      style={{ top: position.top, left: position.left }}
+    >
       {items.map((i) => (
         <button
           key={i.key}
