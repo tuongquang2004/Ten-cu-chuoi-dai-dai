@@ -6,12 +6,12 @@ import PageHeader from "@/components/PageHeader";
 import SearchBar from "@/components/SearchBar";
 import CommonTable from "@/components/CommonTable";
 import Filter from "@/components/Filter";
-import AddCommentRightBar from "@/components/AddCommentRightBar";
-import EditCommentRightBar from "@/components/EditCommentRightBar";
+import RightBar from "@/components/RightBar";
+import DataForm from "@/components/DataForm";
 import Search2 from '@/public/assets/icons/search2.svg';
 import CommonButton from "@/components/CommonButton";
 import useSWR from "swr";
-import { useState, useMemo } from "react";
+import { useState, useRef, useMemo } from "react";
 import { useStatusFilter } from './hooks/useStatusFilter'
 import { CommentRow } from "@/lib/data";
 import { commentColumns } from "@/lib/commentsColumns";
@@ -21,7 +21,6 @@ import {
 } from "@/lib/constants";
 import {
   fetcher,
-  PANEL_W,
   addCommentApi,
   updateCommentApi,
 } from "@/lib/commentsApi";
@@ -33,7 +32,11 @@ const addItem = () => {
 export default function CommentsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showRightBar, setShowRightBar] = useState(false);
-  const [editingRow, setEditingRow] = useState<CommentRow | null>(null);
+  const [mode, setMode] = useState<"add" | "edit">("add");
+
+  const [comment, setComment] = useState("");
+  const [isActive, setIsActive] = useState<boolean>(true);
+  const originalCommentRef = useRef<string | undefined>(undefined);
 
   const { data, mutate } = useSWR<CommentRow[]>(COMMENTS_ENDPOINT, fetcher, {
     revalidateOnFocus: false,
@@ -53,112 +56,141 @@ export default function CommentsPage() {
   const visibleColumns = commentColumns;
 
 
-  const openRightBar = () => {
-    setEditingRow(null);
+  const openAdd = () => {
+    setMode("add");
+    setComment("");
+    setIsActive(true);
+    originalCommentRef.current = undefined;
     setShowRightBar(true);
-  };
-
-  const closeRightBar = () => {
-    setShowRightBar(false);
-    setEditingRow(null);
   };
 
   const handleRowClick = (row: CommentRow) => {
-    setEditingRow(row);
+    setMode("edit");
+    setComment(row.comment);
+    setIsActive(row.isActive);
+    originalCommentRef.current = row.comment;
     setShowRightBar(true);
   };
 
+  const closePanel = () => setShowRightBar(false);
 
-  const handleAddComment = async (payload: CommentRow) => {
-    await addCommentApi(payload);
+  const handleSubmit = async () => {
+    const payload: CommentRow = { comment: comment.trim(), isActive };
+    if (!payload.comment) return;
+
+    if (mode === "add") {
+      await addCommentApi(payload);
+    } else {
+      await updateCommentApi({
+        ...payload,
+        originalComment: originalCommentRef.current, 
+      });
+    }
     await mutate();
-    closeRightBar();
+    closePanel();
   };
 
-  const handleUpdateComment = async (payload: CommentRow) => {
-    await updateCommentApi(payload);
-    await mutate();
-    closeRightBar();
-  };
+  const submitDisabled =
+    !comment.trim() ||
+    (mode === "edit" &&
+      originalCommentRef.current === comment &&
+      rows.find(r => r.comment === originalCommentRef.current)?.isActive === isActive);
 
   return (
-    <Layout>
-      <div
-        className="transition-all duration-300"
-        style={{ paddingRight: showRightBar ? PANEL_W : 0 }}
-      >
-        <div className="px-6">
-          {/* Header */}
-          <div className="px-6 py-6">
-            <Breadcrumb current="Comments" />
-            <PageHeader
-              title="Manage Comments"
-              size="xl"
-              subtitle="Create or Edit Comments entries"
-            />
-          </div>
-
-          {/* Search + Add */}
-          <div className="px-6 ml-auto flex items-center justify-between w-full">
-            <div className="flex items-center gap-3 py-6 max-w-xl">
-              <SearchBar
-                placeholder="Search Comments"
-                variant="third"
-                iconAlign="left"
-                size="xl"
-                className="min-w-[250px]"
-                onChange={setSearchTerm}
-              />
-              <CommonButton variant='square' size = 'xl' onClick={addItem}><Search2 /></CommonButton>
+        <Layout>
+          <div className="flex flex-1 h-full">
+            {/* LEFT CONTENT */}
+            <div className="px-6 flex-1">
+              <div className="px-6 py-6">
+                <Breadcrumb current="Comments" />
+                <PageHeader
+                  title="Manage Comments"
+                  size="xl"
+                  subtitle="Create or Edit Comments entries"
+                />
+              </div>
+    
+              {/* Search + Add */}
+              <div className="px-6 ml-auto flex items-center justify-between w-full">
+                <div className="flex items-center gap-3 py-6 max-w-xl">
+                  <SearchBar
+                    placeholder="Search Comments"
+                    variant="third"
+                    iconAlign="left"
+                    size="xl"
+                    className="min-w-[250px]"
+                    onChange={setSearchTerm}
+                  />
+                  <CommonButton variant="square" size="xl" onClick={addItem}>
+                    <Search2 />
+                  </CommonButton>
+                </div>
+    
+                <div className="flex items-center gap-3">
+                  <button
+                    className="h-11 rounded-full bg-[#E87200] text-white px-4"
+                    onClick={openAdd}
+                  >
+                    Add Comment
+                  </button>
+                </div>
+              </div>
+    
+              {/* Filter Status */}
+              <div className="px-6">
+                <Filter
+                  label="Status"
+                  items={filterItems}
+                  onChange={handleStatusChange}
+                  showCount
+                  showReset
+                  data={rows}
+                />
+              </div>
+    
+              {/* Table */}
+              <div className="border border-[#E4E7EC] rounded-lg overflow-hidden px-6">
+                <CommonTable
+                  data={filteredRows}
+                  columns={visibleColumns}
+                  rowKey={primaryKey}
+                  onRowClick={handleRowClick}
+                  pagination
+                />
+              </div>
             </div>
-            
-            <div className="flex items-center gap-3">
-              <button
-                className="h-11 rounded-full bg-[#E87200] text-white px-4"
-                onClick={openRightBar}
-              >
-                Add Comment
-              </button>
-            </div>
+    
+            {/* RIGHT PANEL */}
+            {showRightBar && (
+              <RightBar onClose={setShowRightBar}>
+                <DataForm
+                  label={mode === "add" ? "Add Comment" : "Edit Comment"}
+                  buttonLabel={mode === "add" ? "Add Comment" : "Save Changes"}
+                  statusCheckbox={{
+                    current: isActive,
+                    onChange: (checked) => setIsActive(checked),
+                  }}
+                  checked={isActive}
+                  buttonDisabled={submitDisabled}
+                  onCancel={closePanel}
+                  onSubmit={handleSubmit}
+                >
+                  <div className="space-y-2">
+                    <div className="w-28 pt-2 text-[12px] font-bold text-[#1D2939] whitespace-nowrap">
+                      Comment
+                    </div>
+                    <textarea
+                      name="comment"
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                      className="w-full min-h-[96px] border-[#D0D5DD] px-3 py-2 text-sm text-[#101828]"
+                      placeholder="Enter Comment"
+                    />
+                  </div>
+                </DataForm>
+              </RightBar>
+            )}
           </div>
-
-          {/* Filter Status*/}
-          <div className="px-6">
-            <Filter
-              label="Status"
-              items={filterItems}
-              onChange={handleStatusChange}
-              showCount
-              showReset
-              data={rows}
-            />
-          </div>
-
-          {/* Table + Pagination */}
-          <div className="border border-[#E4E7EC] rounded-lg overflow-hidden px-6">
-            <CommonTable
-              data={filteredRows}
-              columns={visibleColumns}
-              rowKey={primaryKey}            
-              onRowClick={handleRowClick}
-              pagination    
-            />
-          </div>
-        </div>
-      </div>
-
-      {showRightBar && (editingRow ? (
-        <EditCommentRightBar
-          row={editingRow}
-          onClose={closeRightBar}
-          onSubmit={handleUpdateComment}
-        />
-      ) : (
-        <AddCommentRightBar
-          onClose={closeRightBar}
-          onSubmit={handleAddComment}
-        />
-      ))}
-    </Layout>
-  );
-}
+        </Layout>
+      );
+    }
