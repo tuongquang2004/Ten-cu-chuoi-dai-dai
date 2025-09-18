@@ -81,92 +81,67 @@ export default function JobNumbers() {
     closeRightBar();
   };
 
-  const { filterItems, handleFilterChange, visibleColumns } = useColumnsFilter<
-    (typeof jobNumberColumns)[number]["key"],
-    (typeof jobNumberColumns)[number]
-  >(jobNumberColumns, JOB_NUMBERS_PRIMARY_KEY);
+          const { filterItems, handleFilterChange, visibleColumns } =
+          useColumnsFilter<(typeof jobNumberColumns)[number]['key'], (typeof jobNumberColumns)[number]>(
+            jobNumberColumns,
+            JOB_NUMBERS_PRIMARY_KEY
+          )
 
-  return (
-    <Layout>
-      <div
-        className="transition-all duration-300"
-        style={{ paddingRight: showRightBar ? PANEL_W : 0 }}
-      >
-        <div className="px-6">
-          <div className="px-6">
-            <Breadcrumb current="Job Numbers" />
-            <PageHeader
-              title="Manage Job Numbers"
-              size="xl"
-              subtitle="Create or Edit Job Numbers"
-            />
-          </div>
-          <div className="px-6 ml-auto flex items-center w-full">
-            <div className="flex items-center gap-3 py-6 flex-1">
-              <SearchBar
-                placeholder="Search Job Numbers"
-                variant="third"
-                iconAlign="left"
-                size="xl"
-                className="min-w-[250px]"
-                onChange={setSearchTerm}
+    
+        return (
+        <Layout>
+            <div className="transition-all duration-300" style={{ paddingRight: showRightBar ? PANEL_W : 0 }}>
+                <div className="px-6">
+                    <div className="px-6 py-6">
+                        <Breadcrumb current="Job Numbers"/>
+                        <PageHeader title="Manage Job Numbers" size="xl" subtitle="Create or Edit Job Numbers" />
+                    </div>
+                    <div className="px-6 ml-auto flex items-center w-full">
+                        <div className="flex items-center gap-3 py-6 flex-1">
+                            <SearchBar placeholder='Search Job Numbers' variant='third' iconAlign='left' size='xl' className='min-w-[250px]' onChange={setSearchTerm}/>
+                            <CommonButton variant='square' size = 'xl' onClick={addItem}><Search2 /></CommonButton>
+                        </div>
+                        <div className="flex items-center gap-3">
+                            <CommonButton variant="outline" size = 'button' >Import</CommonButton>
+                            <CommonButton variant="outline" size = 'button' >Export</CommonButton>
+                            <CommonButton variant="yellow" size = 'button' onClick={openRightBar} >Add Job Number</CommonButton>
+                        </div>
+                    </div>
+                    <div className="px-6">
+                      <Filter
+                              label="Columns"
+                              items={filterItems}
+                              onChange={handleFilterChange}
+                              showCount
+                              showReset
+                              data={rows}
+                            />
+                    </div>               
+                    <div className="border border-[#E4E7EC] rounded-lg overflow-hidden px-6">
+                        <CommonTable data={pageRows} columns={visibleColumns} onRowClick={handleRowClick} rowKey="jobnumber"/>
+                        <Pagination
+                            page={page}
+                            pageCount={pageCount}
+                            perPage={perPage}
+                            onPageChange={setPage}
+                            onPerPageChange={onPerPageChange}
+                            />
+                    </div>
+                </div>
+            </div>
+            {showRightBar && ( editingRow ? (
+                <EditRightBar
+                row={editingRow}
+                onClose={closeRightBar}
+                onSubmit={handleUpdateJobNumber} 
               />
-              <CommonButton variant="square" size="xl" onClick={addItem}>
-                <Search2 />
-              </CommonButton>
-            </div>
-            <div className="flex items-center gap-3">
-              <CommonButton variant="outline" size="button">
-                Import
-              </CommonButton>
-              <CommonButton variant="outline" size="button">
-                Export
-              </CommonButton>
-              <CommonButton
-                variant="yellow"
-                size="button"
-                onClick={openRightBar}
-              >
-                Add Job Number
-              </CommonButton>
-            </div>
-          </div>
-          <div className="px-6">
-            <Filter
-              label="Columns"
-              items={filterItems}
-              onChange={handleFilterChange}
-              showCount
-              showReset
-              data={rows}
-            />
-          </div>
-          <div className="border border-[#E4E7EC] rounded-lg overflow-hidden px-6">
-            <CommonTable
-              data={pageRows}
-              columns={visibleColumns}
-              onRowClick={handleRowClick}
-            />
-            <Pagination
-              page={page}
-              pageCount={pageCount}
-              perPage={perPage}
-              onPageChange={setPage}
-              onPerPageChange={onPerPageChange}
-            />
-          </div>
-        </div>
-      </div>
-      {showRightBar &&
-        (editingRow ? (
-          <EditRightBar
-            row={editingRow}
-            onClose={closeRightBar}
-            onSubmit={handleUpdateJobNumber}
-          />
-        ) : (
-          <RightBar onClose={closeRightBar} onSubmit={handleAddJobNumber} />
-        ))}
-    </Layout>
-  );
+            ) : (
+              <RightBar
+                onClose={closeRightBar}
+                onSubmit={handleAddJobNumber}
+              />
+            )
+          )}
+        </Layout>
+    )
 }
