@@ -1,5 +1,4 @@
 import { cn } from "@/app/cn";
-import { Inter } from "@/constants/fonts";
 
 type ContextMenuProps = {
   items: Array<{
@@ -21,7 +20,7 @@ export default function ContextMenu({
           key={i.key}
           onClick={i.onClick}
           className={cn(
-            `p-2 min-w-[100px] font-[500] flex justify-start items-center min-w-[100px] cursor-pointer hover:bg-neutral-100 ${Inter.className}`,
+            "p-2 min-w-[100px] font-[500] flex justify-start items-center min-w-[100px] cursor-pointer hover:bg-neutral-100",
             className
           )}
         >

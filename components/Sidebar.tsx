@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Inter as InterFont } from "next/font/google";
 import { ReactNode } from "react";
 import {
   Users,
@@ -22,11 +21,6 @@ import {
   Pos,
   About,
 } from "@/public/assets/icons";
-
-const Inter = InterFont({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 type MenuItem = { label: string; icon: ReactNode; href: string };
 
@@ -54,9 +48,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside
-      className={`${Inter.className} hidden md:block w-[240px] shrink-0 bg-[#F2F4F7] border-r border-[#D0D5DD] min-h-full`}
-    >
+    <aside className="hidden md:block w-[240px] shrink-0 bg-[#F2F4F7] border-r border-[#D0D5DD] min-h-full">
       <ul className="space-y-2 px-3 py-8 text-sm">
         {items.map((i) => {
           const active =

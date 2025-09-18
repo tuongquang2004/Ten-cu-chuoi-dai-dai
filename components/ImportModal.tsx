@@ -1,4 +1,4 @@
-import { Inter, Madani } from "@/constants/fonts";
+import { Madani } from "@/constants/fonts";
 import { CloseButton, ImportIcon } from "@/public/assets/icons";
 import CommonButton from "./CommonButton";
 import Link from "next/link";
@@ -41,9 +41,7 @@ export default function ImportModal({
               >
                 Drag and Drop your files here
               </p>
-              <div
-                className={`flex flex-col items-center gap-4 text-[#667085] ${Inter.className} text-[12px]`}
-              >
+              <div className="flex flex-col items-center gap-4 text-[#667085] text-[12px]">
                 <p>2 MB max size. File should end in .csv or .txt.</p>
                 <p>or</p>
                 <p className="text-base text-[#252C88] font-[600] underline">

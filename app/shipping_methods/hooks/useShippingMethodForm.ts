@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { FormProps, ShippingMethod } from "@/constants/types";
 import { defaultForm, defaultValueSimple } from "@/constants/defaultValues";
-import { Inter } from "@/constants/fonts";
 import axios from "axios";
 import { API } from "@/constants/apiEndpoints";
 
@@ -46,7 +45,7 @@ export function useShippingMethodForm() {
         label: "Edit Shipping Method",
         buttonLabel: "Save Changes",
         statusCheckbox: {
-          className: `${Inter.className} font-[700] text-[14px]`,
+          className: "font-[700] text-[14px]",
           current: res.isActive,
           onChange: setIsChecked,
         },

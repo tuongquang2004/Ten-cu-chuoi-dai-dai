@@ -16,7 +16,6 @@ import ImportModal from "@/components/ImportModal";
 import { useExchangeRateActions } from "./hooks/useExchangeRateActions";
 import ContextMenu from "@/components/ContextMenu";
 import { useExchangeRateContextMenu } from "./hooks/useExchangeRateContextMenu";
-import { Inter } from "@/constants/fonts";
 import Dropdown from "@/components/Dropdown";
 import { useState } from "react";
 import { ExchangeRate } from "@/constants/types";
@@ -129,7 +128,7 @@ export default function ExchangeRates() {
                 ]}
               />
               <div
-                className={`flex justify-end w-full flex-1 font-[#707070] text-sm italic ${Inter.className}`}
+                className={`flex justify-end w-full flex-1 text-[#707070] text-sm italic`}
               >
                 Default Currency AUD
               </div>

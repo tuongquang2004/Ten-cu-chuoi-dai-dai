@@ -1,5 +1,4 @@
 import { cn } from "@/app/cn";
-import { Inter } from "@/constants/fonts";
 import { DownArrow } from "@/public/assets/icons";
 import { useState } from "react";
 
@@ -48,7 +47,7 @@ export default function Dropdown<T>({
           {items.map((i) => (
             <button
               className={cn(
-                `text-start w-full hover:bg-neutral-100 flex-1 p-2 cursor-pointer font-[500] ${Inter.className}`,
+                "text-start w-full hover:bg-neutral-100 flex-1 p-2 cursor-pointer font-[500]",
                 selected.length !== 0
                   ? selected === i.key && "bg-neutral-200"
                   : selectedKey === i.key && "bg-neutral-200",

@@ -75,7 +75,7 @@ export default function CommonTable<T extends { id: string }>({
   return (
     <div className="border border-[#E4E7EC] overflow-hidden rounded-lg">
       <div className="max-h-[581px] overflow-y-auto">
-        <table className={`${Inter.className} rounded-lg w-full`}>
+        <table className="rounded-lg w-full">
           <thead>
             <tr className="border border-[#E4E7EC] border-b border-b-[#98A2B3] text-[#667085] bg-[#E4E7EC]">
               {columns.map((c) => (

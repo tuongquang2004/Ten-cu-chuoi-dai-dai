@@ -24,8 +24,10 @@ type SearchBarProps<T> = {
 
 const variants = {
   default: "placeholder:text-[#475467] placeholder:text-[12px] py-[10px]",
-  secondary: `placeholder:text-[#475467] text-[12px] bg-[#F2F4F7] focus:outline-none border-none ${Inter.className}`,
-  third: `placeholder:text-[#1D2939] text-[14px] bg-[#FFFFFF] border border-[#98A2B3] min-w-[500px] w-[450px] rounded-md focus:outline-none ${Inter.className}`,
+  secondary:
+    "placeholder:text-[#475467] text-[12px] bg-[#F2F4F7] focus:outline-none border-none",
+  third:
+    "placeholder:text-[#1D2939] text-[14px] bg-[#FFFFFF] border border-[#98A2B3] min-w-[500px] w-[450px] rounded-md focus:outline-none",
 };
 
 const sizes = {
@@ -46,7 +48,7 @@ export default function SearchBar<T>({
   onChange,
   buttonFunction,
 }: Readonly<SearchBarProps<T>>) {
-  const inputBase = `flex-1 bg-transparent outline-none ${Inter.className}`;
+  const inputBase = "flex-1 bg-transparent outline-none";
 
   return (
     <div className="flex items-center gap-2 w-full">

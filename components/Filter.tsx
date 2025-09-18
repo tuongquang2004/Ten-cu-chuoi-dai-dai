@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Inter } from "@/constants/fonts";
 import { cn } from "@/app/cn";
 import { DownArrow, Reset } from "@/public/assets/icons";
 
@@ -49,7 +48,7 @@ export default function Filter({
   };
 
   return (
-    <div className={`relative w-fit ${Inter.className}`}>
+    <div className="relative w-fit">
       <div className="flex items-center justify-center gap-1 w-fit">
         <button
           className={cn(
