@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FormProps, ShippingMethod } from "@/constants/types";
-import { defaultForm, defaultValueSimple } from "@/constants/defaultValues";
+import { defaultForm, defaultRefSrc } from "@/constants/defaultValues";
 import { inter } from "@/constants/fonts";
 import axios from "axios";
 import { API } from "@/constants/apiEndpoints";
@@ -11,7 +11,7 @@ export function useShippingMethodForm() {
     const [name, setName] = useState<string>("");
     const [isChecked, setIsChecked] = useState<boolean>(false);
     const [isShow, setIsShow] = useState<boolean>(false);
-    const [selected, setSelected] = useState<ShippingMethod>(defaultValueSimple);
+    const [selected, setSelected] = useState<ShippingMethod>(defaultRefSrc);
     const [form, setForm] = useState<FormProps>(defaultForm);
 
     const getShippingMethodById = async (id: string) => {
@@ -61,7 +61,7 @@ export function useShippingMethodForm() {
         setName("");
         setIsChecked(false);
         setIsShow(false);
-        setSelected(defaultValueSimple);
+        setSelected(defaultRefSrc);
         setForm(defaultForm);
     };
 
