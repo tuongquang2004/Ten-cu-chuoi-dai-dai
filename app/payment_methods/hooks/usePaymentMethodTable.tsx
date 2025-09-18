@@ -21,7 +21,7 @@ export function usePaymentMethodTable() {
     {
       key: "isActive",
       label: "Status",
-      headerClassName: "text-center",
+      headerClassName: "justify-center",
       render: (row) => StatusBadge(row.isActive),
     },
   ]);

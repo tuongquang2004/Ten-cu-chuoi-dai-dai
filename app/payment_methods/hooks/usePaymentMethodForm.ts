@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FormProps, PaymentMethod } from "@/constants/types";
 import { defaultForm, defaultPaymentMethod } from "@/constants/defaultValues";
-import { inter } from "@/constants/fonts";
+import { Inter } from "@/constants/fonts";
 import axios from "axios";
 import { API } from "@/constants/apiEndpoints";
 
@@ -50,7 +50,7 @@ export function usePaymentMethodForm() {
         label: "Edit Payment Method",
         buttonLabel: "Save Changes",
         statusCheckbox: {
-          className: `${inter.className} font-[700] text-[14px]`,
+          className: `${Inter.className} font-[700] text-[14px]`,
           current: res.isActive,
           onChange: setIsChecked,
         },

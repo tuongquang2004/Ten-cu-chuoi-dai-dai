@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { inter } from "@/constants/fonts";
+import { Inter } from "@/constants/fonts";
 import { cn } from "@/app/cn";
 import { DownArrow, Reset } from "@/public/assets/icons";
 
@@ -49,12 +49,12 @@ export default function Filter({
   };
 
   return (
-    <div className={`relative ${inter.className}`}>
+    <div className={`relative w-fit ${Inter.className}`}>
       <div className="flex items-center justify-center gap-1 w-fit">
         <button
           className={cn(
             "flex items-center gap-1 cursor-pointer",
-            filterActive && "font-[700]",
+            filterActive && "font-[700]"
           )}
           onClick={() => setIsShow((prev) => !prev)}
         >
@@ -75,7 +75,7 @@ export default function Filter({
               key={i.key}
               className={cn(
                 "flex items-center gap-[6px] px-[6px] hover:bg-neutral-200",
-                className,
+                className
               )}
             >
               <input

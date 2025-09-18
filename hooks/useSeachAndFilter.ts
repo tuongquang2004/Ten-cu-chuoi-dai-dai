@@ -1,18 +1,12 @@
-"use client";
+import { useEffect, useState } from "react";
 
-import { useState, useEffect } from "react";
-
-type SearchableFilterable = {
-  name: string;
-  isActive: boolean;
-};
-
-export function useSearchAndFilter<T extends SearchableFilterable>(
+export function useSearchAndFilter<T extends { isActive: boolean }>(
   backup: T[],
   setSources: React.Dispatch<React.SetStateAction<T[]>>,
+  searchKey: keyof T
 ) {
-  const [pendingSearch, setPendingSearch] = useState<string>("");
-  const [search, setSearch] = useState<string>("");
+  const [pendingSearch, setPendingSearch] = useState("");
+  const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<string[]>([]);
 
   const handleSearch = () => {
@@ -24,7 +18,10 @@ export function useSearchAndFilter<T extends SearchableFilterable>(
 
     if (search.length !== 0) {
       data = data.filter((d) =>
-        d.name.toLowerCase().trim().includes(search.toLowerCase().trim()),
+        String(d[searchKey])
+          .toLowerCase()
+          .trim()
+          .includes(search.toLowerCase().trim())
       );
     }
 
@@ -33,7 +30,13 @@ export function useSearchAndFilter<T extends SearchableFilterable>(
     }
 
     setSources(data);
-  }, [search, filter, backup, setSources]);
+  }, [search, filter, backup, setSources, searchKey]);
 
-  return { pendingSearch, setPendingSearch, filter, setFilter, handleSearch };
+  return {
+    pendingSearch,
+    setPendingSearch,
+    filter,
+    setFilter,
+    handleSearch,
+  };
 }

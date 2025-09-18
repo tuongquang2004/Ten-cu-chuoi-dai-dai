@@ -7,6 +7,8 @@ import SearchBar from "./SearchBar";
 import { ROUTES } from "@/constants/routes";
 import { Plus, Gear, Question } from "@/public/assets/icons";
 import { Logo } from "@/public/assets/logos";
+import { RefSrc } from "@/constants/types";
+import { useState } from "react";
 
 type NavItem = { label: string; route: string };
 
@@ -32,6 +34,7 @@ const tabs2 = tabs.slice(7);
 
 export default function TopNav() {
   const router = useRouter();
+  const [search, setSearch] = useState<string>("");
 
   return (
     <header className="sticky top-0 z-40 flex h-12 items-center justify-between border-b border-[#D0D5DD] bg-white px-[38px] py-8">
@@ -58,11 +61,12 @@ export default function TopNav() {
           <Plus />
         </CommonButton>
 
-        <SearchBar
+        <SearchBar<RefSrc>
           placeholder="Search"
           variant="secondary"
           iconAlign="right"
           className="min-w-[250px]"
+          onChange={setSearch}
         />
 
         <button

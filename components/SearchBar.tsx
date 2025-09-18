@@ -1,25 +1,31 @@
 "use client";
 
 import CommonButton from "./CommonButton";
-import { inter } from "@/constants/fonts";
+import { Inter } from "@/constants/fonts";
 import { Search } from "@/public/assets/icons";
 import { cn } from "@/app/cn";
+import Dropdown from "./Dropdown";
 
-type SearchBarProp = {
-  readonly placeholder?: string;
-  readonly variant?: "default" | "secondary" | "third";
-  readonly iconAlign?: "left" | "right";
-  readonly buttonAlign?: "left" | "right";
-  readonly size?: "default" | "sm" | "lg" | "xl";
-  readonly onChange: (value: string) => void;
-  readonly buttonFunction?: () => void;
-  readonly className?: string;
+type SearchBarProps<T> = {
+  placeholder?: string;
+  variant?: "default" | "secondary" | "third";
+  iconAlign?: "left" | "right";
+  buttonAlign?: "left" | "right";
+  searchBy?: {
+    items: Array<{ label: string; key: string; value: keyof T }>;
+    selectedKey?: string;
+    onChange: (value: keyof T) => void;
+  };
+  size?: "default" | "sm" | "lg" | "xl";
+  onChange: (value: string) => void;
+  buttonFunction?: () => void;
+  className?: string;
 };
 
 const variants = {
   default: "placeholder:text-[#475467] placeholder:text-[12px] py-[10px]",
-  secondary: `placeholder:text-[#475467] text-[12px] bg-[#F2F4F7] focus:outline-none ${inter.className}`,
-  third: `placeholder:text-[#1D2939] text-[14px] bg-[#FFFFFF] border border-[#98A2B3] min-w-[500px] w-[450px] rounded-md focus:outline-none ${inter.className}`,
+  secondary: `placeholder:text-[#475467] text-[12px] bg-[#F2F4F7] focus:outline-none border-none ${Inter.className}`,
+  third: `placeholder:text-[#1D2939] text-[14px] bg-[#FFFFFF] border border-[#98A2B3] min-w-[500px] w-[450px] rounded-md focus:outline-none ${Inter.className}`,
 };
 
 const sizes = {
@@ -29,19 +35,18 @@ const sizes = {
   xl: "h-11",
 };
 
-export default function SearchBar({
+export default function SearchBar<T>({
   placeholder,
   variant = "default",
   iconAlign,
   buttonAlign,
+  searchBy,
   size = "default",
   className,
   onChange,
   buttonFunction,
-}: SearchBarProp) {
-  const base = `rounded w-full flex-1 ${
-    iconAlign && iconAlign === "left" ? "pl-8 pr-2" : "pl-2 pr-8"
-  }`;
+}: Readonly<SearchBarProps<T>>) {
+  const inputBase = `flex-1 bg-transparent outline-none ${Inter.className}`;
 
   return (
     <div className="flex items-center gap-2 w-full">
@@ -55,7 +60,15 @@ export default function SearchBar({
         </CommonButton>
       )}
 
-      <div className="relative flex-1">
+      <div
+        className={cn(
+          "flex items-center gap-2 border rounded px-2 w-full",
+          variants[variant],
+          sizes[size],
+          className
+        )}
+      >
+        {iconAlign === "left" && <Search />}
         <input
           onKeyDown={(e) => {
             if (e.key === "Enter" && buttonFunction) {
@@ -65,22 +78,16 @@ export default function SearchBar({
           }}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className={cn(
-            base,
-            variants[variant],
-            sizes[size],
-            className,
-            iconAlign === "left" ? "pl-9 pr-3" : "pl-3 pr-9"
-          )}
+          className={inputBase}
         />
-        {iconAlign && (
-          <div
-            className={`absolute top-1/2 -translate-y-1/2 ${
-              iconAlign === "left" ? "left-2" : "right-2"
-            }`}
-          >
-            <Search />
-          </div>
+        {iconAlign === "right" && <Search />}
+        {searchBy && (
+          <Dropdown
+            position="top-5"
+            items={searchBy.items}
+            selectedKey={searchBy.selectedKey}
+            onChange={searchBy.onChange}
+          />
         )}
       </div>
 
