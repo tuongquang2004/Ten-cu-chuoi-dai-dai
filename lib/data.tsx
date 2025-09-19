@@ -39,7 +39,7 @@ export const manageTiles: TileItemData[] = [
   {
     label: "Exchange Rates",
     icon: <Exchange />,
-    href: "/",
+    href: ROUTES.EXCHANGE_RATES,
   },
   {
     label: "Comments",

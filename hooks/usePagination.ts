@@ -10,7 +10,7 @@ export function usePagination<T>(data: T[], initialPerPage = 25) {
 
   const pageRows = useMemo(
     () => data.slice(start, start + perPage),
-    [data, start, perPage],
+    [data, start, perPage]
   );
 
   const onPerPageChange = (n: number) => {

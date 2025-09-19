@@ -55,3 +55,13 @@ export type ShippingMethod = {
   name: string;
   isActive: boolean;
 };
+
+export type ExchangeRate = {
+  id: string;
+  code: string;
+  prefix: string;
+  rate: number;
+  last_updated: string;
+  description: string;
+  isActive: boolean;
+};

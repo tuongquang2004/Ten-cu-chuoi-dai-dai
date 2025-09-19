@@ -11,7 +11,7 @@ export default function StatusBadge(isActive: boolean) {
     <div className={cn("flex justify-center items-center w-full h-full")}>
       <div
         className={cn(
-          "shadow-[2px_3px_8px_rgba(0,0,0,0.15)] text-center font-medium rounded-full w-fit py-[3px] min-w-[77px] text-[15px]",
+          "shadow-[2px_3px_8px_rgba(0,0,0,0.15)] text-center font-semibold rounded-full w-fit py-[3px] min-w-[77px] text-[15px]",
           bgColor,
           textColor,
         )}

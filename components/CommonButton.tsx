@@ -1,10 +1,6 @@
 import { cn } from "@/app/cn";
 
-<<<<<<< HEAD
-=======
-const base =
-  "cursor-pointer inline-flex items-center justify-center rounded-md font-medium transition px-[18px] py-[6px]";
->>>>>>> feature/import-modal
+const base = 'cursor-pointer inline-flex items-center justify-center rounded-md font-medium transition px-[18px] py-[6px]';
 
 const variants = {
   default: "",
@@ -42,34 +38,11 @@ type CommonButtonProps = {
   readonly disabled?: boolean;
 };
 
-<<<<<<< HEAD
 export default function CommonButton({ children, variant = 'default', size = 'default', onClick, disabled, className }: CommonButtonProps) {
-    const base = `inline-flex items-center justify-center rounded-md font-medium transition px-[18px] py-[6px] ${!disabled && 'cursor-pointer'}`;
-
     return (
         <button disabled={disabled} className={cn(base, variants[variant], sizes[size], className)}
-            onClick={onClick} >
+            onClick={onClick}>
             {children}
-        </button >
+        </button>
     )
 }
-=======
-export default function CommonButton({
-  children,
-  variant = "default",
-  size = "default",
-  onClick,
-  disabled,
-  className,
-}: CommonButtonProps) {
-  return (
-    <button
-      disabled={disabled}
-      className={cn(base, variants[variant], sizes[size], className)}
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-}
->>>>>>> feature/import-modal

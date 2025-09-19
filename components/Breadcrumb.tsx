@@ -21,13 +21,13 @@ export default function Breadcrumb({
       {base.map((c, idx) => (
         <div
           key={c.href + idx}
-          className="flex items-center gap-2 text-[#667085] font-semibold font-[Inter]"
+          className="flex items-center gap-2 text-[#667085] font-semibold"
         >
           <Link href={c.href}>{c.label}</Link>
           <RightArrow />
         </div>
       ))}
-      <div className="flex items-center gap-2 text-[#1D2939] font-semibold font-[Inter]">
+      <div className="flex items-center gap-2 text-[#1D2939] font-semibold">
         {current}
       </div>
     </nav>

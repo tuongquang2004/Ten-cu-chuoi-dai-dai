@@ -21,22 +21,38 @@ import { useModal } from "@/hooks/useModal";
 import ImportModal from "@/components/ImportModal";
 
 export default function ReferralSources() {
-    const { showConfirmModal, setShowConfirmModal, showImportModal, setShowImportModal } = useModal();
-    const { items, backup, setItems } = useReferralSourceData();
-    const { header } = useReferralSourceTable();
-    const {
-        name,
-        setName,
-        isChecked,
-        isShow,
-        setIsShow,
-        selected,
-        form,
-        showAddForm,
-        showEditForm,
-        resetForm, } = useReferralSourceForm();
-    const { addItem, editItem } = useReferralSourceActions(name, isChecked, selected, setItems, resetForm);
-    const { setPendingSearch, setFilter, handleSearch } = useSearchAndFilter(backup, setItems);
+  const {
+    showConfirmModal,
+    setShowConfirmModal,
+    showImportModal,
+    setShowImportModal,
+  } = useModal();
+  const { items, backup, setItems } = useReferralSourceData();
+  const { header } = useReferralSourceTable();
+  const {
+    name,
+    setName,
+    isChecked,
+    isShow,
+    setIsShow,
+    selected,
+    form,
+    showAddForm,
+    showEditForm,
+    resetForm,
+  } = useReferralSourceForm();
+  const { addItem, editItem } = useReferralSourceActions(
+    name,
+    isChecked,
+    selected,
+    setItems,
+    resetForm
+  );
+  const { setPendingSearch, setFilter, handleSearch } = useSearchAndFilter(
+    backup,
+    setItems,
+    "name"
+  );
 
   const hasNewInput = () => {
     return form.action === "add" ? !!name : selected.name !== name || isChecked;
@@ -56,61 +72,105 @@ export default function ReferralSources() {
     resetForm();
   };
 
-    return (
-        <div>
-            {showConfirmModal && (
-                <ConfirmationModal
-                    label="You have unsaved changes"
-                    content="Are you sure you want to cancel?"
-                    acceptLabel="Yes"
-                    onAccept={cancelAction}
-                    cancelLabel="No"
-                    onCancel={() => setShowConfirmModal(false)}
+  return (
+    <div>
+      {showConfirmModal && (
+        <ConfirmationModal
+          label="You have unsaved changes"
+          content="Are you sure you want to cancel?"
+          acceptLabel="Yes"
+          onAccept={cancelAction}
+          cancelLabel="No"
+          onCancel={() => setShowConfirmModal(false)}
+        />
+      )}
+      {showImportModal && (
+        <ImportModal
+          label="Import Referral Sources"
+          buttonLabel="Import Referral Sources"
+          onClose={() => setShowImportModal(false)}
+          templateFile="referral_source_template.txt"
+        />
+      )}
+      <Layout>
+        <div className="flex flex-1 h-full">
+          <div className="px-12 p-6 flex flex-col gap-3 w-full">
+            <Breadcrumb current="Referral Sources"></Breadcrumb>
+            <PageHeader
+              title="Manage Referral Sources"
+              subtitle="Create or Edit Referral sources entries"
+            />
+            <div className="flex justify-between gap-3 flex-col xl:flex-row">
+              <div className="flex items-center flex-1">
+                <SearchBar
+                  onChange={setPendingSearch}
+                  buttonFunction={handleSearch}
+                  placeholder="Search Referral Sources"
+                  iconAlign="left"
+                  buttonAlign="right"
+                  className="border border-[#98A2B3] h-full placeholder:text-[14px] w-full max-w-[417px]"
                 />
-            )}
-            {showImportModal && (
-                <ImportModal
-                    label="Import Referral Sources"
-                    buttonLabel="Import Referral Sources"
-                    onClose={() => setShowImportModal(false)}
-                    templateFile="referral_source_template.txt"
-                />
-            )}
-            <Layout>
-                <div className="flex flex-1 h-full">
-                    <div className="px-12 p-6 flex flex-col gap-3 w-full">
-                        <Breadcrumb current="Referral Sources"></Breadcrumb>
-                        <PageHeader title="Manage Referral Sources" subtitle="Create or Edit Referral sources entries" />
-                        <div className="flex justify-between gap-3 flex-col xl:flex-row">
-                            <div className="flex items-center flex-1">
-                                <SearchBar
-                                    onChange={setPendingSearch}
-                                    buttonFunction={handleSearch}
-                                    placeholder="Search Referral Sources"
-                                    iconAlign="left"
-                                    buttonAlign="right"
-                                    className="border border-[#98A2B3] h-full placeholder:text-[14px] w-full max-w-[417px]" />
-                            </div>
-                            <div className="flex justify-center xl:justify-end gap-3 w-fit justify-self-end">
-                                <CommonButton variant="outline" onClick={() => setShowImportModal(true)}>Import</CommonButton>
-                                <CommonButton variant="outline">Export</CommonButton>
-                                <CommonButton onClick={showAddForm} variant="outline" className="bg-[#E87200] text-white border-none">Add Referral Source</CommonButton>
-                            </div>
-                        </div>
-                        <Filter data={backup} onChange={setFilter} label="Status" showCount={true} showReset={true} items={[{ key: 'active', label: 'Active', value: 'true' }, { key: 'inactive', label: 'Inactive', value: 'false' }]} />
-                        <CommonTable selectedId={selected.id} pagination data={items} columns={header} onRowClick={(row) => showEditForm(row.id)} />
-                    </div>
-                    {isShow && (
-                        <RightBar onClose={cancelAction}>
-                            <DataForm buttonDisabled={!hasNewInput()} label={form.label} buttonLabel={form.buttonLabel} statusCheckbox={form.statusCheckbox} checked={isChecked} onCancel={handleCancel} onSubmit={form.action === "add" ? addItem : editItem}>
-                                <div>
-                                    <CommonInput className="border-b-0" label="Referral Source" placeholder="Enter Referral Source name" value={name} onChange={setName} />
-                                </div>
-                            </DataForm>
-                        </RightBar>
-                    )}
+              </div>
+              <div className="flex justify-center xl:justify-end gap-3 w-fit justify-self-end">
+                <CommonButton
+                  variant="outline"
+                  onClick={() => setShowImportModal(true)}
+                >
+                  Import
+                </CommonButton>
+                <CommonButton variant="outline">Export</CommonButton>
+                <CommonButton
+                  onClick={showAddForm}
+                  variant="outline"
+                  className="bg-[#E87200] text-white border-none"
+                >
+                  Add Referral Source
+                </CommonButton>
+              </div>
+            </div>
+            <Filter
+              onChange={setFilter}
+              label="Status"
+              showCount={true}
+              showReset={true}
+              items={[
+                { key: "active", label: "Active", value: "true" },
+                { key: "inactive", label: "Inactive", value: "false" },
+              ]}
+            />
+            <CommonTable
+              selectedId={selected.id}
+              pagination
+              data={items}
+              columns={header}
+              onRowClick={(row) => showEditForm(row.id)}
+            />
+          </div>
+          {isShow && (
+            <RightBar onClose={cancelAction}>
+              <DataForm
+                buttonDisabled={!hasNewInput()}
+                label={form.label}
+                buttonLabel={form.buttonLabel}
+                statusCheckbox={form.statusCheckbox}
+                checked={isChecked}
+                onCancel={handleCancel}
+                onSubmit={form.action === "add" ? addItem : editItem}
+              >
+                <div>
+                  <CommonInput
+                    className="border-b-0"
+                    label="Referral Source"
+                    placeholder="Enter Referral Source name"
+                    value={name}
+                    onChange={setName}
+                  />
                 </div>
-            </Layout >
+              </DataForm>
+            </RightBar>
+          )}
         </div>
-    )
+      </Layout>
+    </div>
+  );
 }

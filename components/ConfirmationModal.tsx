@@ -1,4 +1,4 @@
-import { inter, Madani } from "@/constants/fonts";
+import { Madani } from "@/constants/fonts";
 import CommonButton from "./CommonButton";
 import { CloseButton } from "@/public/assets/icons";
 
@@ -33,7 +33,7 @@ export default function ConfirmationModal({
           </button>
         </div>
         <div className="flex flex-col p-5 gap-5">
-          <div className={`${inter.className}`}>{content}</div>
+          <div>{content}</div>
           <div className="flex gap-3 items-center justify-end">
             <CommonButton variant="outline" onClick={onCancel}>
               {cancelLabel}

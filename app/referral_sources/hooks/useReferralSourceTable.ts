@@ -13,7 +13,7 @@ export function useReferralSourceTable() {
     {
       key: "isActive",
       label: "Status",
-      headerClassName: "text-center",
+      headerClassName: "justify-center",
       render: (row) => StatusBadge(row.isActive),
     },
   ]);

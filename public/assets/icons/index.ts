@@ -40,3 +40,4 @@ export { default as DropDownArrow } from "./dropdown_arrow.svg";
 export { default as DownArrow } from "./down_arrow.svg";
 export { default as Reset } from "./reset.svg";
 export { default as ImportIcon } from "./import-icon.svg";
+export { default as SortIcon } from "./sort-icon.svg";
